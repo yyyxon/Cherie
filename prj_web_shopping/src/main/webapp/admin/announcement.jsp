@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
+<title>관리자 메인 뼈대</title>
 <link rel="icon" href="http://192.168.10.143/servlet_prj/common/main/favicon.png">
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -16,6 +16,7 @@
 <!-- CSS 시작 -->
 <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+<style type="text/css">
 <!-- CSS 끝 -->
 <style type="text/css">
 	@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css');
@@ -121,7 +122,6 @@ body {
   padding-bottom: 13px;
   color: #aeb2b7;
 }
-
 /* table Style 시작 */
 .styled-table {
     border-collapse: collapse;
@@ -159,7 +159,6 @@ body {
     color: #009879;
 }
 /* table Style 끝 */
-
 /* 임태균이 만든 거 시작 */
 #down{
   position: fixed;
@@ -176,67 +175,62 @@ body {
   padding-right: 10px;
   padding-left: 65px;
 }
-
-#main{
-  /* background: #EEEEEE; */
-  /* margin-left: 240px; */
-  /* min-height: 908px; */  /* 학원 컴퓨터 기준 꽉찬 크기 */
-  width: 100%;
-  /* padding: 20px;
-  padding-left: 260px; */
+body{
+ margin: 0px;
 }
-
-#divCodeOut{
-  padding-left: 240px;
-  padding-top: 78px;
+#wrap{
+	
 }
-
-#divCodeIn{
-  /* padding: 40px; */
-  padding-left: 24%;/* padding-right: 60px; */
+#right{
+	width: calc(100vw - 240px); height: 100%;float: right;
+	background: blue;
 }
-
-/* 임태균이 만든 거 끝 */
-
-#num{
-  width: 140px;
+#left{
+	min-width: 240px;height: 100%;float: left;
+	padding: 0px;
+	background: yellow;
 }
-#title{
-  min-width: 500px;
+#rightHeader{
+	min-height: 55px;
+	padding-top: 8px;padding-bottom: 5px;
+	padding-right: 15px;
+	background: #FFFFFF;
 }
-#writer{
-  width: 100px;
+#rightBody{
+	width: 100%; min-height: 500px;float: right;
+	padding: 40px;
+	padding-left: 56px;
+	background: #EEEEEE;
 }
-#date{
-  width: 100px;
-}
-
 </style>
 <script type="text/javascript">
 	$(function() {
-		
-		
 		$("#leftside-navigation .sub-menu > a").click(function(e) {
 			  $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
 			  e.stopPropagation()
 			})
+		
+		$("#btnLogout").click(function() {
+			alert("로그아웃..??");
+		});
 	});
 	//display: block;text-align: center;
 	
 </script>
 </head>
 <body>
-<div id="main">
+<div id="wrap">
+	<div id="left">
 <aside class="sidebar">
   <div id="leftside-navigation" class="nano">
     <ul class="nano-content">
       <li style="height: 100px;padding: 0px;background: #353535;">
-        <a style="padding: 0px;height: 100px" href="http://192.168.10.143/jsp_prj/prj_admin/admin_design.jsp">
+        <!-- <a style="padding: 0px;height: 100px" href="http://192.168.10.143/jsp_prj/prj_admin/admin_design.jsp"> -->
         <img src="../common/images/logo_dark.png" style="display: block; margin: 0px auto;padding-top: 1px;">
-<!-- <span style="font-size: 16px;font-weight: bold;">&ensp;이미지</span> --></a>
+<!-- <span style="font-size: 16px;font-weight: bold;">&ensp;이미지</span> --><!-- </a> -->
       </li>
       
-      <li class="sub-menu">
+      <li class="sub-menu active">
         <a href="#void">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
   <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
@@ -284,8 +278,8 @@ body {
 </svg><!-- <i class="fa fa-bar-chart-o"></i> -->
         <span>&ensp;게시글 관리</span></a>
       </li>
-      <li class="sub-menu active">
-        <a href="javascript:void(0);">
+      <li class="sub-menu">
+        <a href="announcement.jsp">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-megaphone-fill" viewBox="0 0 16 16">
   <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z"/>
 </svg><!-- <i class="fa fa-map-marker"></i> -->
@@ -301,13 +295,13 @@ body {
 		<strong style="font-size: 18px">&ensp;관리자</strong>
   </span>
 </aside>
-<div align="right" style="position: fixed; width: 100%;height: 55px;background: #FFFFFF;padding-top: 8px;padding-bottom: 5px">
-<span style="font-weight: bold;margin-right: 20px">관리자님</span>
-<input id="btnLogout" type="button" class="btn btn-outline-dark" value="로그아웃" style="margin-right: 20px">
-</div>
-<!-- 코딩은 여기에서 -->
-<div id="divCodeOut">
-<div id="divCodeIn">
+	</div>	
+	<div id="right">
+		<div id="rightHeader" align="right">
+			<span style="font-weight: bold;margin-right: 20px">관리자님</span>
+			<input id="btnLogout" type="button" class="btn btn-outline-dark" value="로그아웃" style="margin-right: 20px">
+		</div>
+		<div id="rightBody">
 <table class="styled-table">
     <thead>
         <tr style="text-align: center;">
@@ -319,40 +313,22 @@ body {
     </thead>
     <tbody>
         <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
+            <td>1</td>
+            <td>제목은 여기에 표시됩니다.</td>
+            <td>관리자</td>
+            <td>2023-10-16</td>
         </tr>
         <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-        </tr>
-        <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-        </tr>
-        <tr>
-            <td>Dom</td>
-            <td>6000</td>
-            <td>Dom</td>
-            <td>6000</td>
-        </tr>
-        <tr>
-            <td>Melissa</td>
-            <td>5150</td>
-            <td>Melissa</td>
-            <td>5150</td>
+            <td>2</td>
+            <td>제목 나와라요!!!</td>
+            <td>관리자</td>
+            <td>2023-10-31</td>
         </tr>
         <!-- and so on... -->
     </tbody>
 </table>
-</div>
-</div>
+		</div>
+	</div>	
 </div>
 </body>
 </html>

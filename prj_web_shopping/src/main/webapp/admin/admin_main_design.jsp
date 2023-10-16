@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page info="관리자 메인 뼈대"%>
+<%@ page info=""%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 페이지</title>
+<title>관리자 메인 뼈대</title>
 <link rel="icon" href="http://192.168.10.143/servlet_prj/common/main/favicon.png">
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -16,6 +16,7 @@
 <!-- CSS 시작 -->
 <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+<style type="text/css">
 <!-- CSS 끝 -->
 <style type="text/css">
 	@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css');
@@ -121,7 +122,6 @@ body {
   padding-bottom: 13px;
   color: #aeb2b7;
 }
-
 /* 임태균이 만든 거 시작 */
 #down{
   position: fixed;
@@ -138,26 +138,33 @@ body {
   padding-right: 10px;
   padding-left: 65px;
 }
-
-#main{
-  /* background: #EEEEEE; */
-  /* margin-left: 240px; */
-  /* min-height: 908px; */  /* 학원 컴퓨터 기준 꽉찬 크기 */
-  width: 100%;
-  /* padding: 20px;
-  padding-left: 260px; */
+body{
+ margin: 0px;
 }
-
-#divCodeOut{
-  padding-left: 260px;
-  padding-top: 78px;
+#wrap{
+	
 }
-
-#divCodeIn{
-  padding: 40px;
+#right{
+	width: calc(100vw - 240px); height: 100%;float: right;
+	background: blue;
 }
-/* 임태균이 만든 거 끝 */
-
+#left{
+	min-width: 240px;height: 100%;float: left;
+	padding: 0px;
+	background: yellow;
+}
+#rightHeader{
+	min-height: 55px;
+	padding-top: 8px;padding-bottom: 5px;
+	padding-right: 15px;
+	background: #FFFFFF;
+}
+#rightBody{
+	width: 100%; min-height: 500px;float: right;
+	padding: 40px;
+	padding-left: 56px;
+	background: #EEEEEE;
+}
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -175,14 +182,15 @@ body {
 </script>
 </head>
 <body>
-<div id="main">
+<div id="wrap">
+	<div id="left">
 <aside class="sidebar">
   <div id="leftside-navigation" class="nano">
     <ul class="nano-content">
       <li style="height: 100px;padding: 0px;background: #353535;">
-        <a style="padding: 0px;height: 100px" href="http://192.168.10.143/jsp_prj/prj_admin/admin_design.jsp">
+        <!-- <a style="padding: 0px;height: 100px" href="http://192.168.10.143/jsp_prj/prj_admin/admin_design.jsp"> -->
         <img src="../common/images/logo_dark.png" style="display: block; margin: 0px auto;padding-top: 1px;">
-<!-- <span style="font-size: 16px;font-weight: bold;">&ensp;이미지</span> --></a>
+<!-- <span style="font-size: 16px;font-weight: bold;">&ensp;이미지</span> --><!-- </a> -->
       </li>
       
       <li class="sub-menu active">
@@ -250,39 +258,23 @@ body {
 		<strong style="font-size: 18px">&ensp;관리자</strong>
   </span>
 </aside>
-<div align="right" style="position: fixed; width: 100%;height: 55px;background: #FFFFFF;padding-top: 8px;padding-bottom: 5px">
-<span style="font-weight: bold;margin-right: 20px">관리자님</span>
-<input id="btnLogout" type="button" class="btn btn-outline-dark" value="로그아웃" style="margin-right: 20px">
-</div>
-<!-- 코딩은 여기에서 -->
-<div id="divCodeOut">
-<div id="divCodeIn">
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-코딩은 여기에
-</div>
-</div>
+	</div>	
+	<div id="right">
+		<div id="rightHeader" align="right">
+			<span style="font-weight: bold;margin-right: 20px">관리자님</span>
+			<input id="btnLogout" type="button" class="btn btn-outline-dark" value="로그아웃" style="margin-right: 20px">
+		</div>
+		<div id="rightBody">
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
+		</div>
+	</div>	
 </div>
 </body>
 </html>

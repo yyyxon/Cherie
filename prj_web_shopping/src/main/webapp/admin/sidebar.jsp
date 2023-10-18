@@ -133,19 +133,26 @@ body {
 }
 </style>
 <script type="text/javascript">
-	$(function() {
-		/* 클릭된 sidebar 표시 */
-		document.getElementById("${param.no}").classList.add("active");
+$(function() {
+    /* 클릭된 sidebar 표시 */
+    document.getElementById("${param.no}").classList.add("active");
 
-		$("#leftside-navigation .sub-menu > a").click(function(e) {
-			  $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
-			  e.stopPropagation()
-			});
-		
-		$("#btnLogout").click(function() {
-			alert("로그아웃..??");
-		});
-	});
+    $("#leftside-navigation .sub-menu > a").click(function(e) {
+        e.preventDefault(); // 앵커 태그의 기본 동작 방지
+        
+        var subMenu = $(this).next();
+        if (subMenu.is(":visible")) {
+            subMenu.slideUp();
+        } else {
+            subMenu.slideDown();
+        }
+        e.stopPropagation();
+    });
+
+    $("#btnLogout").click(function() {
+        alert("로그아웃..??");
+    });
+});
 	//display: block;text-align: center;
 	
 </script>
@@ -190,13 +197,13 @@ body {
         </ul>
       </li>
       <li class="sub-menu" id="3">
-        <a href="javascript:void(0);">
+        <a href="orderManagement_order.jsp?no=3">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
   <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
 </svg><!-- <i class="fa fa-envelope"></i> -->
         <span>&ensp;주문 관리</span><i class="arrow fa fa-angle-right pull-right"></i></a>
         <ul>
-          <li><a href="mail-inbox.html">&ensp;&ensp;주문</a>
+          <li><a href="orderManagement_order.jsp?no=3">&ensp;&ensp;주문</a>
           </li>
           <li><a href="mail-compose.html">&ensp;&ensp;교환/반품</a>
           </li>

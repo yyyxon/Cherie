@@ -41,13 +41,35 @@ body{
 	padding: 40px;
 	padding-left: 56px;
 	background: #EEEEEE;
+	position: relative;
+}
+
+/* 인영 - 주문관리 style  시작*/
+#mainTitle{
+	font-size:25px;
+	color: #333;
+	position: absolute;
+	left : 60px;
+} 
+#background_box{
+overflow: auto;
+background-color:  #FFFFFF;
+color:  #333333;
+height: 150%; width: 80%;
+position: absolute;
+top: 100px; left: 60px;
+outline:  1px;
+box-shadow: rgb(204, 202, 202) 0px 2px 8px 0px;
+border-radius: 9px;
 }
 </style>
 <!-- 태균이가 만든거 끝-->
 
 <script type="text/javascript">
 	$(function() {
-		
+		$("#btnLogout").click(function() {
+	        alert("로그아웃..??");
+	    });
 	});
 </script>
 </head>
@@ -58,7 +80,12 @@ body{
 		<span style="font-weight: bold;margin-right: 20px">관리자님</span>
 		<input id="btnLogout" type="button" class="btn btn-outline-dark" value="로그아웃" style="margin-right: 20px">
 	</div>
-	<div id="rightBody"> <!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 -->
+	<div id="rightBody">
+		<div class="text" id="mainTitle">
+			<strong>주문 리스트</strong>
+		</div>
+		<div id="background_box"> <!-- 각자 원하는데로 사용 -->
+<!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 -->
 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
@@ -66,8 +93,10 @@ body{
 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-	</div> <!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 -->
-</div>	
+코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!!
+<!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --> 
+		</div>
+	</div>	
+</div>
 </body>
 </html>

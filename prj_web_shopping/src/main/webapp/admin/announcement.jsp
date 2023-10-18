@@ -17,10 +17,10 @@
 /* table Style 시작 */
 .styled-table {
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
+    margin: 25px;
+    margin-left: 35px;margin-right: 35px;margin-bottom: 15px;
     font-family: sans-serif;
-    min-width: 400px;
+    min-width: 1200px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -52,7 +52,10 @@
 }
 /* table Style 끝 */
 
-<!-- 태균이가 만든거 -->
+/* 태균이가 만든거 */
+td{
+  color: #000000;
+}
 body{
  margin: 0px;
 }
@@ -76,10 +79,31 @@ body{
 }
 #rightBody{
 	width: 100%; min-height: 500px;float: right;
-	padding: 40px;
+	padding: 20px;
 	padding-left: 56px;
 	background: #EEEEEE;
+	position: relative;
 }
+
+/* 인영 style 시작*/
+#mainTitle{
+	font-size:25px;
+	color: #333;
+	position: absolute;
+	left : 60px;
+} 
+#background_box{
+overflow: auto;
+background-color:  #FFFFFF;
+color:  #333333;
+/* height: 150%;  width: 80%; */
+position: absolute;
+top: 80px; left: 60px;
+outline:  1px;
+box-shadow: rgb(204, 202, 202) 0px 2px 8px 0px;
+border-radius: 9px;
+}
+/* 인영 style 끝*/
 #num{
   width: 140px;
 }
@@ -94,12 +118,12 @@ body{
 }
 .divCircle {
   background-color : #FFFFFF;
-  min-width: 1000px;
-/*   min-height: 500px; */
+  /* min-width: 1000px; */
+  /* min-height: 500px; */
   border-radius: 30px;
   padding: 20px;
   padding-bottom: 2px;
-  margin-left: 20%; margin-right: 20%;
+  
 }
 .ulCenter{
   display: table;
@@ -109,7 +133,7 @@ body{
 .ulCenter > li{
   float: left;
 }
-<!-- 태균이가 만든거 끝-->
+/* 태균이가 만든거 끝 */
 </style>
 
 <script type="text/javascript">
@@ -123,6 +147,10 @@ body{
 			var td = tr.children();
 			alert(td.eq(0).text()+"번째 공지사항 수정하기");
 		});
+		
+		$("#btnLogout").click(function() {
+	        alert("로그아웃..??");
+	    });
 	});
 </script>
 </head>
@@ -134,11 +162,11 @@ body{
 		<input id="btnLogout" type="button" class="btn btn-outline-dark" value="로그아웃" style="margin-right: 20px">
 	</div>
 	<div id="rightBody">
-<div class="divCircle">
-<div style="padding-bottom: 20px;">
-<strong style="font-size: 24px;font-weight: bold;padding-left: 10px;">공지사항</strong>
-</div>
-<table class="styled-table" style="margin: 0px auto;">
+	<div class="text" id="mainTitle">
+		<strong>공지사항</strong>
+	</div>
+<div id="background_box">
+<table class="styled-table">
     <thead>
         <tr style="text-align: center;">
             <th id="num">No.</th>
@@ -160,7 +188,7 @@ body{
     </tbody>
 </table>
 <!-- <div style="width: 100%;margin-top: 20px;padding-left: 50%;"> -->
-<div style="padding-left: 87%; margin-top: 20px;">
+<div style="padding-left: 1165px;">
 <input type="button" class="btn btn-outline-dark" value="등록" id="btnAdd"/>
 </div>
 <div>

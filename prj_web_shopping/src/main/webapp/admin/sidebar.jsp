@@ -148,10 +148,6 @@ $(function() {
         }
         e.stopPropagation();
     });
-
-    $("#btnLogout").click(function() {
-        alert("로그아웃..??");
-    });
 });
 	//display: block;text-align: center;
 	

@@ -1,23 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page info=""%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>관리자 메인 뼈대</title>
-<link rel="icon" href="http://192.168.10.143/servlet_prj/common/main/favicon.png">
-<!-- bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<!-- bootstrap icon -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<!-- jQuery CDN -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- CSS 시작 -->
-<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-<style type="text/css">
-<!-- CSS 끝 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style type="text/css">
 	@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css');
 @font-face {
@@ -122,6 +107,7 @@ body {
   padding-bottom: 13px;
   color: #aeb2b7;
 }
+
 /* 임태균이 만든 거 시작 */
 #down{
   position: fixed;
@@ -138,32 +124,12 @@ body {
   padding-right: 10px;
   padding-left: 65px;
 }
-body{
- margin: 0px;
-}
-#wrap{
-	
-}
-#right{
-	width: calc(100vw - 240px); height: 100%;float: right;
-	background: blue;
-}
+/* 임태균이 만든 거 끝 */
+
 #left{
 	min-width: 240px;height: 100%;float: left;
 	padding: 0px;
 	background: yellow;
-}
-#rightHeader{
-	min-height: 55px;
-	padding-top: 8px;padding-bottom: 5px;
-	padding-right: 15px;
-	background: #FFFFFF;
-}
-#rightBody{
-	width: 100%; min-height: 500px;float: right;
-	padding: 40px;
-	padding-left: 56px;
-	background: #EEEEEE;
 }
 </style>
 <script type="text/javascript">
@@ -180,10 +146,9 @@ body{
 	//display: block;text-align: center;
 	
 </script>
-</head>
-<body>
-<div id="wrap">
-	<div id="left">
+
+
+<div id="left">
 <aside class="sidebar">
   <div id="leftside-navigation" class="nano">
     <ul class="nano-content">
@@ -258,23 +223,4 @@ body{
 		<strong style="font-size: 18px">&ensp;관리자</strong>
   </span>
 </aside>
-	</div>	
-	<div id="right">
-		<div id="rightHeader" align="right">
-			<span style="font-weight: bold;margin-right: 20px">관리자님</span>
-			<input id="btnLogout" type="button" class="btn btn-outline-dark" value="로그아웃" style="margin-right: 20px">
-		</div>
-		<div id="rightBody">
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 코딩는 여기에!! 
-		</div>
-	</div>	
 </div>
-</body>
-</html>

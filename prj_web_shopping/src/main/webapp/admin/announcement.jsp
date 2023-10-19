@@ -1,3 +1,4 @@
+<%@page import="shopping.dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page info=""%>
@@ -15,27 +16,27 @@
 
 <!-- 임태균 scriptlet 작업장 시작 -->
 <%
-/* BoardDAO bDAO = BoardDAO.getInstance();
-int totalCount = bDAO.totalCount(); 
-SQL문으로 얻어 오기*/
+BoardDAO bDAO = BoardDAO.getInstance();
+int totalCount = bDAO.totalCount("NOTICE"); 
 
-int pageScale = 10;
+int pageScale = 12;
 
 /* int totalPage = totalCount % pageScale != 0 ? (totalCount/pageScale)+1 : totalCount/pageScale; */
 /* int totalPage = totalCount/pageScale; */
 /* if(totalCount % pageScale != 0) {
 	totalPage++;
 } */
-int totalPage = (int)Math.ceil(totalCount / (double)pageScale);
+int totalPage = (int)Math.ceil(totalCount / (double)pageScale); //페이지 수 가져오기
+pageContext.setAttribute("totalPage", totalPage);
 
-String tempPage = request.getParameter("pageNum");
+String tempPage = request.getParameter("page"); //현재 페이지 가져오기
 int currentPage = 1;
 if(tempPage != null) {
 	currentPage = Integer.parseInt(tempPage);
 }
 
-int startNum = currentPage * pageScale - pageScale + 1;
-int endNum = startNum + pageScale -1;
+int startNum = currentPage * pageScale - pageScale + 1; //페이지 게시물 시작 번호
+int endNum = startNum + pageScale -1; //페이지 게시물 마지막 번호
 %>
 <!-- 임태균 scriptlet 작업장 끝 -->
 
@@ -206,7 +207,7 @@ border-radius: 9px;
 <c:forEach var="num" begin="1" end="12" varStatus="1">
         <tr>
             <td>${num}</td>
-            <td>제목은 여기에 표시됩니다.</td>
+            <td>제목 표시는 여기에서 나타납니다.</td>
             <td>관리자</td>
             <td>2023-10-16</td>
         </tr>
@@ -215,10 +216,12 @@ border-radius: 9px;
     </tbody>
 </table>
 <!-- <div style="width: 100%;margin-top: 20px;padding-left: 50%;"> -->
-<div style="padding-left: 1165px;">
+<div style="padding-left: 1165px;padding-bottom: 10px;">
 <input type="button" class="btn btn-outline-dark" value="등록" id="btnAdd"/>
 </div>
 <div>
+<!-- 페이지 이동 -->
+<c:if test="${totalPage != 0}">
 <nav aria-label="Page navigation example">
   <ul class="pagination ulCenter">
     <li class="page-item">
@@ -226,7 +229,7 @@ border-radius: 9px;
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <c:forEach var="i" begin="1" end="5" step="1">
+    <c:forEach var="i" begin="1" end="<%=totalPage %>" step="1">
     <li class="page-item"><a class="page-link" href="#void${i}">${i}</a></li>
     </c:forEach>
     <li class="page-item">
@@ -236,6 +239,7 @@ border-radius: 9px;
     </li>
   </ul>
 </nav>
+</c:if>
 </div>
 </div>
 	</div>

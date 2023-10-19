@@ -13,6 +13,32 @@
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
+<!-- 임태균 scriptlet 작업장 시작 -->
+<%
+/* BoardDAO bDAO = BoardDAO.getInstance();
+int totalCount = bDAO.totalCount(); 
+SQL문으로 얻어 오기*/
+
+int pageScale = 10;
+
+/* int totalPage = totalCount % pageScale != 0 ? (totalCount/pageScale)+1 : totalCount/pageScale; */
+/* int totalPage = totalCount/pageScale; */
+/* if(totalCount % pageScale != 0) {
+	totalPage++;
+} */
+int totalPage = (int)Math.ceil(totalCount / (double)pageScale);
+
+String tempPage = request.getParameter("pageNum");
+int currentPage = 1;
+if(tempPage != null) {
+	currentPage = Integer.parseInt(tempPage);
+}
+
+int startNum = currentPage * pageScale - pageScale + 1;
+int endNum = startNum + pageScale -1;
+%>
+<!-- 임태균 scriptlet 작업장 끝 -->
+
 <style type="text/css">
 /* table Style 시작 */
 .styled-table {
@@ -90,7 +116,8 @@ body{
 	font-size:25px;
 	color: #333;
 	position: absolute;
-	left : 60px;
+	left : 90px;
+	padding-top: 10px;
 } 
 #background_box{
 overflow: auto;

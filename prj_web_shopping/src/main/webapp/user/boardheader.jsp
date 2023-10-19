@@ -147,17 +147,6 @@ body.search_active .headSearchBtn_magnifier {
 }
 
 </style>
-<style type="text/css">
-
-
-#Header {
-  
-    border-bottom: 0px solid #FFFFFF; 
-
-
-}
-
-</style>
 		<!--     
 <div id="topBanner" role="banner" class="xans-element- xans-custom xans-custom-moduleedit "><div class="desc"><a href="/category/scent-pairing/78/">당신의 여정을 더욱 다채롭게 만들어 줄 SW19 ‘센트 페어링’ 프로모션 바로가기</a></div>
 	<div class="desc"><a href="/category/chuseok-gift/52/">‘Wish your happy moments’ SW19 추석 리미티드 기프트 포장 서비스 바로가기</a></div>

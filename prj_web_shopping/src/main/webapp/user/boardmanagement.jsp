@@ -18,7 +18,7 @@
 <script type="text/javascript">
 $(function(){
 		$("#btn").click(function() {
-			window.open("reviewpage.jsp" , "", "width=513, height=810, top=50, left=50");
+			window.open("review_manage.jsp" , "", "width=513, height=710, top=50, left=50");
 		})
    
 });//ready

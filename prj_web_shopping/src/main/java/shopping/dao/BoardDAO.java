@@ -56,7 +56,6 @@ public class BoardDAO {
 			db.dbClose(rs, pstmt, con);
 		}
 		
-		
 		return totalCnt;
 	}
 }

@@ -47,7 +47,7 @@
 
 
 <style type="text/css">
-
+.review-satisfaction-form__radio{display:none; };
 
 </style>
 <script type="text/javascript">
@@ -60,26 +60,26 @@ $(function(){
 
 <body>
 
-  <%@ include file="boardheader.jsp" %> 
+ <%@ include file="boardheader.jsp" %> 
 
 
-<section class="mypage-cont" style="margin-top: 90px; font-family: musinsa;">
-            <form id="reviewForm" name="reviewForm" method="post" target="hf">
+<!-- <section class="mypage-cont" style="  position:relative; top:10px;left:0px; font-family: musinsa;"> -->
+            <form id="reviewForm" name="reviewForm" method="post" target="hf" style="position:relative; left:30px">
                 <input type="hidden" name="tmpcode" value="1697704836038">
                 <input type="hidden" name="imageCount" value="0">
                 <input type="hidden" name="opt_kind_cd" id="optKindCode" value="BEAUTY">
 
                 
     <header class="n-section-title">
-        <h1 class="tit">일반 후기작성</h1>
+        <h1 class="tit">후기 작성</h1>
     </header>
 
     <ul class="n-info-txt">
-        <li>작성하신 후기는 무신사 및 무신사 글로벌 이용자에게 공개됩니다. 댓글은 무신사에서 확인하지 않습니다.</li>
-        <li>일반 후기 작성 시 500원의 적립금을 평일 기준 2일 전후로 지급됩니다.</li>
-        <li>후기 내용은 20자 이상 작성합니다. 상품과 관련 없는 내용, 단순 문자 및 기호의 나열/반복 확인 시 적립금 회수 및 지급 혜택이 제한됩니다.</li>
+    	<br/>
+        <li>작성하신 후기는 Cherie 및 Cherie 글로벌 이용자에게 공개됩니다. </li>
+        <li>후기 내용은 20자 이상 작성합니다.</li>
         <li>
-            아래에 해당할 경우 적립금 지급이 보류되며, 이미 지급받으셨더라도 2차 검수를 통해 적립금을 회수할 수 있습니다 ,또한 일부 후기는 조건에 따라 비노출 처리 됩니다.
+            아래에 해당할 경우 일부 후기는 조건에 따라 비노출 처리 됩니다.
             <br>- 문자 및 기호의 단순 나열, 반복된 내용의 후기
             <br>- 주문하신 상품과 관련 없는 내용의 후기
             <br>- 개인정보 및 광고, 비속어가 포함된 내용의 후기
@@ -87,7 +87,7 @@ $(function(){
         
         
             
-            <li>원활한 서비스 이용을 위해 후기 도용 시 적립금 2배 회수, 3개월간 후기 적립금 지급이 중단되며, 일부 무신사 서비스 이용에 제한이 발생될 수 있습니다.</li>
+            <li>원활한 서비스 이용을 위해 후기 도용 시 일부 Cherie 서비스 이용에 제한이 발생될 수 있습니다.</li>
         
     </ul>
 
@@ -121,85 +121,7 @@ $(function(){
                     <!-- //별점 -->
 
                     <!-- 구매만족도 -->
-                    <dl class="review-satisfaction-form">
-                        <dt class="review-satisfaction-form__title satisfactionTitle">향</dt>
-                        <dd class="review-satisfaction-form__input">
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice0_33" name="satisfactionAnswer[2649]" value="33" data-category="2649">
-                                <label class="review-satisfaction-form__label" for="choice0_33">아주 만족해요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice0_11" name="satisfactionAnswer[2649]" value="11" data-category="2649" checked="checked">
-                                <label class="review-satisfaction-form__label" for="choice0_11">보통이에요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice0_34" name="satisfactionAnswer[2649]" value="34" data-category="2649">
-                                <label class="review-satisfaction-form__label" for="choice0_34">다소 아쉬워요</label>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="review-satisfaction-form">
-                        <dt class="review-satisfaction-form__title satisfactionTitle">지속력</dt>
-                        <dd class="review-satisfaction-form__input">
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice1_48" name="satisfactionAnswer[2650]" value="48" data-category="2650">
-                                <label class="review-satisfaction-form__label" for="choice1_48">오래가요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice1_9" name="satisfactionAnswer[2650]" value="9" data-category="2650" checked="checked">
-                                <label class="review-satisfaction-form__label" for="choice1_9">무난해요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice1_49" name="satisfactionAnswer[2650]" value="49" data-category="2650">
-                                <label class="review-satisfaction-form__label" for="choice1_49">생각보다 짧아요</label>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="review-satisfaction-form">
-                        <dt class="review-satisfaction-form__title satisfactionTitle">디자인</dt>
-                        <dd class="review-satisfaction-form__input">
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice2_40" name="satisfactionAnswer[2651]" value="40" data-category="2651">
-                                <label class="review-satisfaction-form__label" for="choice2_40">아주 만족해요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice2_11" name="satisfactionAnswer[2651]" value="11" data-category="2651" checked="checked">
-                                <label class="review-satisfaction-form__label" for="choice2_11">보통이에요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice2_41" name="satisfactionAnswer[2651]" value="41" data-category="2651">
-                                <label class="review-satisfaction-form__label" for="choice2_41">다소 아쉬워요</label>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="review-satisfaction-form">
-                        <dt class="review-satisfaction-form__title satisfactionTitle">배송</dt>
-                        <dd class="review-satisfaction-form__input">
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice3_53" name="satisfactionAnswer[3217]" value="53" data-category="3217" checked="checked">
-                                <label class="review-satisfaction-form__label" for="choice3_53">빨라요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice3_54" name="satisfactionAnswer[3217]" value="54" data-category="3217">
-                                <label class="review-satisfaction-form__label" for="choice3_54">아쉬워요</label>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl class="review-satisfaction-form">
-                        <dt class="review-satisfaction-form__title satisfactionTitle">포장</dt>
-                        <dd class="review-satisfaction-form__input">
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice4_55" name="satisfactionAnswer[5264]" value="55" data-category="5264" checked="checked">
-                                <label class="review-satisfaction-form__label" for="choice4_55">꼼꼼해요</label>
-                            </div>
-                            <div class="review-satisfaction-form__input__wrap">
-                                <input type="radio" class="review-satisfaction-form__radio" id="choice4_56" name="satisfactionAnswer[5264]" value="56" data-category="5264">
-                                <label class="review-satisfaction-form__label" for="choice4_56">아쉬워요</label>
-                            </div>
-                        </dd>
-                    </dl>
-                    <!-- // 구매만족도 -->
-
+                 
                     
 
 
@@ -240,7 +162,7 @@ $(function(){
                     </div>
                 </div>
             </form>
-        </section>
+<!--         </section> -->
 
 <footer><%@ include file="boardfooter.jsp" %> </footer> 
 

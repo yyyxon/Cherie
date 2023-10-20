@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문관리-주문</title>
+<title>주문관리-교환/반품</title>
 <link rel="icon" href="http://192.168.10.137/servlet_prj/common/main/favicon.png">
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -103,18 +103,17 @@ width: 100px;
 height: 38px;
 width: 112px;
 border: 1px solid  #CCCCCC;
-position: absolute; left: 200px;
+position: absolute; left: 220px;
 transform: none;
 outline: 1px;
 box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset;
 border--radius: 4px;
 font-size: 16px;
 }
-
 #inputText{
 height: 40px; width: 180px;
 border: 1px solid  #CCCCCC;
-position: absolute; left: 330px;
+position: absolute; left: 340px;
 transform: none;
 outline: 1px;
 box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset;
@@ -122,7 +121,7 @@ border--radius: 5px;
 font-size: 17px;
 color:  #CCCCCC;
 }
-#orderCondi{
+#orderProce{
 height: 38px;
 width: 100px;
 border: 1px solid  #CCCCCC;
@@ -155,7 +154,7 @@ font-size: 17px;
 <div id="rightBody">
 			<div class="text" id="mainTitle">
 			
-			<strong>주문 리스트</strong>
+			<strong>교환/반품 리스트</strong>
 			<select id="searchList">
 				<option>주문번호</option>
 				<option>주문자명</option>
@@ -171,35 +170,16 @@ font-size: 17px;
 				<tr id="top_title">
 					<th></th>
 					<th>No</th>
-					<th >주문일시</th>
-					<th>주문번호</th>
+					<th >주문번호</th>
+					<th>주문자명</th>
+					<th>주문일시</th>
+					<th>교환/반품 일시</th>
 					<th>상품명</th>
 					<th>수량</th>
 					<th>가격정보</th>
 					<th>배송비</th>
-					<th>주문상태</th>
-					<th>주문자명</th>
-					<th>총주문액</th>
-				</tr>
-				<tr >
-					<th><input type="checkbox"></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th>
-					<select id="orderCondi">
-					<option>결제완료</option>
-					<option>주문확인</option>
-					<option>배송준비</option>
-					<option>배송중</option>
-					</select>
-					</th>
-					<th></th>
-					<th></th>
+					<th>총 주문액</th>
+					<th>처리상태</th>
 				</tr>
 				<tr >
 					<th><input type="checkbox"></th>
@@ -213,9 +193,15 @@ font-size: 17px;
 					<th></th>
 					<th></th>
 					<th></th>
+					<th><select id="orderProce">
+					<option>반품신청</option>
+					<option>처리중</option>
+					<option>반품완료</option>
+					</select></th>
 				</tr>
 				<tr >
 					<th><input type="checkbox"></th>
+					<th></th>
 					<th></th>
 					<th></th>
 					<th></th>
@@ -239,35 +225,11 @@ font-size: 17px;
 					<th></th>
 					<th></th>
 					<th></th>
-				</tr>
-				<tr >
-					<th><input type="checkbox"></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
 					<th></th>
 				</tr>
 				<tr >
 					<th><input type="checkbox"></th>
 					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-				<tr >
-					<th><input type="checkbox"></th>
 					<th></th>
 					<th></th>
 					<th></th>
@@ -291,9 +253,53 @@ font-size: 17px;
 					<th></th>
 					<th></th>
 					<th></th>
+					<th></th>
 				</tr>
 				<tr >
 					<th><input type="checkbox"></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr >
+					<th><input type="checkbox"></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr >
+					<th><input type="checkbox"></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr >
+					<th><input type="checkbox"></th>
+					<th></th>
 					<th></th>
 					<th></th>
 					<th></th>

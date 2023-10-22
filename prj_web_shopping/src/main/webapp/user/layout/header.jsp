@@ -171,7 +171,7 @@ body.search_active .headSearchBtn_magnifier {
 								onmousedown="SEARCH_BANNER.clickSearchForm(this)" value=""
 								type="text" />
 								<span class="search_button" onclick="SEARCH_BANNER.submitSearchBanner(this); return false;">
-									<img src="../common/images/icon/search.png" width="30px"/>
+									<img src="http://192.168.10.136/prj_web_shopping/common/images/icon/search.png" width="30px"/>
 								</span>
 						</fieldset>
 					</div>
@@ -190,43 +190,43 @@ body.search_active .headSearchBtn_magnifier {
 			<div class="inner" style="font-family:'MADE Voyager PERSONAL_USE'">
 				<ul class="headLeft">
 					<li class="xans-element- xans-layout xans-layout-multishoplist">
-						<a href="main.jsp" class="toggle">HOME</a>
+						<a href="../user/main.jsp" class="toggle">HOME</a>
 					</li>
 					<li class="headCategory">
-						<!-- @css(/css/module/layout/category.css)--> 
-						<a href="/product/list.html?cate_no=48">SHOP</a>
+						<!-- 이동 링크 설정 -->
+						<a href="../user/shop.jsp">SHOP</a>
 						<div class="xans-element- xans-layout xans-layout-category navigation__category menu">
 							<ul>
 								<li class="xans-record-">
-									<a href="/category/all-products/48/">All Products</a>
+									<a href="../user/shop.jsp">All Products</a>
 								</li>
 								<li class="xans-record-">
-									<a href="/category/perfume/49/">Perfume</a>
+									<a href="../user/shop.jsp">Perfume</a>
 								</li>
 								<li class="xans-record-">
-									<a href="/category/home-fragrance/71/">Home Fragrance</a>
+									<a href="../user/shop.jsp">Home Fragrance</a>
 								</li>
 								<li class="xans-record-">
-									<a href="/category/body-care/64/">Body Care</a>
+									<a href="../user/shop.jsp">Body Care</a>
 								</li>
 								<li class="xans-record-">
-									<a href="/category/hand-care/50/">Hand Care</a>
+									<a href="../user/shop.jsp">Hand Care</a>
 								</li>
 							</ul>
 						</div>
 					</li>
-					<li class="headAbout"><a href="about.jsp">ABOUT</a></li>
-					<li class="headStores"><a href="stores.jsp">STORES</a>
+					<li class="headAbout"><a href="../user/about.jsp">ABOUT</a></li>
+					<li class="headStores"><a href="../user/stores.jsp">STORES</a>
 					
 					</li>
-					<li class="headInfo"><a href="/info.html">INFO</a>
+					<li class="headInfo"><a href="../user/notice.jsp">INFO</a>
 					<div class="xans-element- xans-layout xans-layout-category navigation__category menu">
 							<ul>
 								<li class="xans-record-">
-									<a href="notice.jsp">Notice</a>
+									<a href="../user/notice.jsp">Notice</a>
 								</li>
 								<li class="xans-record-">
-									<a href="faq.jsp">FAQ</a>
+									<a href="../user/faq.jsp">FAQ</a>
 								</li>
 							</ul>
 						</div>
@@ -245,17 +245,17 @@ body.search_active .headSearchBtn_magnifier {
 								<img src="../common/images/icon/x-circle.svg"/>
 							</a> -->
 							<a href="javascript:void(0)" onclick="searchLayerToggle()">
-								<img src="../common/images/icon/search.png" width="20px" class="icon-magnifier headSearchBtn_magnifier"/>
-								<img src="../common/images/icon/remove_s1.png" width="20px" class="icon-close headSearchBtn_close"/>
+								<img src="http://192.168.10.136/prj_web_shopping/common/images/icon/search.png" width="20px" class="icon-magnifier headSearchBtn_magnifier"/>
+								<img src="http://192.168.10.136/prj_web_shopping/common/images/icon/remove.png" width="20px" class="icon-close headSearchBtn_close"/>
 								<!-- <i class="icon-magnifier headSearchBtn_magnifier"></i>
 								<i class="icon-close headSearchBtn_close"></i> -->
 							</a>
 						</li>
 						<li>
-							<a href="/member/login.html">Login</a>
+							<a href="../user/login.jsp">Login</a>
 						</li>
 						<li>
-							<a href="/member/agreement.html">Join</a>
+							<a href="../user/join.jsp">Join</a>
 							<!-- 
 							<div id="tooltip">
 								<div class="tooltipArrow"></div>
@@ -264,7 +264,7 @@ body.search_active .headSearchBtn_magnifier {
 							-->
 						</li>
 						<li>
-							<a href="cart.jsp">Cart
+							<a href="../user/cart.jsp">Cart
 								<span class="count displaynone EC-Layout_Basket-count-display">
 									<span class="EC-Layout-Basket-count"></span>
 								</span>
@@ -275,7 +275,7 @@ body.search_active .headSearchBtn_magnifier {
 
 				<ul class="navigation__util">
 					<li>
-						<a href="/product/list.html?cate_no=48">SHOP</a>
+						<a href="../user/shop.jsp">SHOP</a>
 					</li>
 					<li class="headCart headSearchBtn">
 						<a href="javascript:void(0)" onclick="searchLayerToggle()">
@@ -284,7 +284,7 @@ body.search_active .headSearchBtn_magnifier {
 						</a>
 					</li>
 					<li class="xans-element- xans-layout xans-layout-statelogoff headCart ">
-						<a href="/order/basket.html">
+						<a href="../user/cart.jsp">
 							<i class="icon-bag"></i>
 							<span class="count displaynone EC-Layout_Basket-count-display">
 								<span class="EC-Layout-Basket-count"></span>
@@ -294,19 +294,19 @@ body.search_active .headSearchBtn_magnifier {
 				</ul>
 				<!-- logo img -->
 				<h1 class="xans-element- xans-layout xans-layout-logotop topArea__logo " >
-					<a href="main.jsp">
-						<img src="../common/images/logo.png" alt="Cherie">
+					<a href="../user/main.jsp">
+						<img src="http://192.168.10.136/prj_web_shopping/common/images/logo.png" alt="Cherie">
 					</a>
 				</h1>
 			</div>
 		</header>
 		
-		<hr class="layout">
+		<!-- <hr class="layout">
 		<aside id="aside" class="xans-element- xans-layout xans-layout-slidepackage ">
 			<nav class="navigation-menu" role="navigation">
 				<div class="navigation-menu__member">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="/member/login.html"> 
+						<a href="../login.jsp"> 
 							<span>회원가입 시 3,000포인트 증정</span>
 							<button type="button">로그인</button>
 						</a>
@@ -315,10 +315,10 @@ body.search_active .headSearchBtn_magnifier {
 
 				<div id="multiList" class="xans-element- xans-layout xans-layout-multishoplist multishopList ">
 					<h2 class="toggle">
-						<a href="main.jsp">HOME</a>
+						<a href="../main.jsp">HOME</a>
 						<span class="_toggle_btn toggle-btn"></span>
 					</h2>
-					<!-- 
+					
 					<ul style="display: none;" class="xans-element- xans-layout xans-layout-multishoplistitem menu">
 						<li class="selected xans-record-">
 							<a href="//sw19official.com/">Korean한국어</a>
@@ -326,7 +326,7 @@ body.search_active .headSearchBtn_magnifier {
 						<li class=" xans-record-"><a href="//en.sw19official.com/">EnglishEnglish</a>
 						</li>
 					</ul>
-					-->
+					
 				</div>
 
 				<div id="slideCateList" class="navigation-menu__category">
@@ -335,20 +335,20 @@ body.search_active .headSearchBtn_magnifier {
 					</h2>
 					<ul style="display: none;" class="xans-element- xans-layout xans-layout-category categoryList">
 						<li id="cate48" class="menu xans-record-">
-							<a href="/category/all-products/48/" class="view">All Products</a> <!--a href="#none" class="cate" cate="?cate_no=48">상품보기</a-->
+							<a href="/category/all-products/48/" class="view">All Products</a> a href="#none" class="cate" cate="?cate_no=48">상품보기</a
 						</li>
 						<li id="cate49" class="menu xans-record-">
-							<a href="/category/perfume/49/" class="view">Perfume</a> <!--a href="#none" class="cate" cate="?cate_no=49">상품보기</a-->
+							<a href="/category/perfume/49/" class="view">Perfume</a> a href="#none" class="cate" cate="?cate_no=49">상품보기</a
 						</li>
 						<li id="cate71" class="menu xans-record-">
 							<a href="/category/home-fragrance/71/" class="view">Home Fragrance</a> 
-								<!--a href="#none" class="cate" cate="?cate_no=71">상품보기</a-->
+								a href="#none" class="cate" cate="?cate_no=71">상품보기</a
 						</li>
 						<li id="cate64" class="menu xans-record-">
-							<a href="/category/body-care/64/" class="view">Body Care</a> <!--a href="#none" class="cate" cate="?cate_no=64">상품보기</a-->
+							<a href="/category/body-care/64/" class="view">Body Care</a> a href="#none" class="cate" cate="?cate_no=64">상품보기</a
 						</li>
 						<li id="cate50" class="menu xans-record-">
-							<a href="/category/hand-care/50/" class="view">Hand Care</a> <!--a href="#none" class="cate" cate="?cate_no=50">상품보기</a-->
+							<a href="/category/hand-care/50/" class="view">Hand Care</a> a href="#none" class="cate" cate="?cate_no=50">상품보기</a
 						</li>
 					</ul>
 					<div class="displaynone"></div>
@@ -365,4 +365,4 @@ body.search_active .headSearchBtn_magnifier {
 		</aside>
 		<button type="button" class="asideBtnClose">
 			<i class="btm bt-times"></i>
-		</button>
+		</button> -->

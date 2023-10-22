@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 프로젝트용 CDN -->
-<%@ include file="cdn.jsp" %>
+<jsp:include page="../cdn/cdn.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,7 +123,7 @@ border: 1px solid #333;
 <body>
 <!-- header -->
 <div>
-<%@ include file="header.jsp" %>
+<%@ include file="layout/header.jsp" %>
 </div>
 <div id="buyMain">
 <div id="buyTitle">
@@ -250,7 +250,7 @@ border: 1px solid #333;
 </div>
 <div>
 <!-- footer -->
-<%@ include file="footer.jsp" %>
+<%@ include file="layout/footer.jsp" %>
 </div>
 </body>
 </html>

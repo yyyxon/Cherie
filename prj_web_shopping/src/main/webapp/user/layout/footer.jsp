@@ -3,7 +3,9 @@
 <!-- footer -->
 <footer id="footer">
 	<h2>
-		<a href="main.jsp"><img src="../common/images/logo.png" alt="logo"></a>
+		<a href="../main.jsp">
+			<img src="http://192.168.10.136/prj_web_shopping/common/images/logo.png" alt="logo">
+		</a>
 	</h2>
 	<div class="inner">
 		<div class="xans-element- xans-layout xans-layout-footer clearfix ">
@@ -19,12 +21,12 @@
 				</p>
 				<ul class="util">
 					Copyright © Chérie. All rights reserved
-					<li><a href="/member/mall_agreement.html">이용약관</a></li>
-					<li><span>|</span><a href="/member/privacy.html">개인정보처리방침</a></li>
+					<li><a href="#void">이용약관</a></li>
+					<li><span>|</span><a href="#void">개인정보처리방침</a></li>
 				</ul>
 				<div class="sns">
 					<a target="_blank" href="http://instagram.com/">
-						<img src="../common/images/icon/instagram.svg"/>
+						<img src="http://192.168.10.136/prj_web_shopping/common/images/icon/instagram.svg"/>
 					</a>
 				</div>
 			</div>

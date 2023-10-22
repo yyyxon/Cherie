@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page info="" %>
-    <jsp:include page="cdn.jsp"/>
+<jsp:include page="../cdn/cdn.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&amp;display=swap" rel="stylesheet"/>
-
 
 <link rel="stylesheet" type="text/css" href="//img.echosting.cafe24.com/editors/froala/css/froala_style_ec.min.css?vs=2310111247" charset="utf-8"/>
 <link rel="stylesheet" type="text/css" href="https://www.afterblow-scent.com//ind-script/optimizer.php?filename=nZExDgIxDAT7KC3vsOAJPIEfOMFwJxJv5DgS_J6jggYJ0o52doulBVVofzBqhqtxJZOOYVko904Xgzpl1AqNG9jRL3nJoaMMX6Eh4T4pDvfZ0cIPsTnVORWZVNFCWVVCYtWv-9waHcF2ptNn3YZjeuGYCvJtVjZpMP_Pft_7BA&type=css&k=ecd691e0c80070ef935d0e961272742f67437a3c&t=1681776733"  />
@@ -111,7 +109,7 @@ $(function(){
 
 </head>
 <body>
- <%@include file="header.jsp" %>
+ <%@include file="layout/header.jsp" %>
 <div id="container">
 <div id="contents">
 
@@ -282,6 +280,6 @@ wcs_do(_nasa);
 <!-- NAVER SCRIPT END -->
 </div>   
 </div>
-<%@include file="footer.jsp" %>
+<%@include file="layout/footer.jsp" %>
 </body>
 </html>

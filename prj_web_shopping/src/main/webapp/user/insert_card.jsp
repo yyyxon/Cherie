@@ -41,7 +41,7 @@ min-width: 90px;
 }
 .cardNum{
  float: left;
- width: 60px;
+ width: 70px;
  margin: 10px;
 }
 .divInput{
@@ -52,7 +52,7 @@ height: 60px;
 <script type="text/javascript">
 	$(function() {
 		$("#purchase").click(function() {
-			alert("DB 저장 작업");
+			check();
 	    });
 		
 		$("#btn").click(function() {
@@ -61,7 +61,19 @@ height: 60px;
 	});
 	
 	function check() {
+		let arrId = [ "c1", "c2", "c3", "c4", "c5" ];
+		let arrNum = [ $("#c1").val(), $("#c2").val(), $("#c3").val(), $("#c4").val(), $("#c5").val() ];
 		
+		for(var i = 0; i < arrNum.length; i++) {
+				document.getElementById(arrId[i]).classList.remove("is-invalid"); //재입력했을 때 중복되어서 나타지 않기 위해서 지운다.
+			if(arrNum[i].length === 0) {
+				document.getElementById(arrId[i]).classList.add("is-invalid");
+				return;
+			}
+		}
+			alert("DB 저장 작업");
+
+			$("#hid").click();
 	}
 </script>
 <body>
@@ -71,26 +83,29 @@ height: 60px;
 </div>
 <div style="margin-top: 70px;margin-bottom: 300px;">
 	<div class="body shadow p-3 mb-5 bg-body rounded">
+<!-- Form tag Start -->
 	<form action="" id="frm" name="frm" method="post">
 		<div id="title">
 			카드 결제
 		</div>
 		<div class="divInput">
 			<span class="cardNum subTitle">카드 번호</span>
-			<input type="text" class="form-control cardNum" id="inputZip" required="required" maxlength="4">
-			<input type="text" class="form-control cardNum" id="inputZip" required="required" maxlength="4">
-			<input type="password" class="form-control cardNum" id="inputZip" required="required" maxlength="4">
-			<input type="text" class="form-control cardNum" id="inputZip" required="required" maxlength="4">
+			<input type="text" class="form-control cardNum" id="c1" required="required" maxlength="4" style="padding-left: 5px;">
+			<input type="text" class="form-control cardNum" id="c2" required="required" maxlength="4" style="padding-left: 5px;">
+			<input type="password" class="form-control cardNum" id="c3" required="required" maxlength="4" style="padding-left: 5px;">
+			<input type="text" class="form-control cardNum" id="c4" required="required" maxlength="4" style="padding-left: 5px;">
 		</div>
 		<div class="divInput">
 			<span class="cardNum subTitle">CVC 번호</span>
-			<input type="text" class="form-control cardNum" id="inputZip" placeholder="카드 뒷면 숫자 3자리" required="required" maxlength="3" style="width: 130px;padding-left: 5px;border: 0px;border-radius:0px;border-bottom: 1px solid #E0E0E0;">
+			<input type="text" class="form-control cardNum" id="c5" placeholder="카드 뒷면 숫자 3자리" required="required" maxlength="3" style="width: 130px;padding-left: 5px;border: 0px;border-radius:0px;border-bottom: 1px solid #E0E0E0;">
 		</div>
 		<div id="divPurchase" class="divInput">
+			<input id="purchase" type="button" class="btn btn-outline-success cardNum" value="결제" style="width: 100px;">
 			<!-- Button trigger modal(Modal button) -->
-			<input id="purchase" type="button" class="btn btn-outline-success cardNum" data-bs-toggle="modal" data-bs-target="#modal" value="결제" style="width: 100px;">
+			<input id="hid" type="hidden" class="btn btn-outline-success cardNum" data-bs-toggle="modal" data-bs-target="#modal" value="결제" style="width: 100px;">
 		</div>
 	</form>
+<!-- Form tag End -->
 	</div>
 </div>
 <div>

@@ -47,8 +47,9 @@
 
 
 <style type="text/css">
-.review-satisfaction-form__radio{display:none; };
-
+.review-satisfaction-form__radio {display:none; }
+#myReviewAgree{display:none; }
+#goods_text{width:800px}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -92,7 +93,7 @@ $(function(){
     </ul>
 
 
-                <div class="my-review-write" id="reviewWrap">
+                <div class="my-review-write" id="reviewWrap" style="max-width: 1850px">
                     <!-- 상품 -->
                     <div class="n-prd-row">
                         <a href="/app/goods/2027866" class="img-block">
@@ -136,7 +137,7 @@ $(function(){
                             <div class="input-area">
                                 <!-- Text -->
                                 <div class="tab-block is-active" data-tab="text">
-                                    <textarea id="goods_text" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요. (20자 이상 작성)" name="goods_text"></textarea>
+                                    <textarea id="goods_text" style="width:1000px" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요. (20자 이상 작성)" name="goods_text"></textarea>
                                     <p class="info" id="text_size">0 자 / 20자 이상</p>
                                 </div>
                             </div>
@@ -148,14 +149,7 @@ $(function(){
                     </div>
                     <!-- //후기 작성 -->
 
-                    <!--[D] 전체동의 / 수집이용 동의-->
-                    <div class="n-wrap-agree">
-                        
-                        
-                            <input type="checkbox" class="n-check agree" id="myReviewAgree" name="review_agree">
-                            <label for="myReviewAgree">작성된 후기는 무신사 홍보 콘텐츠로 사용될 수 있습니다. (필수)</label>
-                        
-                    </div>
+                 
 
                     <div class="n-btn-group">
                         <button type="button" class="n-btn btn-accent" id="btnSave">등록</button>

@@ -3,7 +3,7 @@
 <!-- footer -->
 <footer id="footer">
 	<h2>
-		<a href="../main.jsp">
+		<a href="main.jsp">
 			<img src="http://192.168.10.136/prj_web_shopping/common/images/logo.png" alt="logo">
 		</a>
 	</h2>

@@ -270,7 +270,7 @@ table.nneditor-table {
 input,select,textarea,button,pre {
     font-size: 13px;
     line-height: 20px;
-    font-family: Roboto,Noto Sans KR,malgun gothic,맑은고딕,NanumGothic,dotum,돋움,sans-serif;
+    font-family: Roboto,Noto Sans KR,malgun gothic,留묒�怨좊뵓,NanumGothic,dotum,�뗭�,sans-serif;
 }
 
 pre {
@@ -452,20 +452,6 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 }
 
 #container:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
-#contents {
-    position: relative;
-    margin: 0 auto;
-    width: 95%;
-    max-width: 1200px;
-    min-height: 700px;
-}
-
-#contents:after {
     content: "";
     display: block;
     clear: both;

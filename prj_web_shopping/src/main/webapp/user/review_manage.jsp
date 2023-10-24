@@ -1,3 +1,7 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="summary.vo.SummaryVO"%>
+<%@page import="java.util.List"%>
+<%@page import="userReview.dao.UserReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page info=""%>
@@ -5,6 +9,7 @@
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@ page import="com.oreilly.servlet.MultipartRequest"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +48,26 @@ $(function(){
 </head>
 
 <body>
+<jsp:useBean id="sVO" class="summary.vo.SummaryVO" scope="page"></jsp:useBean> 
+<jsp:setProperty property="*" name="sVO"/>
+
+
+<%
+
+UserReviewDAO uDAO= UserReviewDAO.getInstance();
+
+try{
+	sVO = uDAO.selectOneReview(Integer.parseInt(request.getParameter("rcode")));
+	
+	pageContext.setAttribute("review", sVO);
+	
+}catch (SQLException se) {
+	se.printStackTrace();
+}//end catch
+
+
+%>
+
 <div id="wrap" style="font-family:pretendard; font-size: 16px">
 <div id="div" >
  <img src="../common/images/icon/check-circle.svg" style="margin-left: 5px;">&ensp;상품 만족도
@@ -50,13 +75,13 @@ $(function(){
 
 <!-- 상품 만족도 -->
 <div style=" margin-left: 5px;" >
-<textarea style="width:502px; height:150px;"></textarea>
+<textarea style="width:502px; height:150px;"><c:out value="${review.rcode}" /><c:out value="${review.name}" /></textarea>
 </div>
 <br/>
 <!-- 리뷰 작성 -->
 <img src="../common/images/icon/check-circle.svg" style="margin-left: 5px;">&ensp;리뷰 작성
 <div style=" margin-left: 5px;" >
-<textarea  style="width:502px; height:180px;"></textarea>
+<textarea  style="width:502px; height:180px;"><c:out value="${review.review}" /></textarea>
 
 </div>
 <br>
@@ -75,5 +100,6 @@ $(function(){
 
 </div>
 </div>
+
 </body>
 </html>

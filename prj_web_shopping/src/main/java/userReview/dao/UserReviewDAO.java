@@ -58,7 +58,7 @@ public class UserReviewDAO {
 			
 			StringBuilder selectAllReview = new StringBuilder();
 
-			selectAllReview.append(" select  m.name, r.REV_CONT, r.REV_DATE, r.r_view, c.cat_name from member m, review r,goods g, category c where m.id=r.id and g.gcode=r.gcode and c.cat_code = g.cat_code and m.id= ? ");
+			selectAllReview.append(" select  m.name, r.REV_CONT, r.star , r.REV_DATE, r.r_view, r.rcode ,c.cat_name from member m, review r,goods g, category c where m.id=r.id and g.gcode=r.gcode and c.cat_code = g.cat_code and m.id= ? ");
 			
 			pstmt=con.prepareStatement(selectAllReview.toString());
 			
@@ -73,7 +73,8 @@ public class UserReviewDAO {
 				sVO.setReview(rs.getString("REV_CONT"));
 				sVO.setReviewDate(rs.getString("REV_DATE"));
 				sVO.setView(rs.getInt("r_view"));
-				
+				sVO.setRcode(rs.getInt("rcode"));
+				sVO.setStar(rs.getInt("star"));
 				list.add(sVO);
 			}
 		}finally {
@@ -82,6 +83,47 @@ public class UserReviewDAO {
 		}
 		
 		return list;
+	}
+	
+public SummaryVO selectOneReview(int rcode) throws SQLException {
+		
+		
+		SummaryVO sVO= null;
+		
+		DbConnection db= DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		
+		
+		
+		
+		try {
+			con=db.getConn("jdbc/dbcp");
+			
+			String selectAllReview = "select distinct m.name, r.REV_CONT,  r.star, r.rcode from member m, review r, category c where m.id=r.id   and r.rcode= ? ";
+
+			
+			
+			pstmt=con.prepareStatement(selectAllReview);
+			
+			pstmt.setInt(1, rcode);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				sVO= new SummaryVO();
+				sVO.setName(rs.getString("name"));
+				sVO.setReview(rs.getString("REV_CONT"));
+				sVO.setRcode(rs.getInt("rcode"));
+				sVO.setStar(rs.getInt("star"));
+			
+			}
+		}finally {
+			db.dbClose(rs, pstmt, con);
+			
+		}
+		
+		return sVO;
 	}
 	
 	

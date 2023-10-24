@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import shopping.vo.OrderVO;
 
+
 public class OrderProcessDAO {
 
 	private static OrderProcessDAO opDAO;
@@ -19,7 +20,7 @@ public class OrderProcessDAO {
 	}
 	
 	public static OrderProcessDAO getInstance() {
-		if(opDAO != null) {
+		if(opDAO == null) {
 			opDAO=new OrderProcessDAO();
 		}//end if
 		return opDAO;

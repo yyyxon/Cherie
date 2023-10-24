@@ -1,3 +1,9 @@
+<%@page import="shopping.vo.BoardRangeVO"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="shopping.dao.OrderProcessDAO"%>
+<%@page import="shopping.dao.BoardDAO"%>
+<%@page import="shopping.vo.OrderVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page info=""%>
@@ -8,8 +14,8 @@
 <meta charset="UTF-8">
 <title>주문관리-주문</title>
 <jsp:include page="../cdn/admin_cdn.jsp"/>
-<!-- table css -->
-<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/table.css"/>
+
+
 
 <style type="text/css">
 body{
@@ -50,6 +56,53 @@ $(function() {
 </script>
 </head>
 <body>
+<%
+/* BoardDAO bDAO=BoardDAO.getInstance();
+BoardRangeVO brVO=new BoardRangeVO();
+
+String field=request.getParameter("field");
+String keyword=request.getParameter("keyword");
+String tableName="";
+
+brVO.setField(field);
+brVO.setKeyword(keyword);
+
+int totalCount=bDAO.totalCount(brVO);
+
+int pageScale=10; // 한 화면에 보여줄 게시물의 수
+int totalPage=0; // 총 페이지 수
+
+totalPage=(int)Math.ceil(totalCount/pageScale);
+
+String tempPage=request.getParameter("currentPage");
+int currentPage=1;
+if(tempPage != null){
+	currentPage=Integer.parseInt(tempPage);
+}//end if
+
+int startNum=currentPage*pageScale-pageScale+1;
+pageContext.setAttribute("startNum", startNum);
+
+//끝페이지 번호 구하기
+int endNum=startNum+pageScale-1;
+
+brVO.setStartNum(startNum);
+brVO.setEndNum(endNum); */
+
+int deliveryPrice=2500;
+
+try{
+	OrderProcessDAO opDAO=OrderProcessDAO.getInstance();
+List<OrderVO> list=opDAO.selectAllOrder();
+
+pageContext.setAttribute("orderList", list);
+}catch(SQLException se){
+	se.printStackTrace();
+}//end catch
+%>
+
+
+
 <%@ include file="sidebar.jsp" %>
 <div id="right">
 	<div id="rightHeader" align="right">
@@ -70,7 +123,7 @@ $(function() {
 				<option>주문자명</option>
 				<option>아이디</option>
 			</select>
-			<input type="text" class="textBox" id="inputText" placeholder="내용을 입력해주세요"/>
+			<input type="text" class="textBox" id="keyword" placeholder="내용을 입력해주세요"/>
 			<input type="button" class="btn" id="btnSearch" value="검색"/>
 		</div>
 		</form>
@@ -92,126 +145,27 @@ $(function() {
 					<th style="width:200px">주문자명</th>
 					<th style="width:200px">총주문액</th>
 				</tr>
+				<c:if test="${ empty orderList }">
 				<tr>
-					<td>1</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<td colspan="10" style="text-align: center;">회원정보가 존재하지 않습니다</td>
 				</tr>
+				</c:if>
+				
+				<c:forEach var="order" items="${ orderList }" varStatus="i">
 				<tr>
-					<td>2</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+				<%-- <td><c:out value="${  }"/></td> --%>
+				<td><c:out value="${ order.date }"/></td>
+				<td><c:out value="${ order.orderNo }"/></td>
+				<td><c:out value="${ order.productName }"/></td>
+				<td><c:out value="${ order.amount }"/></td>
+				<td><c:out value="${ order.price }"/></td>
+				<td><c:out value="${ order.amount }"/></td>
+				<td><c:out value="<%= deliveryPrice %>"/></td>
+				<td><c:out value="${ order.orderStatus }"/></td>
+				<td><c:out value="${ order.userName }"/></td>
+			<%-- 	<td><c:out value="${ order.price } <%= + deliveryPrice %>"/></td> --%>
 				</tr>
-				<tr>
-					<td>3</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>8</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>9</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				</c:forEach>
 			</table>
 			</div>
 		</div>

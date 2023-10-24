@@ -8,8 +8,6 @@
 <meta charset="UTF-8">
 <title>주문관리-교환/반품</title>
 <jsp:include page="../cdn/admin_cdn.jsp"/>
-<!-- table css -->
-<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/table.css"/>
 
 <style type="text/css">
 body{
@@ -70,7 +68,7 @@ $(function() {
 				<option>주문자명</option>
 				<option>아이디</option>
 			</select>
-			<input type="text" class="textBox" id="inputText" placeholder="내용을 입력해주세요"/>
+			<input type="text" class="textBox" id="keyword" placeholder="내용을 입력해주세요"/>
 			<input type="button" class="btn" id="btnSearch" value="검색"/>
 		</div>
 		</form>
@@ -82,18 +80,20 @@ $(function() {
 				<tr id="top_title">
 					<!-- 컬럼 사이즈 -->
 				<th style="width:170px">No</th>
-					<th style="width:250px">주문일시</th>
-					<th style="width:230px">주문번호</th>
-					<th style="width:230px">상품명</th>
+					<th style="width:250px">주문번호</th>
+					<th style="width:230px">주문자명</th>
+					<th style="width:230px">주문일시</th>
+					<th style="width:200px">교환/반품 일시</th>
+					<th style="width:200px">상품명</th>
 					<th style="width:200px">수량</th>
 					<th style="width:200px">가격정보</th>
 					<th style="width:200px">배송비</th>
-					<th style="width:200px">주문상태</th>
-					<th style="width:200px">주문자명</th>
-					<th style="width:200px">총주문액</th>
+					<th style="width:200px">총 주문액</th>
+					<th style="width:200px">총 처리상태</th>
 				</tr>
 				<tr>
 					<td>1</td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -115,9 +115,11 @@ $(function() {
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>3</td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -139,9 +141,11 @@ $(function() {
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>5</td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -163,9 +167,11 @@ $(function() {
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>7</td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -187,6 +193,7 @@ $(function() {
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>9</td>
@@ -199,9 +206,11 @@ $(function() {
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>10</td>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>

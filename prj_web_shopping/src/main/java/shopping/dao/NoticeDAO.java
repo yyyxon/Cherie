@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import shopping.vo.BoardRangeVO;
 import shopping.vo.NoticeVO;
 
 public class NoticeDAO {
@@ -24,7 +25,7 @@ public class NoticeDAO {
 		return nDAO;
 	}
 	
-	public List<NoticeVO> selectNotice(int start, int end) throws SQLException {
+	public List<NoticeVO> selectNotice(BoardRangeVO brVO) throws SQLException {
 		List<NoticeVO> list = new ArrayList<NoticeVO>();
 		
 		DbConnection db = DbConnection.getInstance();
@@ -43,8 +44,8 @@ public class NoticeDAO {
 			.append("	WHERE RNUM BETWEEN ? AND ?	");
 			
 			pstmt = con.prepareStatement(selectNotice.toString());
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
+			pstmt.setInt(1, brVO.getStartNum());
+			pstmt.setInt(2, brVO.getStartNum());
 			
 			rs = pstmt.executeQuery();
 			NoticeVO nVO = null;
@@ -61,4 +62,6 @@ public class NoticeDAO {
 		
 		return list;
 	}
+	
+	
 }

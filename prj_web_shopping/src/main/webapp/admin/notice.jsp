@@ -1,3 +1,8 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="shopping.dao.NoticeDAO"%>
+<%@page import="shopping.vo.NoticeVO"%>
+<%@page import="java.util.List"%>
+<%@page import="shopping.vo.BoardRangeVO"%>
 <%@page import="shopping.dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,15 +22,14 @@
 <!-- 임태균 scriptlet 작업장 시작 -->
 <%
 BoardDAO bDAO = BoardDAO.getInstance();
-int totalCount = bDAO.totalCount("NOTICE"); 
+BoardRangeVO brVO = new BoardRangeVO();
 
-int pageScale = 12;
+brVO.setTableName("NOTICE");
 
-/* int totalPage = totalCount % pageScale != 0 ? (totalCount/pageScale)+1 : totalCount/pageScale; */
-/* int totalPage = totalCount/pageScale; */
-/* if(totalCount % pageScale != 0) {
-	totalPage++;
-} */
+int totalCount = bDAO.totalCount(brVO);
+
+int pageScale = 10;
+
 int totalPage = (int)Math.ceil(totalCount / (double)pageScale); //페이지 수 가져오기
 pageContext.setAttribute("totalPage", totalPage);
 
@@ -37,6 +41,11 @@ if(tempPage != null) {
 
 int startNum = currentPage * pageScale - pageScale + 1; //페이지 게시물 시작 번호
 int endNum = startNum + pageScale -1; //페이지 게시물 마지막 번호
+
+pageContext.setAttribute("startNum", startNum);
+
+brVO.setStartNum(startNum);
+brVO.setEndNum(endNum);
 %>
 <!-- 임태균 scriptlet 작업장 끝 -->
 
@@ -124,7 +133,8 @@ body{
 overflow: auto;
 background-color:  #FFFFFF;
 color:  #333333;
-/* height: 150%;  width: 80%; */
+min-height: 700px;
+max-width: 1300px;
 position: absolute;
 top: 80px; left: 60px;
 outline:  1px;
@@ -133,16 +143,16 @@ border-radius: 9px;
 }
 /* 인영 style 끝*/
 #num{
-  width: 140px;
+  width:170px;
 }
 #title{
   min-width: 500px;
 }
 #writer{
-  width: 100px;
+  width:230px;
 }
 #date{
-  width: 120px;
+  width:230px;
 }
 .divCircle {
   background-color : #FFFFFF;
@@ -167,7 +177,7 @@ border-radius: 9px;
 <script type="text/javascript">
 	$(function() {
 		$("#btnAdd").click(function() {
-			alert("등록하기");
+			location.href = "notice_wirte.jsp";
 		});
 		
 		$(".styled-table tr").click(function() { //테이블을 열을 클릭하면 번호가 나옴, 추후에는 공지사항 코드가 나옴
@@ -179,11 +189,29 @@ border-radius: 9px;
 		$("#btnLogout").click(function() {
 	        alert("로그아웃..??");
 	    });
+		
+		$("#btnAdd").click(function() {
+			location.href = "notice_write.jsp";
+		});
 	});
+	
 </script>
 </head>
 <body>
 <%@ include file="sidebar.jsp" %>
+<%
+try{
+	NoticeDAO nDAO = NoticeDAO.getInstance();
+    List<NoticeVO> list = nDAO.selectNotice(brVO);
+
+    String id = (String)session.getAttribute("sesId");
+    
+    pageContext.setAttribute("noticeList", list);
+    
+ }catch (SQLException se) {
+    se.printStackTrace();
+ }//end catch
+%>
 <div id="right">
 	<div id="rightHeader" align="right">
 		<span style="font-weight: bold;margin-right: 20px">관리자님</span>
@@ -194,7 +222,7 @@ border-radius: 9px;
 		<strong>공지사항</strong>
 	</div>
 <div id="background_box">
-<table class="styled-table">
+<table class="styled-table" id="keyword">
     <thead>
         <tr style="text-align: center;">
             <th id="num">No.</th>
@@ -204,12 +232,17 @@ border-radius: 9px;
         </tr>
     </thead>
     <tbody>
-<c:forEach var="num" begin="1" end="12" varStatus="1">
+<c:if test="${empty noticeList }">
+<tr>
+	<td colspan="4" style="text-align: center;">게시물이 없습니다.</td>
+</tr>
+</c:if>
+<c:forEach var="notice" items="${noticeList}" varStatus="i">
         <tr>
-            <td>${num}</td>
-            <td>제목 표시는 여기에서 나타납니다.</td>
-            <td>관리자</td>
-            <td>2023-10-16</td>
+            <td><c:out value="${i.index}"/></td>
+            <td><c:out value="${notice.noticeTitle}"/></td>
+            <td style="text-align: center;">관리자</td>
+            <td style="text-align: center;"><c:out value="${notice.noticeDate}"/></td>
         </tr>
         <!-- and so on... -->
 </c:forEach>
@@ -217,7 +250,7 @@ border-radius: 9px;
 </table>
 <!-- <div style="width: 100%;margin-top: 20px;padding-left: 50%;"> -->
 <div style="padding-left: 1165px;padding-bottom: 10px;">
-<input type="button" class="btn btn-outline-dark" value="등록" id="btnAdd"/>
+<input type="button" class="btn btn-outline-success" value="등록" id="btnAdd"/>
 </div>
 <div>
 <!-- 페이지 이동 -->

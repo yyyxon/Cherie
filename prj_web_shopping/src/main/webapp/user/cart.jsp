@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&amp;display=swap" rel="stylesheet"/>
 
 <style type="text/css">
-p{
+#cart{
 /* Font & Text */
 font-family: Roboto, "Noto Sans KR", "malgun gothic", 맑은고딕, NanumGothic, dotum, 돋움, sans-serif;
 font-size: 13px;
@@ -112,9 +112,9 @@ $(function(){
 <div class="xans-element- xans-order xans-order-basketpackage "><div class="xans-element- xans-order xans-order-tabinfo ec-base-tab typeLight "><ul class="menu">
 <li class="selected "><a href="/order/basket.html">국내배송상품 (0)</a></li>
         </ul>
-<p class="right displaynone">장바구니에 담긴 상품은 7일 동안 보관됩니다.</p>
+<p id="cart" class="right displaynone">장바구니에 담긴 상품은 7일 동안 보관됩니다.</p>
 </div>
-<div class="xans-element- xans-order xans-order-empty "><p>장바구니가 비어 있습니다.</p>
+<div class="xans-element- xans-order xans-order-empty "><p  id="cart">장바구니가 비어 있습니다.</p>
 </div>
 <div class="orderListArea ec-base-table typeList gBorder">
         

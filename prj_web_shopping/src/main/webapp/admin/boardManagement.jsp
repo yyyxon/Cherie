@@ -6,12 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Chérie Admin</title>
-<link rel="icon" href="http://192.168.10.136/cherie_ysy_private/common/images/favicon.png">
-<!-- bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<!-- jQuery CDN -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<jsp:include page="../cdn/admin_cdn.jsp"/>
 <!-- table css -->
 <link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/table.css"/>
 

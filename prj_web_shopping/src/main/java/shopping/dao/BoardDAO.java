@@ -30,6 +30,7 @@ public class BoardDAO {
 	 */
 	public int totalCount(BoardRangeVO brVO) throws SQLException {
 		int totalCnt = -1;
+		String keyword = brVO.getKeyword();
 		
 		DbConnection db = DbConnection.getInstance();
 		
@@ -39,8 +40,8 @@ public class BoardDAO {
 		
 		try {
 			con = db.getConn("jdbc/dbcp");
-			
-			String selectCount = "SELECT COUNT(*) CNT FROM  "+ brVO.getTableName() ;
+
+			String selectCount = "SELECT COUNT(*) CNT FROM  "+ brVO.getTableName();
 			
 			pstmt = con.prepareStatement(selectCount);
 			
@@ -53,6 +54,49 @@ public class BoardDAO {
 			 */
 			
 			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				totalCnt = rs.getInt("CNT");
+			}
+			
+		} finally {
+			db.dbClose(rs, pstmt, con);
+		}
+		
+		return totalCnt;
+	}
+	
+	public int bmTotalCnt(BoardRangeVO brVO) throws SQLException {
+		int totalCnt = 0;
+		String keyword = brVO.getKeyword();
+		
+		DbConnection db = DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = db.getConn("jdbc/dbcp");
+
+			
+			StringBuilder selectCount = new StringBuilder();
+			selectCount
+			.append("	SELECT COUNT(*) CNT FROM 	")
+			.append(brVO.getTableName());
+			
+			if(keyword!=null && !"".equals(keyword) && !"null".equals(keyword)) {
+				String field = "1".equals(brVO.getField()) ? "id" : "gname";
+				
+				selectCount.append("where ").append(field).append(" like '%'||?||'%'");
+			}
+			
+			pstmt = con.prepareStatement(selectCount.toString());
+			
+			if(keyword!=null && !"".equals(keyword) && !"null".equals(keyword)) {
+				pstmt.setString(1, keyword);
+			}
+			
+			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				totalCnt = rs.getInt("CNT");
 			}

@@ -133,7 +133,7 @@ if(cookies != null){
     </div>
     
     <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="save" id="idSave" name="idSave" ${ adminIdValue ne null ? "checked='checked'" : ""}>
+      <input class="form-check-input" type="checkbox" value="save" id="idSave" name="idSave" ${ not empty adminIdValue ? "checked='checked'" : ""}>
       <!-- ${ not empty adminIdValue or param.adminId ? " checked='checked'" : "" } -->
       <label class="form-check-label" for="flexCheckDefault">
         아이디 저장

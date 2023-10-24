@@ -44,6 +44,15 @@ td {
 	height: 50px;
 }
 
+.searchList{
+	height: 45px;
+	width: 108px;
+	border: 1px solid #CCCCCC;
+	position: absolute; left: 244px;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
 #searchList{
 	height: 45px;
 	width: 108px;

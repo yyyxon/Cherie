@@ -160,6 +160,7 @@ function chkNull() {
 			<div style="margin: 10px; text-align: center;">
 			<!-- 리스트 시작 -->
 			<table id="order_list" class="table tableList">
+				<thead>
 				<tr id="top_title">
 					<!-- 컬럼 사이즈 -->
 					<th style="width:170px">No</th>
@@ -168,14 +169,27 @@ function chkNull() {
 					<th style="width:230px">작성일</th>
 					<th style="width:200px">평점</th>
 				</tr>
+				</thead>
 				
-				<tr>
-					<td>1</td>
-					<td>6am</td>
-					<td>perfumejjang</td>
-					<td>2023-10-11</td>
-					<td style="color:#FF923A">★★★★★</td>
-				</tr>
+				<tbody>
+					<!-- list가 존재하지 않을 경우 -->
+					<c:if test="${ empty reviewList }">
+					<tr>
+						<td colspan="8" style="text-align: center;"> 
+							회원정보가 존재하지 않습니다. </td>
+					</tr>
+					</c:if>
+				
+					<c:forEach var="review" items="${ reviewList }" varStatus="i">
+					<tr>
+						<td>${ startNum + i.index }</td>
+						<td>${ review.gname }</td>
+						<td>${ review.id }</td>
+						<td>${ review.rev_date }</td>
+						<td style="color:#FF923A">${ review.star }</td>
+					</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 			</div>
 		</div>

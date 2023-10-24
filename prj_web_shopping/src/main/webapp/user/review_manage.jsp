@@ -74,8 +74,33 @@ try{
  </div>
 
 <!-- 상품 만족도 -->
-<div style=" margin-left: 5px;" >
-<textarea style="width:502px; height:150px;"><c:out value="${review.rcode}" /><c:out value="${review.name}" /></textarea>
+<div style="border: 1px solid #333; margin-left: 5px; width:502px; height:150px;" >
+<div style="text-align: center">
+<div><c:out value="${review.name}" />님 상품은 어떠셨나요?</div><br>
+<c:choose >
+<c:when test="${review.rcode eq 1 }">
+<c:set var="star" value="★☆☆☆☆"/>
+<c:set var="text" value="나쁘지 않았아요."/>
+</c:when>
+<c:when test="${review.rcode eq 2 }">
+<c:set var="star" value="★★☆☆☆"/>
+<c:set var="text" value="그냥 그랬어요."/>
+</c:when>
+<c:when test="${review.rcode eq 3 }">
+<c:set var="star" value="★★★☆☆"/>
+<c:set var="text" value="보통이에요."/>
+</c:when>
+<c:when test="${review.rcode eq 4 }">
+<c:set var="star" value="★★★★☆"/>
+<c:set var="text" value="좋았어요."/>
+</c:when>
+<c:when test="${review.rcode eq 5 }">
+<c:set var="star" value="★★★★★" />
+<c:set var="text" value="최고에요"/>
+</c:when>
+</c:choose>
+<div style="color:#FF923A"><c:out value="${star}" /></div><br><c:out value="${text}" />
+</div>
 </div>
 <br/>
 <!-- 리뷰 작성 -->

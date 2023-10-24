@@ -46,10 +46,6 @@ $(function() {
 		location.href="logout.jsp";
 	});
 	
-	$("#inputText").click(function(){
-		$(this).val('');
-		$(this).css('color', 'black');
-	});//click
 });
 </script>
 </head>

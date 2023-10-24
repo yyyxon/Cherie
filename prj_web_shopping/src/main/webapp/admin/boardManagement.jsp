@@ -12,18 +12,16 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- table css -->
+<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/table.css"/>
 
 <style type="text/css">
 body{
  margin: 0px;
 }
-#wrap{
-	
-}
 #right{
 	width: calc(100vw - 240px); height: 100%;float: right;
 	background: blue;
-	font-family: Pretendard;
 }
 #left{
 	min-width: 240px;height: 100%;float: left;
@@ -44,119 +42,6 @@ body{
 	background: #EEEEEE;
 	position: relative;
 }
-
-#mainTitle{
-	font-size:25px;
-	color: #333;
-	position: absolute;
-	left : 60px;
-} 
-
-#background_box{
-	overflow: auto;
-	background-color:  #FFFFFF;
-	color:  #333333;
-	height: 130%; width: 90%;
-	position: absolute;
-	top: 100px; left: 40px;
-	outline:  1px;
-	box-shadow: rgb(204, 202, 202) 0px 2px 8px 0px;
-	border-radius: 9px;
-}
-
-#top_title{
-	height:63px;
-	font-size:18.5px;
-	border-bottom: 2px solid #919191;
-	background-color: #FAFAFA;
-	vertical-align: middle;
-}
-
-td {
-	height: 56px;
-	vertical-align: middle;
-	font-size:17px;
-}
-
-.searchDiv {
-	position: relative;
-	left: 846px;
-	width: 300px;
-	height: 50px;
-}
-
-#searchList{
-	height: 45px;
-	width: 108px;
-	border: 1px solid #CCCCCC;
-	position: absolute; left: 244px;
-	border-radius: 5px;
-	font-size: 18px;
-}
-
-#inputText{
-height: 45px; width: 180px;
-border: 1px solid  #CCCCCC;
-position: absolute; left: 361px;
-border-radius: 5px;
-font-size: 18px;
-}
-
-#btnSearch{
-  position: absolute; left: 550px;
-  background-color: #FFFFFF;
-  border: 1px solid #BEBEBE;
-  height: 45px;
-  width: 102px;
-  font-size:18px;
-  border-radius: 6px;
-}
-
-.tableList {
-	position: relative;
-}
-
-#btnChange{
-  position: relative;
-  left: 1359px;
-  top: 680px;
-  height: 60px;
-  width: 135px;
-  background-color: #FFFFFF;
-  border: 1px solid #BEBEBE;
-  font-size:20px;
-  border-radius: 10px;
-}
-
-.pagenationDiv{
-	position: absolute;
-	top: 775px;
-	width: 1480px;
-	text-align: center;
-}
-
-.pagination {
-  display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  background-color: white;
-}
-
-.pagination a.active {
-  background-color: black;
-  color: white;
-  border: 1px solid #333;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
 </style>
 
 <script type="text/javascript">

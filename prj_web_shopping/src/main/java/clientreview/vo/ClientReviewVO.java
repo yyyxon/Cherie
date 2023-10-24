@@ -4,28 +4,47 @@ package clientreview.vo;
 public class ClientReviewVO {
 	
 	private String  productName,name ,tmi,title;
-	private int star, viewNum;
-	String date;
+	private int star;;
+	String inputDate;
 
 	
-	public ClientReviewVO(String productName, String name, String tmi, String title, int star, int viewNum,
-			String date) {
+
+
+	
+
+
+
+
+	public ClientReviewVO(String productName, String name, String tmi, String title, int star, String inputDate) {
 		super();
 		this.productName = productName;
 		this.name = name;
 		this.tmi = tmi;
 		this.title = title;
 		this.star = star;
-		this.viewNum = viewNum;
-		this.date = date;
+		this.inputDate = inputDate;
 	}
+
+
+
+
+
+
+
 
 
 	@Override
 	public String toString() {
 		return "ClientReviewVO [productName=" + productName + ", name=" + name + ", tmi=" + tmi + ", title=" + title
-				+ ", star=" + star + ", viewNum=" + viewNum + ", date=" + date + "]";
+				+ ", star=" + star + ", inputDate=" + inputDate + "]";
 	}
+
+
+
+
+
+
+
 
 
 	public String getProductName() {
@@ -33,9 +52,23 @@ public class ClientReviewVO {
 	}
 
 
+
+
+
+
+
+
+
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
+
+
+
+
+
+
 
 
 	public String getName() {
@@ -43,9 +76,23 @@ public class ClientReviewVO {
 	}
 
 
+
+
+
+
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+
+
+
+
+
 
 
 	public String getTmi() {
@@ -53,9 +100,23 @@ public class ClientReviewVO {
 	}
 
 
+
+
+
+
+
+
+
 	public void setTmi(String tmi) {
 		this.tmi = tmi;
 	}
+
+
+
+
+
+
+
 
 
 	public String getTitle() {
@@ -63,9 +124,23 @@ public class ClientReviewVO {
 	}
 
 
+
+
+
+
+
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
+
+
+
+
+
 
 
 	public int getStar() {
@@ -73,29 +148,47 @@ public class ClientReviewVO {
 	}
 
 
+
+
+
+
+
+
+
 	public void setStar(int star) {
 		this.star = star;
 	}
 
 
-	public int getViewNum() {
-		return viewNum;
+
+
+
+
+
+
+
+	public String getInputDate() {
+		return inputDate;
 	}
 
 
-	public void setViewNum(int viewNum) {
-		this.viewNum = viewNum;
+
+
+
+
+
+
+
+	public void setInputDate(String inputDate) {
+		this.inputDate = inputDate;
 	}
 
 
-	public String getDate() {
-		return date;
-	}
 
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+
+
+
 
 
 	public ClientReviewVO() {

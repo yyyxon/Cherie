@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <jsp:include page="../cdn/admin_cdn.jsp"/>
-<!-- table css -->
-<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/table.css"/>
 
 <style type="text/css">
 body{
@@ -44,7 +42,30 @@ $(function() {
 	$("#btnLogout").click(function() {
 		location.href="logout.jsp";
 	});
+	
+	$("#btnSearch").click(function() {
+		chkNull();
+	});
+	
+	$("#keyword").keyup(function(evt) {
+		if(evt.which == 13){
+			chkNull();
+		}//end if
+	});//keyup
 });
+
+function chkNull() {
+	var keyword = $("#keyword").val();
+	if(keyword.trim() == ""){
+		alert("검색 키워드를 입력해주세요.");
+		return;
+	}//end if
+	
+	//글자 수 제한
+	
+	//모두 통과했으면 submit
+	$("#frmSearch").submit();
+}
 </script>
 </head>
 <body>
@@ -64,11 +85,10 @@ $(function() {
 		<form id="searchFrm" action="">
 		<div class="searchDiv">
 			<select id="searchList">
-				<option>주문번호</option>
-				<option>주문자명</option>
 				<option>아이디</option>
+				<option>상품명</option>
 			</select>
-			<input type="text" class="textBox" id="inputText" placeholder="내용을 입력해주세요"/>
+			<input type="text" class="textBox" id="keyword" placeholder="내용을 입력해주세요"/>
 			<input type="button" class="btn" id="btnSearch" value="검색"/>
 		</div>
 		</form>

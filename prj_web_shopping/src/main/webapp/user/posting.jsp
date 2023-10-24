@@ -162,6 +162,6 @@ try{
 
  
 
- <%@ include file="postingfooter.jsp" %> 
+ <%@ include file="layout/footer.jsp" %> 
 </body>
 </html>

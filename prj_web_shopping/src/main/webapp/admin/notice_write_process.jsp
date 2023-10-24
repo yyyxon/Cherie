@@ -9,6 +9,9 @@
 <head>
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- summernote 시작 -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <!-- i18n -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.min.js"></script>
 
@@ -102,16 +105,39 @@ padding: 0px;
 }
 </style>
 <!-- 태균이가 만든거 끝-->
+<%
+int flag = Integer.parseInt(request.getParameter("flag"));
+
+String title = request.getParameter("title");
+String context = request.getParameter("context");
+int ncode = Integer.parseInt(request.getParameter("ncode"));
+
+NoticeVO nVO = new NoticeVO();
+nVO.setNcode(ncode);
+nVO.setNoticeTitle(title);
+nVO.setNoticeText(context);
+
+String msg = "성공적으로 저장되었습니다.";
+
+if(flag == 1) {
+	NoticeDAO.getInstance().insertNotice(nVO);
+} else {
+	int result = NoticeDAO.getInstance().updateNotice(nVO);
+	
+	if(result != 1) {
+		msg = "저장 중 오류 발생!";
+}
+
+pageContext.setAttribute("msg", msg);
+%>
 <script type="text/javascript">
 	$(function() {
 		$("#btnLogout").click(function() {
 			location.href="logout.jsp";
 		});
 		
-		$("#btnEdit").click(function() {
-			var 
-			alert("수정");
-		});
+		alert(${msg});
+		location.href = "notice.jsp?no=5";
 		
 	});
 </script>
@@ -130,36 +156,6 @@ padding: 0px;
 		</div>
 		<div id="background_box"> <!-- 각자 원하는데로 사용 -->
 <!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 --><!-- 여기부터가 코딩하는 div 영역 -->
-<%
-String ncode = request.getParameter("code");
-NoticeVO nVO = null;
-String title = "";
-String context = "";
-
-if(ncode != null) {
-	nVO = NoticeDAO.getInstance().selectOneNotice(Integer.parseInt(ncode));
-	title = nVO.getNoticeTitle();
-	context = nVO.getNoticeText();
-}
-
-pageContext.setAttribute("title", title);
-pageContext.setAttribute("ncode", ncode);
-%>
-<form id="sfrm" method="post" action="notice_write_process?flag=${param.flag}">
-<div id="divTable" class="pad">
-<div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon3" style="min-width: 100px;">제목</span>
-  <input type="text" class="form-control" id="basic-url" name="title" aria-describedby="basic-addon3" value="${title}">
-</div>
-</div>
-<div id="info">
-<textarea id="context" name="context"><%=context%></textarea>
-<div>
-	<input type="button" class="btn btn-outline-success input" value="등록" id="btnEdit" style="margin-right: 30px;"/>
-	<input type="hidden" value="${ncode}" id="ncode" name="ncode">
-</div>
-</div>
-</form>
 <!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --><!-- 여기까지가 코딩하는 div 영역 --> 
 		</div>
 	</div>	

@@ -63,5 +63,81 @@ public class NoticeDAO {
 		return list;
 	}
 	
+	public NoticeVO selectOneNotice(int code) throws SQLException {
+		NoticeVO nVO = null;
+		
+		DbConnection db = DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = db.getConn("jdbc/dbcp");
+			String selectNotice = "SELECT NOT_TITLE, NOT_TEXT FROM NOTICE WHERE NCODE = ?";
+			
+			pstmt = con.prepareStatement(selectNotice);
+			pstmt.setInt(1, code);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				nVO = new NoticeVO();
+				nVO.setNoticeTitle(rs.getString("NOT_TITLE"));
+				nVO.setNoticeText("NOT_TEXT");
+			}
+			
+		} finally {
+			db.dbClose(rs, pstmt, con);
+		}
+		
+		return nVO;
+	}
 	
+	public void insertNotice(NoticeVO nVO) throws SQLException {
+		DbConnection db = DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = db.getConn("jdbc/dbcp");
+			StringBuilder insertNotice = new StringBuilder();
+			insertNotice
+			.append("INSERT INTO NOTICE(NCODE, ID, NOT_TITLE, NOT_TEXT, VIEW_NUM")
+			.append("VALUES(NCODE, ID, ?, ?, 0)");
+			
+			pstmt = con.prepareStatement(insertNotice.toString());
+			pstmt.setString(1, nVO.getNoticeTitle());
+			pstmt.setString(2, nVO.getNoticeText());
+			
+			pstmt.executeUpdate();
+			
+		} finally {
+			db.dbClose(null, pstmt, con);
+		}
+	}
+	
+	public int updateNotice(NoticeVO nVO) throws SQLException {
+		int result = 0;
+		
+		DbConnection db = DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = db.getConn("jdbc/dbcp");
+			String updateNotice = "UPDATE NOTICE SET NOT_TITLE=?, NOT_TEXT=? WHERE NCODE=?";
+			
+			pstmt = con.prepareStatement(updateNotice);
+			pstmt.setString(1, nVO.getNoticeTitle());
+			pstmt.setString(2, nVO.getNoticeText());
+			pstmt.setInt(3, nVO.getNcode());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			db.dbClose(null, pstmt, con);
+		}
+		
+		
+		return result;
+	}
 }

@@ -61,7 +61,7 @@ $(function(){
 
 <body>
 
- <%@ include file="boardheader.jsp" %> 
+ <%@ include file="layout/header.jsp" %> 
 
 
 <!-- <section class="mypage-cont" style="  position:relative; top:10px;left:0px; font-family: musinsa;"> -->
@@ -158,7 +158,7 @@ $(function(){
             </form>
 <!--         </section> -->
 
-<footer><%@ include file="boardfooter.jsp" %> </footer> 
+<footer><%@ include file="postingfooter.jsp" %> </footer> 
 
 </body>
 </html>

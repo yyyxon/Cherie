@@ -16,8 +16,8 @@
 
 </style>
 <footer id="footer">
-	<h2>
-		<a href="main.jsp" style="position:absolute; top:1150px ;left:850px"><img src="../common/images/icon/logo.png" alt="logo"></a>
+	<h2><!-- style="position:absolute; top:1150px ;left:850px" -->
+		<a href="main.jsp" ><img src="../common/images/icon/logo.png" alt="logo"></a>
 	</h2>
 	<div class="inner" >
 		<div class="xans-element- xans-layout xans-layout-footer clearfix ">

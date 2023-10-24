@@ -191,9 +191,14 @@ border-radius: 9px;
 	    });
 		
 		$("#btnAdd").click(function() {
-			location.href = "notice_write.jsp";
+			location.href = "notice_write.jsp?flag=1";
+						
 		});
 	});
+	
+	function edit(code) {
+		location.href = "notice_write.jsp?code="+code+"&flag=2";
+	}
 	
 </script>
 </head>
@@ -238,8 +243,10 @@ try{
 </tr>
 </c:if>
 <c:forEach var="notice" items="${noticeList}" varStatus="i">
-        <tr>
-            <td><c:out value="${i.index}"/></td>
+        <tr onclick="edit(${notice.code})">
+            <td>
+            <c:out value="${i.index}"/>
+            </td>
             <td><c:out value="${notice.noticeTitle}"/></td>
             <td style="text-align: center;">관리자</td>
             <td style="text-align: center;"><c:out value="${notice.noticeDate}"/></td>

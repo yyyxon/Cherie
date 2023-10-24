@@ -2,27 +2,18 @@ package shopping.vo;
 
 public class NoticeVO {
 	
-	private String id, noticeTitle, noticeText, noticeDate;
+	private String noticeTitle, noticeText, noticeDate;
 	private int ncode, viewNum;
 	
 	public NoticeVO() {
 	}
 
-	public NoticeVO(String id, String noticeTitle, String noticeText, String noticeDate, int ncode, int viewNum) {
-		this.id = id;
+	public NoticeVO(String noticeTitle, String noticeText, String noticeDate, int ncode, int viewNum) {
 		this.noticeTitle = noticeTitle;
 		this.noticeText = noticeText;
 		this.noticeDate = noticeDate;
 		this.ncode = ncode;
 		this.viewNum = viewNum;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getNoticeTitle() {
@@ -67,7 +58,7 @@ public class NoticeVO {
 
 	@Override
 	public String toString() {
-		return "NoticeVO [id=" + id + ", noticeTitle=" + noticeTitle + ", noticeText=" + noticeText + ", noticeDate="
-				+ noticeDate + ", ncode=" + ncode + ", viewNum=" + viewNum + "]";
+		return "NoticeVO [noticeTitle=" + noticeTitle + ", noticeText=" + noticeText + ", noticeDate=" + noticeDate
+				+ ", ncode=" + ncode + ", viewNum=" + viewNum + "]";
 	}
 }

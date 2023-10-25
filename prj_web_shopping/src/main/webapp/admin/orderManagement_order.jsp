@@ -120,7 +120,7 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 		<!-- 검색 -->
 		<form id="searchFrm" action="">
 		<div class="searchDiv">
-			<select id="searchList">
+			<select id="field" class="searchList">
 				<option>주문번호</option>
 				<option>주문자명</option>
 				<option>아이디</option>

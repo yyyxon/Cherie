@@ -1,7 +1,7 @@
 <%@page import="java.sql.SQLException"%>
-<%@page import="summary.vo.SummaryVO"%>
+<%@page import="user.vo.SummaryVO"%>
 <%@page import="java.util.List"%>
-<%@page import="userReview.dao.UserReviewDAO"%>
+<%@page import="admin.dao.UserReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page info=""%>
@@ -48,7 +48,7 @@ $(function(){
 </head>
 
 <body>
-<jsp:useBean id="sVO" class="summary.vo.SummaryVO" scope="page"></jsp:useBean> 
+<jsp:useBean id="sVO" class="user.vo.SummaryVO" scope="page"></jsp:useBean> 
 <jsp:setProperty property="*" name="sVO"/>
 
 

@@ -30,9 +30,9 @@ $(function() {
 <body>
 <%@include file="layout/header.jsp" %>
 
-<%@page import="summary.vo.SummaryVO"%>
+<%@page import="user.vo.SummaryVO"%>
 <%@page import="java.util.List"%>
-<%@page import="userReview.dao.UserReviewDAO"%>
+<%@page import="admin.dao.UserReviewDAO"%>
 <%@page import="java.sql.SQLException"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -54,7 +54,7 @@ $(function(){
 </head>
 <body>
 
-<jsp:useBean id="sVO" class="summary.vo.SummaryVO" scope="page"></jsp:useBean> 
+<jsp:useBean id="sVO" class="user.vo.SummaryVO" scope="page"></jsp:useBean> 
 <jsp:setProperty property="*" name="sVO"/>
 
 

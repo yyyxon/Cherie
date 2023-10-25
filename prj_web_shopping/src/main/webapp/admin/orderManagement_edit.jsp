@@ -1,9 +1,9 @@
-<%@page import="shopping.vo.BoardRangeVO"%>
-<%@page import="shopping.dao.BoardDAO"%>
+<%@page import="admin.vo.BoardRangeVO"%>
+<%@page import="common.dao.BoardDAO"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="shopping.vo.OrderVO"%>
+<%@page import="admin.vo.OrderVO"%>
 <%@page import="java.util.List"%>
-<%@page import="shopping.dao.OrderProcessDAO"%>
+<%@page import="admin.dao.OrderProcessDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page info=""%>

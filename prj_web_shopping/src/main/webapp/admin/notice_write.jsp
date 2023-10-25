@@ -1,5 +1,5 @@
-<%@page import="shopping.dao.NoticeDAO"%>
-<%@page import="shopping.vo.NoticeVO"%>
+<%@page import="admin.dao.NoticeDAO"%>
+<%@page import="admin.vo.NoticeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page info=""%>

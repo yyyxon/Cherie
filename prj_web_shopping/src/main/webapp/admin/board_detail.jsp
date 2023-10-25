@@ -1,9 +1,9 @@
 <%@page import="java.util.List"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="shopping.dao.BoardDAO"%>
-<%@page import="shopping.dao.BoardManageDAO"%>
-<%@page import="shopping.vo.BoardManageVO"%>
-<%@page import="shopping.vo.BoardRangeVO"%>
+<%@page import="common.dao.BoardDAO"%>
+<%@page import="user.dao.BoardManageDAO"%>
+<%@page import="user.vo.BoardManageVO"%>
+<%@page import="admin.vo.BoardRangeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page info=""%>

@@ -2,16 +2,13 @@
 <%@page import="admin.vo.NoticeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page info=""%>
+<%@ page info="공지사항 작성 화면, 등록/수정은 화면이 모두 같다."%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<!-- i18n -->
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.min.js"></script>
-
 <meta charset="UTF-8">
 <style type="text/css">
 body{

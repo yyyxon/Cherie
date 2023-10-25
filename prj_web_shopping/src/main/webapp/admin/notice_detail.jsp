@@ -4,7 +4,7 @@
 <%@page import="admin.dao.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page info=""%>
+<%@ page info="공지사항 상세한 내용을 표시하고 수정/삭제가 가능한 화면"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -169,7 +169,7 @@ try {
 	</tr>
 	<tr style="border-bottom: 2px solid #A5A5A5;">
 		<td style="background: #F1F1F1;"><strong>작성일</strong></td>
-		<td colspan="3"><%=date %><%= %></td>
+		<td colspan="3"><%=date %><%=editDate == null?"":"("+editDate+")" %></td>
 		<td style="background: #F1F1F1;"><strong>조회수</strong></td>
 		<td><%=view %></td>
 	</tr>

@@ -96,6 +96,18 @@ font-size: 18px;
   border-radius: 10px;
 }
 
+#btnList {
+  position: relative;
+  left: 1359px;
+  top: 680px;
+  height: 60px;
+  width: 135px;
+  background-color: #FFFFFF;
+  border: 1px solid #BEBEBE;
+  font-size:20px;
+  border-radius: 10px;
+}
+
 .pagenationDiv{
 	position: absolute;
 	top: 775px;

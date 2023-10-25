@@ -10,6 +10,7 @@ public class BoardManageVO {
 
 	public BoardManageVO(int rcode, String cat_name, String gname, String id, String rev_date, int star) {
 		super();
+		this.cat_name = cat_name;
 		this.gname = gname;
 		this.rev_date = rev_date;
 		this.id = id;

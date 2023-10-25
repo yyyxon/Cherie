@@ -1,3 +1,5 @@
+<%@page import="common.util.BoardUtilVO"%>
+<%@page import="common.util.BoardUtil"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="common.dao.BoardDAO"%>
@@ -83,7 +85,6 @@ function boardDetail(rcode){
 <%
 	BoardManageDAO bmDAO = BoardManageDAO.getInstance();
 	BoardRangeVO brVO = new BoardRangeVO();
-	brVO.setTableName("review");
 	
 	bmDAO.selectAllReview(brVO);
 
@@ -98,19 +99,19 @@ function boardDetail(rcode){
 	brVO.setCategory(category);
 	
 	//1.총 레코드의 수 
-	int totalCount = BoardDAO.getInstance().totalCount(brVO);
+	int totalCount = bmDAO.totalCount(brVO);
 	
 	//2.한 화면에 보여줄 게시물의 수
 	int pageScale = 10;
 	
 	//3.총 페이지 수
-	int totalPage = totalCount/pageScale;
+	//int totalPage = totalCount/pageScale;
 	
 	//총 레코드 수 나누기 한 화면에 보여줄 게시물의 수를 했을 때
 	//나머지가 있다면(0이 아니라면) 한 화면에 보여줄 게시물의 수를 초과한 것이므로
 	//총 페이지 수를 하나 늘림
 	//Math 사용 - 올림
-	totalPage = (int)Math.ceil(totalCount/(double)pageScale);
+	int totalPage = (int)Math.ceil(totalCount/(double)pageScale);
 	
 	//4.현재 페이지 번호 구하기
 	String tempPage = request.getParameter("currentPage");
@@ -159,7 +160,7 @@ function boardDetail(rcode){
 			<select class="searchCat" id="category" name="category">
 					<option value="1">전체</option>
 				<c:forEach var="cat" items="${ category }" varStatus="i">
-					<option value="${ i.count+1 }"${ param.category eq i.count+1 ? " selected='selected'" : "" }>${ cat }</option>
+					<option value="${ i.count+1 }"${ param.category eq (i.count+1).toString() ? " selected='selected'" : "" }>${ cat }</option>
 				</c:forEach>
 			</select>
 			<select class="searchList" id="field" name="field">
@@ -168,7 +169,7 @@ function boardDetail(rcode){
 				<option value="3"${ param.field eq "3" ? " selected='selected'" : "" }>카테고리명</option>
 			</select>
 			<input type="text" class="textBox" id="keyword" name="keyword" placeholder="내용을 입력해주세요"
-			value = "${ not empty param.keyword ? param.keyword : ''}"/>
+			value = "${ param.keyword ne 'null' ? param.keyword : ''}"/>
 			<input type="button" id="btnSearch" value="검색"/>
 		</form>
 		</div>
@@ -222,16 +223,18 @@ function boardDetail(rcode){
 			</div>
 		</div>
 		
+		<c:if test="${ not empty reviewList }">
 		<!-- 페이지네이션 -->
 		<div class="pagenationDiv">
 			<div class="pagination">
- 				<a href="#">&laquo;</a>
-  				<a href="#">1</a>
-  				<a href="#" class="active">2</a>
-  				<a href="#">3</a>
-  				<a href="#">&raquo;</a>
+ 				<%
+ 					BoardUtil util = BoardUtil.getInstance();
+ 					BoardUtilVO buVO = new BoardUtilVO("boardManagement.jsp", keyword, field, currentPage, totalPage, category);
+ 					out.println(util.pageNationBM(buVO));
+ 				%>
 			</div>
 		</div>
+		</c:if>
 		
 		<% if(request.getParameter("keyword") != null) 
 			out.print("<a href='boardManagement.jsp'><input type='button' id='btnList' value='목록'/></a>");

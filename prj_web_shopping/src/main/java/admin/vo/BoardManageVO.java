@@ -1,4 +1,4 @@
-package shopping.vo;
+package admin.vo;
 
 public class BoardManageVO {
 	String gname, title, rev_cont, img, rev_date, cancle, id, cat_name; 

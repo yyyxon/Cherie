@@ -13,66 +13,30 @@
 
 <style type="text/css">
 
-a.btnBlack.left.sizeL {
+#btnBlack{
 /* Font & Text */
-font-family: Roboto, "Noto Sans KR", "malgun gothic", 맑은고딕, NanumGothic, dotum, 돋움, sans-serif;
 font-size: 14px;
 line-height: 22px;
-text-decoration: none solid rgb(255, 255, 255);
 text-align: center;
 vertical-align: middle;
-white-space: nowrap;
-word-spacing: 0px;
-/* Color & Background */
-background-color:  #000000;
-background-position: 0% 0%;
+background-color:  #141414;
 color:  #FFFFFF;
-/* Box */
-height: 56px;
-width: 582px;
-border: 1px solid  #FFFFFF;
+height: 56px; width: 500px;
 padding: 16px 16px 16px 16px;
 min-width: 80px;
-/* Positioning */
-float: left;
-display: block;
-/* Miscellaneous */
 cursor: pointer;
-/* Effects */
-transform: none;
-transition: all 0.3s ease-in-out 0s;
-outline: rgb(255, 255, 255) dashed 0px;
 box-sizing: border-box;
 }
-a.btnSubmit.right.sizeL {
-/* Font & Text */
-font-family: Roboto, "Noto Sans KR", "malgun gothic", 맑은고딕, NanumGothic, dotum, 돋움, sans-serif;
+#btnSubmit{
 font-size: 14px;
 line-height: 22px;
-text-decoration: none solid rgb(0, 0, 0);
 text-align: center;
-vertical-align: middle;
-white-space: nowrap;
-word-spacing: 0px;
-/* Color & Background */
 background-color:  #FFFFFF;
-background-position: 0% 0%;
 color:  #000000;
-/* Box */
-height: 56px;
-width: 582px;
-border: 1px solid  #000000;
+height: 56px; width: 500px;
 padding: 16px 16px 16px 16px;
 min-width: 80px;
-/* Positioning */
-float: left;
-display: block;
-/* Miscellaneous */
 cursor: pointer;
-/* Effects */
-transform: none;
-transition: all 0.3s ease-in-out 0s;
-outline: rgb(0, 0, 0) dashed 0px;
 box-sizing: border-box;
 }
 
@@ -126,8 +90,8 @@ $(function(){
 </div>
 
 <div class="xans-element- xans-order xans-order-totalorder ec-base-button 100per "><ul class="grid2">
-<a href="#none" class="btnBlack left sizeL" onclick="Basket.orderAll(this)">전체상품주문</a>
-        <a href="#none" class="btnSubmit  right sizeL" onclick="">관심상품 비우기</a>
+<a href="#none" class="btnBlack" id="btnBlack" onclick="Basket.orderAll(this)">전체상품주문</a>
+        <a href="#none" class="btnSubmit" id="btnSubmit" onclick="">관심상품 비우기</a>
         </ul>
 </div>
 

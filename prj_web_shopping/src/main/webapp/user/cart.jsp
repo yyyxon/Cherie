@@ -33,66 +33,30 @@ transform: none;
 transition: all 0s ease 0s;
 outline:1px;
 }
-a.btnBlack.left.sizeL{
+#btnBlack{
 /* Font & Text */
-font-family: Roboto, "Noto Sans KR", "malgun gothic", 맑은고딕, NanumGothic, dotum, 돋움, sans-serif;
 font-size: 14px;
 line-height: 22px;
-text-decoration: none solid rgb(255, 255, 255);
 text-align: center;
 vertical-align: middle;
-white-space: nowrap;
-word-spacing: 0px;
-/* Color & Background */
 background-color:  #141414;
-background-position: 0% 0%;
 color:  #FFFFFF;
-/* Box */
-height: 56px;
-width: 582px;
-border: 1px solid  #FFFFFF;
+height: 56px; width: 500px;
 padding: 16px 16px 16px 16px;
 min-width: 80px;
-/* Positioning */
-float: left;
-display: block;
-/* Miscellaneous */
 cursor: pointer;
-/* Effects */
-transform: none;
-transition: all 0.3s ease-in-out 0s;
-outline: rgb(255, 255, 255) dashed 0px;
 box-sizing: border-box;
 }
-a.btnSubmit.right.sizeL{
-/* Font & Text */
-font-family: Roboto, "Noto Sans KR", "malgun gothic", 맑은고딕, NanumGothic, dotum, 돋움, sans-serif;
+#btnSubmit{
 font-size: 14px;
 line-height: 22px;
-text-decoration: none solid rgb(0, 0, 0);
 text-align: center;
-vertical-align: middle;
-white-space: nowrap;
-word-spacing: 0px;
-/* Color & Background */
 background-color:  #FFFFFF;
-background-position: 0% 0%;
 color:  #000000;
-/* Box */
-height: 56px;
-width: 582px;
-border: 1px solid  #000000;
+height: 56px; width: 500px;
 padding: 16px 16px 16px 16px;
 min-width: 80px;
-/* Positioning */
-float: left;
-display: block;
-Miscellaneous;
 cursor: pointer;
-/* Effects */
-transform: none;
-transition: all 0.3s ease-in-out 0s;
-outline: rgb(0, 0, 0) dashed 0px;
 box-sizing: border-box;
 }
 
@@ -128,11 +92,9 @@ var df_tagm_products=[];
         
         
         </div>
-<!-- 총 주문금액 : 국내배송상품 -->
-<!-- 총 주문금액 : 해외배송상품 -->
 <div class="xans-element- xans-order xans-order-totalorder ec-base-button 100per"><ul class="grid2">
-<a href="#none" onclick="Basket.orderAll(this)" link-order="/order/orderform.html?basket_type=all_buy" link-login="/member/login.html" class="btnBlack left sizeL  ">전체상품주문</a>
-        <a href="#none" onclick="Basket.orderSelectBasket(this)" link-order="/order/orderform.html?basket_type=all_buy" link-login="/member/login.html" class="btnSubmit  right sizeL ">선택상품주문</a> 
+<a href="#none" onclick="Basket.orderAll(this)" link-order="/order/orderform.html?basket_type=all_buy" link-login="/member/login.html" class="btnBlack" id="btnBlack">전체상품주문</a>
+        <a href="#none" onclick="Basket.orderSelectBasket(this)" link-order="/order/orderform.html?basket_type=all_buy" link-login="/member/login.html" class="btnSubmit" id="btnSubmit">선택상품주문</a> 
         </ul>
 </div>
 <!-- 네이버 체크아웃 구매 버튼  -->

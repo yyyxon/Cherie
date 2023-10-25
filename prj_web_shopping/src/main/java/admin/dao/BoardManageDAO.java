@@ -1,4 +1,4 @@
-package user.dao;
+package shopping.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import admin.vo.BoardRangeVO;
-import common.dao.DbConnection;
-import user.vo.BoardManageVO;
+import shopping.vo.BoardManageVO;
+import shopping.vo.BoardRangeVO;
 
 public class BoardManageDAO {
 	
@@ -46,11 +45,11 @@ public class BoardManageDAO {
 			con = db.getConn("jdbc/dbcp");
 			StringBuilder selectReview = new StringBuilder();
 			selectReview
-			.append("	select rcode, gname, id, rev_date, star						")
+			.append("	select no, rcode, cat_name, gname, id, rev_date, star		")
 			.append("	from (select row_number() over(order by rev_date desc) no,  ")
-			.append(" 	r.rcode, g.gname, r.id, r.rev_date, r.star					")
-			.append("	from review r, goods g 										")
-			.append("	where r.gcode = g.gcode										");
+			.append(" 	r.rcode, c.cat_name, g.gname, r.id, r.rev_date, r.star		")
+			.append("	from review r, goods g, category c 							")
+			.append("	where r.gcode = g.gcode and g.cat_code = c.cat_code			");
 			
 			if(keyword!=null && !"".equals(keyword) && !"null".equals(keyword)) {
 				String field = brVO.getField().equals("1") ? "id" : "gname";
@@ -77,9 +76,9 @@ public class BoardManageDAO {
 			BoardManageVO bmVO = null;
 			
 			while(rs.next()) {
-				bmVO = new BoardManageVO(rs.getInt("rcode"), rs.getString("gname"),
-										 rs.getString("id"), rs.getString("rev_date"), 
-										 rs.getInt("star"));
+				bmVO = new BoardManageVO(rs.getInt("rcode"), rs.getString("cat_name"),
+										 rs.getString("gname"), rs.getString("id"), 
+										 rs.getString("rev_date"), rs.getInt("star"));
 				list.add(bmVO);
 			}
 			

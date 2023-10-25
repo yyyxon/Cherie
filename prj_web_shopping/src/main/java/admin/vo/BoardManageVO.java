@@ -1,14 +1,14 @@
-package user.vo;
+package shopping.vo;
 
 public class BoardManageVO {
-	String gname, title, rev_cont, img, rev_date, cancle, id; 
+	String gname, title, rev_cont, img, rev_date, cancle, id, cat_name; 
 	int star, r_view, rcode;
 	
 	public BoardManageVO() {
 		super();
 	}
 
-	public BoardManageVO(int rcode, String gname, String id, String rev_date, int star) {
+	public BoardManageVO(int rcode, String cat_name, String gname, String id, String rev_date, int star) {
 		super();
 		this.gname = gname;
 		this.rev_date = rev_date;
@@ -18,7 +18,7 @@ public class BoardManageVO {
 	}
 
 	public BoardManageVO(String gname, String title, String rev_cont, String img, String rev_date, String cancle,
-			String id, int star, int r_view, int rcode) {
+			String id, String cat_name, int star, int r_view, int rcode) {
 		super();
 		this.gname = gname;
 		this.title = title;
@@ -27,17 +27,26 @@ public class BoardManageVO {
 		this.rev_date = rev_date;
 		this.cancle = cancle;
 		this.id = id;
+		this.cat_name = cat_name;
 		this.star = star;
 		this.r_view = r_view;
 		this.rcode = rcode;
 	}
-
-	public String getgname() {
+	
+	public String getGname() {
 		return gname;
 	}
 
-	public void setgname(String gname) {
+	public void setGname(String gname) {
 		this.gname = gname;
+	}
+
+	public String getCat_name() {
+		return cat_name;
+	}
+
+	public void setCat_name(String cat_name) {
+		this.cat_name = cat_name;
 	}
 
 	public String getTitle() {
@@ -115,8 +124,8 @@ public class BoardManageVO {
 	@Override
 	public String toString() {
 		return "BoardManageVO [gname=" + gname + ", title=" + title + ", rev_cont=" + rev_cont + ", img=" + img
-				+ ", rev_date=" + rev_date + ", cancle=" + cancle + ", id=" + id + ", star=" + star + ", r_view="
-				+ r_view + ", rcode=" + rcode + "]";
+				+ ", rev_date=" + rev_date + ", cancle=" + cancle + ", id=" + id + ", cat_name=" + cat_name + ", star="
+				+ star + ", r_view=" + r_view + ", rcode=" + rcode + "]";
 	}
 
 }

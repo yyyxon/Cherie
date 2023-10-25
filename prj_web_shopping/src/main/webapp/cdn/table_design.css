@@ -62,6 +62,15 @@ td {
 	font-size: 18px;
 }
 
+.searchCat{
+	height: 45px;
+	width: 117px;
+	border: 1px solid #CCCCCC;
+	position: absolute; left: 119px;
+	border-radius: 5px;
+	font-size: 18px;
+}
+
 .textBox{
 height: 45px; width: 180px;
 border: 1px solid  #CCCCCC;

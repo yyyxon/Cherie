@@ -1,8 +1,8 @@
 <%@page import="java.util.List"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="common.dao.BoardDAO"%>
-<%@page import="user.dao.BoardManageDAO"%>
-<%@page import="user.vo.BoardManageVO"%>
+<%@page import="admin.dao.BoardManageDAO"%>
+<%@page import="admin.vo.BoardManageVO"%>
 <%@page import="admin.vo.BoardRangeVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -89,11 +89,13 @@ function boardDetail(rcode){
 
 	String field = request.getParameter("field");
 	String keyword = request.getParameter("keyword");
+	String category = request.getParameter("category");
 	
 	/* 페이지가 최초 호출 시에는 field나 keyword가 없다. 
 	검색을 하지 않는 경우에도 값이 없다. */
 	brVO.setField(field);
 	brVO.setKeyword(keyword);
+	brVO.setCategory(category);
 	
 	//1.총 레코드의 수 
 	int totalCount = BoardDAO.getInstance().totalCount(brVO);
@@ -130,7 +132,9 @@ function boardDetail(rcode){
 	
 	try{
 		List<BoardManageVO> reviewList = bmDAO.selectAllReview(brVO);
+		List<String> categoryList = bmDAO.selectCategory();
 		pageContext.setAttribute("reviewList", reviewList);
+		pageContext.setAttribute("category", categoryList);
 		
 	}catch(SQLException se){
 		se.printStackTrace();
@@ -152,9 +156,16 @@ function boardDetail(rcode){
 		<!-- 검색 -->
 		<div class="searchDiv">
 		<form id="frmSearch">
+			<select class="searchCat" id="category" name="category">
+					<option value="1">전체</option>
+				<c:forEach var="cat" items="${ category }" varStatus="i">
+					<option value="${ i.count+1 }"${ param.category eq i.count+1 ? " selected='selected'" : "" }>${ cat }</option>
+				</c:forEach>
+			</select>
 			<select class="searchList" id="field" name="field">
 				<option value="1"${ param.field eq "1" ? " selected='selected'" : "" }>아이디</option>
 				<option value="2"${ param.field eq "2" ? " selected='selected'" : "" }>상품명</option>
+				<option value="3"${ param.field eq "3" ? " selected='selected'" : "" }>카테고리명</option>
 			</select>
 			<input type="text" class="textBox" id="keyword" name="keyword" placeholder="내용을 입력해주세요"
 			value = "${ not empty param.keyword ? param.keyword : ''}"/>
@@ -174,9 +185,10 @@ function boardDetail(rcode){
 				<thead>
 				<tr id="top_title">
 					<!-- 컬럼 사이즈 -->
-					<th style="width:170px">No</th>
-					<th style="width:250px">상품명</th>
-					<th style="width:230px">작성자</th>
+					<th style="width:120px">No</th>
+					<th style="width:180px">카테고리명</th>
+					<th style="width:260px">상품명</th>
+					<th style="width:240px">작성자</th>
 					<th style="width:230px">작성일</th>
 					<th style="width:200px">평점</th>
 				</tr>
@@ -186,7 +198,7 @@ function boardDetail(rcode){
 					<!-- list가 존재하지 않을 경우 -->
 					<c:if test="${ empty reviewList }">
 					<tr>
-						<td colspan="8" style="text-align: center;"> 
+						<td colspan="6" style="text-align: center;"> 
 							리뷰가 존재하지 않습니다. </td>
 					</tr>
 					</c:if>
@@ -194,6 +206,7 @@ function boardDetail(rcode){
 					<c:forEach var="review" items="${ reviewList }" varStatus="i">
 					<tr onclick="boardDetail(${ review.rcode })">
 						<td>${ startNum + i.index }</td>
+						<td>${ review.cat_name }</td>
 						<td>${ review.gname }</td>
 						<td>${ review.id }</td>
 						<td>${ review.rev_date }</td>

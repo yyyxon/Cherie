@@ -105,23 +105,29 @@ padding: 0px;
 }
 </style>
 <!-- 태균이가 만든거 끝-->
+<%request.setCharacterEncoding("UTF-8"); %>
 <%
-int flag = Integer.parseInt(request.getParameter("flag"));
+String flag = request.getParameter("flag");
 
 String title = request.getParameter("title");
 String context = request.getParameter("context");
-int ncode = Integer.parseInt(request.getParameter("ncode"));
 
 NoticeVO nVO = new NoticeVO();
-nVO.setNcode(ncode);
+
+if("2".equals(flag)) {
+	int ncode = Integer.parseInt(request.getParameter("ncode"));
+	nVO.setNcode(ncode);
+}
 nVO.setNoticeTitle(title);
 nVO.setNoticeText(context);
 
 String msg = "성공적으로 저장되었습니다.";
 
-if(flag == 1) {
+if("1".equals(flag)) {
 	NoticeDAO.getInstance().insertNotice(nVO);
-} else {
+} 
+
+if("2".equals(flag)) {
 	int result = NoticeDAO.getInstance().updateNotice(nVO);
 	
 	if(result != 1) {
@@ -129,16 +135,12 @@ if(flag == 1) {
 	}
 }
 
+pageContext.setAttribute("msg", msg);
 %>
 <script type="text/javascript">
 	$(function() {
-		$("#btnLogout").click(function() {
-			location.href="logout.jsp";
-		});
-		
-		alert(<%=msg%>);
+		alert("${msg}");
 		location.href = "notice.jsp?no=5";
-		
 	});
 </script>
 </head>

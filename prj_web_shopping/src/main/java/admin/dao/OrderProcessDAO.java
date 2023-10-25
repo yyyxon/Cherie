@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import admin.vo.OrderVO;
+import admin.vo.RecallVO;
 import common.dao.DbConnection;
 
 
@@ -52,7 +53,8 @@ public class OrderProcessDAO {
 			selectAllOrder
 			.append("	select  u.ORD_DATE, u.ORDNO, g.GNAME, od.AMOUNT, g.PRICE, u.DLVY_PRO, m.NAME	")
 			.append("	from UORDER u, GOODS g, MEMBER m, ORDER_DETAIL od	")
-			.append("	where m.id=u.id and od.gcode=g.gcode and u.ordno=od.ordno	");
+			.append("	where m.id=u.id and od.gcode=g.gcode and u.ordno=od.ordno	")
+			.append("	and ( DLVY_PRO not in ('C','R') )	");
 			
 			pstmt=con.prepareStatement(selectAllOrder.toString());
 		//5. 바인드 변수 값 설정
@@ -103,12 +105,14 @@ public class OrderProcessDAO {
 			.append("	select  u.ORD_DATE, u.ORDNO, g.GNAME, od.AMOUNT, g.PRICE, u.DLVY_PRO, m.NAME	")
 			.append("	from UORDER u, GOODS g, MEMBER m, ORDER_DETAIL od	")
 			.append("	where m.id=u.id and od.gcode=g.gcode and u.ordno=od.ordno and  m.id=u.id	")
-			.append("	and ( m.name= ?  or   m.id=? )  	");
+			.append("	and ( DLVY_PRO not in ('C','R') )	")
+			.append("	 and ( m.name= ? or m.id=? or u.ORDNO= ? )	");
 			
 			pstmt=con.prepareStatement(selectAllOrder.toString());
 		//5. 바인드 변수 값 설정
 			pstmt.setString(1, receiver);
 			pstmt.setString(2, receiver);
+			pstmt.setString(3, receiver);
 		//6. 쿼리문 실행 후 값 얻기
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -176,6 +180,112 @@ public class OrderProcessDAO {
 	}//updateShippingProgress
 	
 	/**
+	 * 교환/반품 리스트에서 전체 주문 조회해서 조회된 정보를 넣어주기 위한 일
+	 * @return list
+	 * @throws SQLException
+	 */
+	public List<RecallVO> selectRecallAllOrder() throws SQLException{
+		
+		RecallVO rVO=null;
+		List<RecallVO> list= new ArrayList<RecallVO>();
+		
+		DbConnection db=DbConnection.getInstance();
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+		//1. JNDI 사용 객체 생성
+		//2. DataSource 얻기
+		//3. Connection 얻기
+			con=db.getConn("jdbc/dbcp");
+		//4. 쿼리문 생성 객체 얻기
+			StringBuilder selectAllOrder=new StringBuilder();
+			selectAllOrder
+			.append("	select  u.ORD_DATE, u.ORDNO, g.GNAME, od.AMOUNT, g.PRICE, u.DLVY_PRO, m.NAME	")
+			.append("	from UORDER u, GOODS g, MEMBER m, ORDER_DETAIL od	")
+			.append("	where m.id=u.id and od.gcode=g.gcode and u.ordno=od.ordno	")
+			.append("	and ( DLVY_PRO in ('C','R') )	");
+			
+			pstmt=con.prepareStatement(selectAllOrder.toString());
+		//5. 바인드 변수 값 설정
+		//6. 쿼리문 실행 후 값 얻기
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				rVO=new RecallVO();
+				rVO.setDate(rs.getString("ORD_DATE"));
+				rVO.setOrderNum(rs.getInt("ORDNO"));
+				rVO.setProductName(rs.getString("GNAME"));
+				rVO.setQuantity(rs.getInt("AMOUNT"));
+				rVO.setPrice(rs.getInt("PRICE"));
+				rVO.setProcessStatus(rs.getString("DLVY_PRO").charAt(0));
+				rVO.setUserName(rs.getString("NAME"));
+				list.add(rVO);
+			}//end while
+		}finally {
+			//7. 연결 끊기
+			db.dbClose(rs, pstmt, con);
+		}//end finally
+		return list;
+	}//selectRecallAllOrder
+	
+	/**
+	 * 주문자나 id로 검색한 주문 내역을 조회하여 조회된 주문 정보를 넣어주기 위한 일
+	 * @param receiver
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<RecallVO> selectRecallAllOrder(String receiver) throws SQLException{
+		RecallVO rVO=null;
+		List<RecallVO> list= new ArrayList<RecallVO>();
+		
+		DbConnection db=DbConnection.getInstance();
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+		//1. JNDI 사용 객체 생성
+		//2. DataSource 얻기
+		//3. Connection 얻기
+			con=db.getConn("jdbc/dbcp");
+			//4. 쿼리문 생성 객체 얻기
+			StringBuilder selectAllOrder=new StringBuilder();
+			selectAllOrder
+			.append("	select  u.ORD_DATE, u.ORDNO, g.GNAME, od.AMOUNT, g.PRICE, u.DLVY_PRO, m.NAME	")
+			.append("	from UORDER u, GOODS g, MEMBER m, ORDER_DETAIL od	")
+			.append("	where m.id=u.id and od.gcode=g.gcode and u.ordno=od.ordno and  m.id=u.id	")
+			.append("	and ( DLVY_PRO in ('C','R') )	")
+			.append("	 and ( m.name= ? or m.id=? or u.ORDNO= ? )	");
+			
+			pstmt=con.prepareStatement(selectAllOrder.toString());
+		//5. 바인드 변수 값 설정
+			pstmt.setString(1, receiver);
+			pstmt.setString(2, receiver);
+			pstmt.setString(3, receiver);
+		//6. 쿼리문 실행 후 값 얻기
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				rVO=new RecallVO();
+				rVO.setDate(rs.getString("ORD_DATE"));
+				rVO.setOrderNum(rs.getInt("ORDNO"));
+				rVO.setProductName(rs.getString("GNAME"));
+				rVO.setQuantity(rs.getInt("AMOUNT"));
+				rVO.setPrice(rs.getInt("PRICE"));
+				rVO.setProcessStatus(rs.getString("DLVY_PRO").charAt(0));
+				rVO.setUserName(rs.getString("NAME"));
+				list.add(rVO);
+			}//end while
+		}finally {
+			//7. 연결 끊기
+			db.dbClose(rs, pstmt, con);
+		}//end finally
+		return list;
+		
+	}//selectAllOrder
+	
+	/**
 	 * 교환/반품 처리 상태 변경 후, 수정 된 주문 정보를 DB에 update하는 일
 	 * @param progress
 	 * @return
@@ -196,9 +306,9 @@ DbConnection db=DbConnection.getInstance();
 			//4.
 			StringBuilder updateShipPro=new StringBuilder();
 			updateShipPro
-			.append("		")
-			.append("		")
-			.append("		");
+			.append("	update UORDER	")
+			.append("	set  DLVY_PRO=	")
+			.append("	where    DLVY_PRO= ? and  id= ?  ");
 			
 			pstmt=con.prepareStatement(updateShipPro.toString());
 			//5.

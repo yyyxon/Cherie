@@ -136,6 +136,7 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 			<table id="order_list" class="table tableList">
 				<tr id="top_title">
 					<!-- 컬럼 사이즈 -->
+					<th style="width:100px"></th>
 					<th style="width:170px">No</th>
 					<th style="width:250px">주문일시</th>
 					<th style="width:230px">주문번호</th>
@@ -155,6 +156,7 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 				
 				<c:forEach var="order" items="${ orderList }" varStatus="i">
 				<tr>
+				<td><input type="checkbox"></td> 
 				 <td><c:out value="<%=startNum++ %>"/></td> 
 				<td><c:out value="${ order.date }"/></td>
 				<td><c:out value="${ order.orderNo }"/></td>

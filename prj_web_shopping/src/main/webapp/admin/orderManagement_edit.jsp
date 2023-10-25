@@ -1,3 +1,4 @@
+<%@page import="admin.vo.RecallVO"%>
 <%@page import="admin.vo.BoardRangeVO"%>
 <%@page import="common.dao.BoardDAO"%>
 <%@page import="java.sql.SQLException"%>
@@ -60,10 +61,11 @@ BoardRangeVO brVO=new BoardRangeVO();
 
 String field=request.getParameter("field");
 String keyword=request.getParameter("keyword");
+String tableName="UORDER";
 
 brVO.setField(field);
 brVO.setKeyword(keyword);
-brVO.setTableName("UORDER");
+brVO.setTableName(tableName);
 
 int totalCount=bDAO.totalCount(brVO);
 
@@ -91,9 +93,9 @@ int deliveryPrice=2500;
 
 try{
 	OrderProcessDAO opDAO=OrderProcessDAO.getInstance();
-List<OrderVO> list=opDAO.selectAllOrder();
+List<RecallVO> list=opDAO.selectRecallAllOrder();
 
-pageContext.setAttribute("orderList", list);
+pageContext.setAttribute("recallList", list);
 pageContext.setAttribute("deliveryPrice", deliveryPrice);
 }catch(SQLException se){
 	se.printStackTrace();
@@ -131,42 +133,47 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 			<table id="order_list" class="table tableList">
 				<tr id="top_title">
 					<!-- 컬럼 사이즈 -->
-				<th style="width:170px">No</th>
-					<th style="width:250px">주문번호</th>
+				<th style="width:100px"></th>
+				<th style="width:150px">No</th>
+					<th style="width:150px">주문번호</th>
 					<th style="width:230px">주문자명</th>
 					<th style="width:230px">주문일시</th>
-					<th style="width:200px">교환/반품 일시</th>
-					<th style="width:200px">상품명</th>
+					<th style="width:230px">교환/반품 일시</th>
+					<th style="width:230px">상품명</th>
 					<th style="width:200px">수량</th>
 					<th style="width:200px">가격정보</th>
 					<th style="width:200px">배송비</th>
 					<th style="width:200px">총 주문액</th>
 					<th style="width:200px">총 처리상태</th>
 				</tr>
-				<c:if test="${ empty orderList }">
+				<c:if test="${ empty recallList }">
 				<tr>
 				<td colspan="10" style="text-align: center;">회원정보가 존재하지 않습니다</td>
 				</tr>
 				</c:if>
 				
-				<c:forEach var="order" items="${ orderList }" varStatus="i">
+				<c:forEach var="recall" items="${ recallList }" varStatus="i">
 				<tr>
+				 <td><input type="checkbox"></td> 
 				 <td><c:out value="<%=startNum++ %>"/></td> 
-				<td><c:out value="${ order.date }"/></td>
-				<td><c:out value="${ order.orderNo }"/></td>
-				<td><c:out value="${ order.productName }"/></td>
-				<td><c:out value="${ order.amount }"/></td>
-				<td><c:out value="${ order.price }"/></td>
+				<td><c:out value="${ recall.orderNum }"/></td>
+				<td><c:out value="${ recall.userName }"/></td>
+				<td><c:out value="${ recall.date }"/></td>
+				<td><c:out value=""/></td>
+				<td><c:out value="${ recall.productName }"/></td>
+				<td><c:out value="${ recall.quantity }"/></td>
+				<td><c:out value="${ recall.price }"/></td>
 				<td><c:out value="<%= deliveryPrice %>"/></td>
+			 	<td><c:out value="${ recall.price + deliveryPrice }"/></td> 
 				<td>
 				 <select name="statuslist" style="border: 1px solid #CCCCCC; border-radius: 5px; font-size: 18px; height: 30px;">
-					<option>결제완료</option>
-					<option>배송중</option>
-					<option>배송완료</option> 
+					<option>반품신청</option>
+					<option>처리중</option>
+					<option>반품완료</option> 
+					<option>교환신청</option> 
+					<option>교환완료</option> 
 				</select> 
 				</td>
-				<td><c:out value="${ order.userName }"/></td>
-			 	<td><c:out value="${ order.price + deliveryPrice }"/></td> 
 				</tr>
 				</c:forEach>
 			</table>

@@ -75,15 +75,15 @@ public class BucketDAO {
 	 * 
 	 * }//deleteList
 	 * 
-	 * public int deleteList(String) throws SQLException{ List<BucketVO> list=new
-	 * ArrayList<BucketVO>();
+	 * public int deleteList(String) throws SQLException{ 
+	 * List<BucketVO> list=new ArrayList<BucketVO>();
 	 * 
 	 * 
 	 * 
 	 * }//deleteList
 	 * 
-	 * public int changeAmount(String[]) throws SQLException{ List<BucketVO>
-	 * list=new ArrayList<BucketVO>();
+	 * public int changeAmount(String[]) throws SQLException{ 
+	 * List<BucketVO> list=new ArrayList<BucketVO>();
 	 * 
 	 * 
 	 * 

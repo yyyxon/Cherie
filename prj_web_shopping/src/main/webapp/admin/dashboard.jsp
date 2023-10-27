@@ -164,6 +164,10 @@ td {
 	width: 57px;
 }
 
+tr {
+	font-size: 14px;
+}
+
 tbody{
 	font-size: 14px;
 }
@@ -273,42 +277,42 @@ tbody{
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>2023-10-20</td>
 							<td>120</td>
 							<td>561,500</td>
 							<td>1636</td>
 							<td>10</td>
 						</tr>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr class="total">
+						<tr class="total" style="font-size:14px; height: 46px">
 							<td>합계</td>
 							<td>1</td>
 							<td>1</td>
@@ -334,35 +338,35 @@ tbody{
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>1분기</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>2분기</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>3분기</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr>
+						<tr style="font-size:14px; height: 46px">
 							<td>4분기</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 							<td>1</td>
 						</tr>
-						<tr class="total">
+						<tr class="total" style="font-size:14px; height: 46px">
 							<td>합계</td>
 							<td>1</td>
 							<td>1</td>

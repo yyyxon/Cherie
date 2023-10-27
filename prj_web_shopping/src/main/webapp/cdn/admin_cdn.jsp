@@ -7,4 +7,4 @@
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- table css -->
-<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/table_design.css"/>
+<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/table.css"/>

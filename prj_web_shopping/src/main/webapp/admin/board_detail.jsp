@@ -79,30 +79,6 @@ $(function() {
 	$("#btnLogout").click(function() {
 		location.href="logout.jsp";
 	});
-	
-/* 	$("#btnDel").click(function() {
-		if(confirm("삭제 하시겠습니까?")){
- 			var rcode = $("#rcode").val();
-			$.ajax({
-				url : "board_delete_process.jsp",
-				type : "get",
-				data : "rcode="+rcode,
-				dataType : "json",
-				error : function(xhr){
-					alert("서버에서 문제가 발생하였습니다.");
-					location.href = "boardManagement.jsp";
-				},
-				success : function(jsonObj){
-					if(jsonObj.result){
-						alert("삭제 되었습니다.")
-					}else{
-						alert("서버에서 문제가 발생하였습니다.");
-					}
-					location.href = "boarddManagement.jsp";
-				}
-			});
-		}
-	}); */
 });
 
 function boardDelete(rcode){

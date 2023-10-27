@@ -29,18 +29,16 @@ bmDAO.deleteReview(rcode);
 <%
 
 int rcode = Integer.parseInt(request.getParameter("rcode"));
-int cnt = 0;
 
 BoardManageDAO bmDAO = BoardManageDAO.getInstance();
+JSONObject jsonObj = new JSONObject();
 
 try{
-	cnt = bmDAO.deleteReview(rcode);
+	jsonObj.put("result",bmDAO.deleteReview(rcode)==0?false:true);
 }catch(SQLException se){
 	se.printStackTrace();
 }
 
-JSONObject jsonObj = new JSONObject();
-jsonObj.put("result",cnt==0?false:true);
 out.print(jsonObj.toJSONString());
 %>
 

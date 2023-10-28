@@ -266,7 +266,7 @@ $(function() {
 	$("#inputGroupFileAddon04").click(function() {
 		//유효성 검증
 		var blockExt = ["jpg", "png", "bmp", "gif"];
-		var fileName = $("#upFile").val();
+		var fileName = $("#inputGroupFile04").val();
 		var flag = false;
 		
 		var fileExt = fileName.substring(fileName.lastIndexOf(".")+1);
@@ -280,7 +280,25 @@ $(function() {
 			return;
 		}
 		
-		$("#imgFrm").submit();
+		var formData = new FormData();
+		formData.append("file", $("#inputGroupFile04")[0].files[0]);
+		
+		alert("formData : "+formData);
+		
+		$.ajax({
+			url:"notice_file_process.jsp",
+			type:"post",
+			data:formData,
+			dataType:"json",
+			processData: false,
+			contentType: false,
+			error: function(xhr) {
+				alert("업로드에 실패하였습니다."+xhr.status);
+			},
+			success: function(json) {
+				alert(json.msg);
+			}
+		});
 	});
 });
 </script>
@@ -404,7 +422,7 @@ if("2".equals(flag)) {
 			<input type="text" class="form-control" id="basic-url" name="title" aria-describedby="basic-addon3" value="${title}" style="font-size: 16px;font-weight: bold;">
 		</div>
 		<div class="input-group">
-		<form id="imgFrm" name="imgFrm">
+		<form id="imgFrm" name="imgFrm" enctype="multipart/form-data">
 			<input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" style="font-size: 16px">
 			<input class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04" style="font-size: 16px;" value="Button">
 		</form>

@@ -9,21 +9,33 @@
 <title>주문내역</title>
 </head>
 <style type="text/css">
+.ec-base-table.typeList table {
+    border-top: 1px solid #d7d5d5;
+}
+
+.ec-base-table table {
+    position: relative;
+    margin: 10px 0 0;
+    border: 1px solid #d7d5d5;
+    border-top: 0;
+}
+tr, td{
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+/* 내가 만든 거 */
 #fst{
 margin-top: 170px;
 min-height: 30px;
-background: red;
 }
 #sec{
-background: green;
 }
 #txtDiv{
 padding: 10px;
 padding-top: 50px;
-background: yellow;
 }
 #thr{
-border: 1px solid #0000FF;
 }
 .loc{
 margin: 0px auto;
@@ -38,8 +50,46 @@ text-align: center;
 </style>
 <script type="text/javascript">
 	$(function() {
+		$("#pills-home").click(function() {
+			$.ajax({
+				url:"order_list_process.jsp",
+				type:"get",
+				data:"flag=o",
+				dataType:"json",
+				error: function(xhr) {
+					alert(xhr.status);
+				},
+				success: function(jsonObj) {
+					alert(jsonObj);
+				}
+			});
+			
+		});
 		
-	});
+		$("#pills-profile").click(function() {
+				url:"order_list_process.jsp",
+				type:"get",
+				data:"flag=r",
+				dataType:"json",
+				error: function(xhr) {
+					alert(xhr.status);
+				},
+				success: function(jsonObj) {
+					alert(jsonObj);
+				}
+			});
+			
+		});
+		
+	});//load end
+	
+	function display(jsonObj) {
+		
+	}
+	
+	function detail(ordno) {
+		window.location = "order_detail.jsp?ordno="+ordno;
+	}
 </script>
 <body>
 <!-- header -->
@@ -70,57 +120,68 @@ text-align: center;
 <!-- 교환/반품조회 클릭 시 나오는 부분 -->
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0"><strong>교환/반품 상품 정보</strong></div>
 </div>
-	<table class="table tableList" id="order_list">
-		<thead>
+<div class="ec-base-table typeList gBorder pad">
+	<table  border="1" summary="" style="text-align:center; font-size:13px">
+		<colgroup class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
+			<col style="width:120px;"/>
+			<col style="width:70px;"/>
+			<col style="width:300px;"/>
+			<col style="width:100px;"/>
+			<col style="width:100px;"/>
+			<col style="width:100px;"/>
+			<col style="width:100px;"/>
+		</colgroup>
+		<thead class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 			<tr>
-			<th>&ensp;주문 일자<br>[주문 번호]</th>
-			<th>이미지</th>
-			<th>상품 정보</th>
-			<th>수량</th>
-			<th>상품구매금액</th>
-			<th>주문처리상태</th>
-			<th>교환/반품</th>
+			<th scope="col">&ensp;주문 일자<br>[주문 번호]</th>
+			<th scope="col">이미지</th>
+			<th scope="col">상품 정보</th>
+			<th scope="col">수량</th>
+			<th scope="col">상품구매금액</th>
+			<th scope="col">주문처리상태</th>
+			<th scope="col">교환/반품</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-			<td>2023-10-10<br>[203949-394494]</td>
-			<td>image</td>
-			<td>product information</td>
-			<td>2</td>
-			<td>135,000원</td>
-			<td>배송완료</td>
-			<td>-</td>
+		<tbody class="xans-element- xans-board xans-board-list-1002 xans-board-list xans-board-1002 center">
+			<tr onclick="detail(12345)">
+				<td>2023-10-10<br>[203949-394494]</td>
+				<td>image</td>
+				<td class="subject left txtBreak">product information</td>
+				<td>2</td>
+				<td>135,000원</td>
+				<td>배송완료</td>
+				<td>-</td>
 			</tr>
 			<tr>
-			<td>2023-10-10<br>[203949-394494]</td>
-			<td>image</td>
-			<td>product information</td>
-			<td>2</td>
-			<td>135,000원</td>
-			<td>배송완료</td>
-			<td>-</td>
+				<td>2023-10-10<br>[203949-394494]</td>
+				<td>image</td>
+				<td class="subject left txtBreak">product information</td>
+				<td>2</td>
+				<td>135,000원</td>
+				<td>배송완료</td>
+				<td>-</td>
 			</tr>
 			<tr>
-			<td>2023-10-10<br>[203949-394494]</td>
-			<td>image</td>
-			<td>product information</td>
-			<td>2</td>
-			<td>135,000원</td>
-			<td>배송완료</td>
-			<td>-</td>
+				<td>2023-10-10<br>[203949-394494]</td>
+				<td>image</td>
+				<td class="subject left txtBreak">product information</td>
+				<td>2</td>
+				<td>135,000원</td>
+				<td>배송완료</td>
+				<td>-</td>
 			</tr>
 			<tr>
-			<td>2023-10-10<br>[203949-394494]</td>
-			<td>image</td>
-			<td>product information</td>
-			<td>2</td>
-			<td>135,000원</td>
-			<td>배송완료</td>
-			<td>-</td>
+				<td>2023-10-10<br>[203949-394494]</td>
+				<td>image</td>
+				<td class="subject left txtBreak">product information</td>
+				<td>2</td>
+				<td>135,000원</td>
+				<td>배송완료</td>
+				<td>-</td>
 			</tr>
 		</tbody>
 	</table>
+</div>
 	</div>
 	<div class="loc" style="text-align: center;">
 		<a href="#prev">PREV</a>

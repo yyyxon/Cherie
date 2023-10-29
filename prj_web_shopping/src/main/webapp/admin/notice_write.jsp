@@ -256,7 +256,7 @@ $(function() {
 		var context = $("#context").val();
 		
 		if(title != "" && context != "") {
-			$("#hid").val(title);
+			$("#hidTxt").val(title);
 			$("#sfrm").submit();
 		} else {
 			alert("내용을 입력하세요.");
@@ -297,6 +297,7 @@ $(function() {
 			},
 			success: function(json) {
 				alert(json.msg);
+				${"#hidImg"}.val(json.image);
 			}
 		});
 	});
@@ -308,6 +309,7 @@ String flag = request.getParameter("flag");
 NoticeVO nVO = null;
 String title = "";
 String context = "";
+String image = "";
 
 if("2".equals(flag)) {
 	String ncode = request.getParameter("ncode");
@@ -317,7 +319,7 @@ if("2".equals(flag)) {
 	
 	pageContext.setAttribute("title", title);
 	pageContext.setAttribute("ncode", ncode);
-	pageContext.setAttribute("context", context);
+	pageContext.setAttribute("image", image);
 }
 
 %>
@@ -427,12 +429,16 @@ if("2".equals(flag)) {
 			<input class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04" style="font-size: 16px;" value="Button">
 		</form>
 		</div>
-		<div>
-<form id="sfrm" method="post" action="notice_write_process.jsp?no=5&flag=${param.flag}&ncode=${ncode}">
+<div>
+	<form id="sfrm" method="post" action="notice_write_process.jsp?no=5&flag=${param.flag}&ncode=${ncode}">
+			<div style="margin: 0px auto;">
+				<img alt="${image}" src="http://192.168.10.143/prj_web_shopping/upload/notice/${image}">
+			</div>
 			<textarea id="context" name="context"><%=context%></textarea>
-			<input type="hidden" id="hid" name="hid">
-</form>
-		</div>
+			<input type="hidden" id="hidTxt" name="hidTxt">
+			<input type="hidden" id="hidImg" name="hidImg">
+	</form>
+</div>
 	</div>
 </div>
 <div>

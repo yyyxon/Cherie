@@ -1,3 +1,4 @@
+<%@page import="admin.dao.NoticeDAO"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.io.IOException"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
@@ -7,14 +8,13 @@
     pageEncoding="UTF-8"%>
 <%@ page info="사진 업로드 하는 jsp"%>
 <%
-File saveDir = new File("E:/dev/workspace/prj_web_shopping/src/main/webapp/upload");
+File saveDir = new File("E:/dev/workspace/prj_web_shopping/src/main/webapp/upload/notice");
 
 int maxSize = 1024*1024*10; //10Mb
-try{
 MultipartRequest mr = new MultipartRequest(request, saveDir.getAbsolutePath(), maxSize, "UTF-8", new DefaultFileRenamePolicy());
 
 //input type="file"인 것
-String originFile = mr.getOriginalFileName("inputGroupFile04");
+/* String originFile = mr.getOriginalFileName("inputGroupFile04"); */
 String newFile = mr.getFilesystemName("inputGroupFile04");
 
 boolean flag = false;
@@ -26,12 +26,14 @@ if(newFile != null) {
 		flag = true;
 		tempFile.delete();
 	}
+	
 }
 
 JSONObject jsonObj = new JSONObject();
 if(!flag) { 
 	jsonObj.put("uploadFlag", true);
 	jsonObj.put("msg","업로드 성공하였습니다.");
+	jsonObj.put("image", newFile);
 
 } else {
 	jsonObj.put("uploadFlag", false);

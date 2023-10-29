@@ -1,3 +1,6 @@
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="java.io.File"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="admin.dao.UserReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,9 +29,13 @@ $(function(){
 </head>
 <body>
 <% 
-String rcode= request.getParameter("rcode");
-System.out.println(rcode+"del");
+
 UserReviewDAO uDAO= UserReviewDAO.getInstance();
+File saveDir = new File("C:/Users/user/git/prj_online_store/prj_web_shopping/src/main/webapp/upload");
+int maxSize=1024*1024*30;
+MultipartRequest mr = new MultipartRequest( request, saveDir.getAbsolutePath() , maxSize , "UTF-8" , new DefaultFileRenamePolicy() );
+String rcode= mr.getParameter("rcode");
+System.out.println(rcode+"del");
 try{
 	 uDAO.deleteReivew(Integer.parseInt(rcode));
 	
@@ -38,7 +45,8 @@ try{
 }catch (SQLException se) {
 	se.printStackTrace();
 }//end catch%>
-
-<strong>삭제가 완료되었습니다.</strong>
+<div style=" margin-top: 300px; margin-left: 150px; font: pretendard; " >
+리뷰 삭제가 완료 되었습니다.
+</div>
 </body>
 </html>

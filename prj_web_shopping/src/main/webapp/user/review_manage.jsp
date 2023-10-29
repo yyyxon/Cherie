@@ -94,42 +94,42 @@ try{
 $(function(){
 
 	
-	$("#delete").click(function() {
+//	$("#delete").click(function() {
 		
-		$.ajax({
-			url:"review_manage_del_process.jsp",
-			type:"post",
-			async:true,
-			data: "rcode=<%= rcode %>" ,
-			dataType:"html",
+		//$.ajax({
+			//url:"review_manage_del_process.jsp",
+		//	type:"post",
+			//async:true,
+			//data: "rcode=<%= rcode %>" ,
+			//dataType:"html",
 			
-			error:function(xhr){
-				alert("에러 발생");
-			},
-			success:function(data){
-				$("#resultDiv").html(data);
-			}//ajax
-		})
-	});
+		//	error:function(xhr){
+			//	alert("에러 발생");
+	//		},
+			//success:function(data){
+			//	$("#resultDiv").html(data);
+			//}///ajax
+		//})
+	//});
 	
-	$("#save").click(function() {
-		 ;
+	//$("#save").click(function() {
+		 
 	
-		$.ajax({
-			url:"review_manage_updt_process.jsp",
-			type:"POST",
-			async: true,
-			data: "rcode=<%= rcode %>&review=${review.review}&star=${review.star}" ,
-			dataType:"html",
+		//$.ajax({
+			//url:"review_manage_updt_process.jsp",
+			//type:"POST",
+			//async: true,
+			//data: "rcode=<%= rcode %>&review="+$('#review').val()+"&star=${review.star}" ,
+			//dataType:"html",
 			
-			error:function(xhr){
-				alert("에러 발생");
-			},
-			success:function(data){
-				$("#resultDiv").html(data);
-			}
+			//error:function(xhr){
+		//		alert("에러 발생");
+			//},
+		//	success:function(data){
+			//	$("#resultDiv").html(data);
+		//	}
 			
-		})//ajax
+		//})
 		
 		//$("#frm").submit();
 		//$("#uploadForm").submit();
@@ -142,6 +142,26 @@ $(function(){
 
 <body>
 
+<script type="text/javascript">
+$(function(){
+	$("#save").click(function(){
+		document.uploadForm.action="review_manage_updt_process.jsp";
+		//$("#frm").submit();
+		$("#uploadForm").submit();
+		
+	});
+	
+	$("#delete").click(function(){
+		document.uploadForm.action="review_manage_del_process.jsp";
+		$("#uploadForm").submit();
+		
+	});
+	
+	
+});
+</script>
+
+
 
 
 
@@ -150,7 +170,10 @@ $(function(){
  <img src="../common/images/icon/check-circle.svg" style="margin-left: 5px;">&ensp;상품 만족도
  </div>
 
-<form action="review_manage_updt_process.jsp" id="frm"  name="frm"><!-- get방식 일때는 evt가 발생하면 쿼리스트링이 삭제가된다. -->
+<!-- <form action="review_manage_updt_process.jsp" id="frm"  name="frm"> --><!-- get방식 일때는 evt가 발생하면 쿼리스트링이 삭제가된다. -->
+ <form action="" id="uploadForm"  name="uploadForm" method="post" enctype="multipart/form-data" >
+<input type="button" id="a" value="aaa">
+<input type="button" id="b" value="bbb">
 <input type="hidden" name="rcode" value="<%= rcode %>"/>
 <!-- 상품 만족도 -->
 <div style="border: 1px solid #333; margin-left: 5px; width:502px; height:150px; text-align: center" >
@@ -240,27 +263,32 @@ $(function(){
 <!-- 리뷰 작성 -->
 <img src="../common/images/icon/check-circle.svg" style="margin-left: 5px;">&ensp;리뷰 작성
 <div style=" margin-left: 5px;" >
-<textarea  style="width:502px; height:180px;" name="review"><c:out value="${review.review}" /></textarea>
+<textarea  style="width:502px; height:180px;" name="review" id="review"><c:out value="${review.review}" /></textarea>
 
 </div>
-</form>
+
 <br>
-<<form action="upload" id="uploadForm"  name="uploadForm" method="post" enctype="multipart/form-data" >
+
 <input type="file" name="file" id="file" style="display:none"/>
-</form>
 <img src="../common/images/icon/check-circle.svg" style="margin-left: 5px; ">&ensp;동영상/사진 첨부
-<div style="border: 1px solid #333; width:502px; height:200px; margin-left: 5px; " onclick="onclick=document.all.file.click()" >
+<div style="border: 1px solid #333; width:502px; height:180px; margin-left: 5px; " onclick="onclick=document.all.file.click()" >
 <button type="button" style="padding: 5px 10px;  font-size: 15px; position: absolute; left:210px; top:540px;"  class="btn btn-outline-danger" ><img src="../common/images/icon/camera.svg" >&ensp;첨부하기</button>
 
 </div>
+<input type="submit" value="전송" style="padding: 3px 10px; font-size: 10px; position: absolute;
+    top: 662px;
+    left: 350px;" class="btn btn-dark" id="save"/>
 	
+</form> 
+
+
 
 <div id="btndiv" style="position: absolute;
     top: 660px;
     left: 400px; ">
-<input type="button" style="padding: 3px 10px; font-size: 10px" value="저장" id="save" class="btn btn-dark">
-<input type="button" style="padding: 3px 10px; font-size: 10px" value="삭제" id="delete" class="btn btn-dark">
-<br>
+<!-- <input type="button" style="padding: 3px 10px; font-size: 10px" value="저장" id="save" class="btn btn-dark">
+ --><input type="button" style="padding: 3px 10px; font-size: 10px" value="삭제" id="delete" class="btn btn-dark">
+
 
 </div>
 <span id="resultDiv" style="position: absolute;

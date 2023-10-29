@@ -158,6 +158,26 @@ $(function(){
 	});
 	
 	
+	$('#review').keyup(function (e) {
+		let content = $("#review").val();
+	    
+	    // 글자수 세기
+	    if (content.length == 0 || content == '') {
+	    	$('.textCount').text('0자');
+	    } else {
+	    	$('.textCount').text(content.length + '자');
+	    }
+	    
+	    // 글자수 제한
+	    if (content.length > 200) {
+	    	// 200자 부터는 타이핑 되지 않도록
+	        $(this).val($(this).val().substring(0, 200));
+	        // 200자 넘으면 알림창 뜨도록
+	        alert('글자수는 200자까지 입력 가능합니다.');
+	    };
+	});
+	
+	
 });
 </script>
 
@@ -261,11 +281,18 @@ $(function(){
 <div></div>
 <br/>
 <!-- 리뷰 작성 -->
+<div class="form-group col-12" style=" margin-left: 5px;" >
 <img src="../common/images/icon/check-circle.svg" style="margin-left: 5px;">&ensp;리뷰 작성
-<div style=" margin-left: 5px;" >
+  <div class="textLengthWrap">
+  </div>
+  <textarea style="width:502px; height:180px; resize: none;" maxlength="200" name="review" id="review"><c:out value="${review.review}" />
+  </textarea>	
+    <p class="textCount" style="font-size: 10px; position: absolute; top:430px; left: 445px; padding: 3px">0 자</p><p class="textTotal" style="padding: 3px;position: absolute; top:430px; left: 470px;font-size: 10px">/200자</p>
+</div>
+<%-- <div style=" margin-left: 5px;" >
 <textarea  style="width:502px; height:180px;" name="review" id="review"><c:out value="${review.review}" /></textarea>
 
-</div>
+</div> --%>
 
 <br>
 

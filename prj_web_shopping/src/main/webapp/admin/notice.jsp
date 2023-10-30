@@ -43,8 +43,6 @@ if(tempPage != null) {
 pageContext.setAttribute("totalPage", totalPage);
 pageContext.setAttribute("currentPage", currentPage);
 
-System.out.println("totalPage : "+totalPage+" / currentPage : "+currentPage);
-
 //5.시작 번호
 int startNum = currentPage*pageScale-pageScale+1;
 pageContext.setAttribute("startNum", startNum);

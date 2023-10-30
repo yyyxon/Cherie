@@ -43,7 +43,6 @@ public class NoticeDAO {
 			.append("	NCODE, ID, NOT_TITLE, NOT_TEXT, NOT_DATE, VIEW_NUM, EDIT_DATE	")
 			.append("	FROM NOTICE WHERE DEL_FLAG='N')	");
 			
-			System.out.println(brVO.getStartNum());
 			boolean flag = false;
 			if(brVO.getStartNum() != 0) {
 				selectNotice.append("	WHERE RNUM BETWEEN ? AND ?	");

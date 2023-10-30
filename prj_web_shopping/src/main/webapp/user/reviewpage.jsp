@@ -1,15 +1,14 @@
+<%@page import="admin.dao.UserReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page info=""%>
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration" %>
-<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@ page import="com.oreilly.servlet.MultipartRequest"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3, user-scalable=yes">
+<meta charset="UTF-8" >
 
 <title>리뷰 작성</title>
 <%-- <jsp:include page="/cdn/cdn.jsp" />
@@ -85,9 +84,11 @@ $(function(){
 </script>
 
 </head>
-<jsp:useBean id="sVO" class="user.vo.SummaryVO" scope="page"></jsp:useBean> 
-<jsp:setProperty property="*" name="sVO"/>
+<jsp:useBean id="urVO" class="admin.vo.UserReviewVO" scope="page"/><!-- string party_no2="양승연"+"이동원"+"이승우"+"임태균"+"김인영" --> 
+<jsp:setProperty property="*" name="urVO"/>
 <%
+UserReviewDAO uDAO= UserReviewDAO.getInstance();
+
 
 %>
 <body>
@@ -96,7 +97,8 @@ $(function(){
 
 
 <!-- <section class="mypage-cont" style="  position:relative; top:10px;left:0px; font-family: musinsa;"> -->
-            <form id="reviewForm" name="reviewForm" method="post" style="position:relative; left:30px">
+		
+            <form action="" id="frm" name="frm" method="post" style="position:relative; left:30px">
                 <input type="hidden" name="tmpcode" value="1697704836038">
                 <input type="hidden" name="imageCount" value="0">
                 <input type="hidden" name="opt_kind_cd" id="optKindCode" value="BEAUTY">
@@ -108,7 +110,7 @@ $(function(){
 
     <ul class="n-info-txt">
     	<br/>
-        <li>작성하신 후기는 Cherie 및 Cherie 글로벌 이용자에게 공개됩니다. </li>
+        <li>작성하신 후기는 Cherie 및 Cherie 글로벌 이용자에게 공개됩니다. </li> 
         <li>후기 내용은 20자 이상 작성합니다.</li>
         <li>
             아래에 해당할 경우 일부 후기는 조건에 따라 비노출 처리 됩니다.
@@ -131,6 +133,7 @@ $(function(){
                             <img src="//image.msscdn.net/images/goods_img/20210713/2027866/2027866_16974232192040_100.jpg" alt="레플리카 바이 더 파이어플레이스 EDT 100ML">
                         </a>
                         <ul class="info">
+                       <!--  <li class="name"><a href="/app/goods/2027866">레플리카 바이 더 파이어플레이스 EDT 100ML</a></li> -->
                             <li class="name">레플리카 바이 더 파이어플레이스 EDT 100ML</li>
                             
                             
@@ -185,7 +188,7 @@ $(function(){
                             <div class="input-area">
                                 <!-- Text -->
                                 <div class="tab-block is-active" data-tab="text">
-                                    <textarea id="goods_text" style="width:1000px" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요. (20자 이상 작성)" name="review"></textarea>
+                                    <textarea id="goods_text" style="width:600px" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요. (20자 이상 작성)" name="review"></textarea>
                                     <p class="info" id="text_size">0 자 / 20자 이상</p>
                                 </div>
                             </div>

@@ -86,7 +86,7 @@ try{
 }catch (SQLException se) {
 	se.printStackTrace();
 }//end catch
-
+int reviewSize=sVO.getReview().length();
 
 %>
 
@@ -145,14 +145,14 @@ $(function(){
 <script type="text/javascript">
 $(function(){
 	$("#save").click(function(){
-		document.uploadForm.action="review_manage_updt_process.jsp";
+		document.uploadForm.action="posting_updt_process.jsp";
 		//$("#frm").submit();
 		$("#uploadForm").submit();
 		
 	});
 	
 	$("#delete").click(function(){
-		document.uploadForm.action="review_manage_del_process.jsp";
+		document.uploadForm.action="posting_del_process.jsp";
 		$("#uploadForm").submit();
 		
 	});
@@ -287,7 +287,7 @@ $(function(){
   </div>
   <textarea style="width:502px; height:180px; resize: none;" maxlength="200" name="review" id="review"><c:out value="${review.review}" />
   </textarea>	
-    <p class="textCount" style="font-size: 10px; position: absolute; top:430px; left: 445px; padding: 3px">0 자</p><p class="textTotal" style="padding: 3px;position: absolute; top:430px; left: 470px;font-size: 10px">/200자</p>
+    <p class="textCount" style="font-size: 10px; position: absolute; top:430px; left: 445px; padding: 3px"><%=reviewSize %> 자</p><p class="textTotal" style="padding: 3px;position: absolute; top:430px; left: 470px;font-size: 10px">/200자</p>
 </div>
 <%-- <div style=" margin-left: 5px;" >
 <textarea  style="width:502px; height:180px;" name="review" id="review"><c:out value="${review.review}" /></textarea>

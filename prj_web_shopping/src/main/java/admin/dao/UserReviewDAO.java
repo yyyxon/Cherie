@@ -190,7 +190,48 @@ public void deleteReivew (int rcode) throws SQLException {
 	
 
 }//deleteReivew
+
 	
+public SummaryVO selectneReview(int rcode) throws SQLException {
+	
+	
+	SummaryVO sVO= null;
+	
+	DbConnection db= DbConnection.getInstance();
+	Connection con = null;
+	PreparedStatement pstmt=null;
+	ResultSet rs= null;
+	
+	
+	
+	
+	try {
+		con=db.getConn("jdbc/dbcp");
+		
+		String selectAllReview = "select distinct m.name, r.REV_CONT,  r.star, r.rcode from member m, review r, category c where m.id=r.id   and r.rcode= ? ";
+
+		
+		
+		pstmt=con.prepareStatement(selectAllReview);
+		
+		pstmt.setInt(1, rcode);
+		
+		rs=pstmt.executeQuery();
+		if(rs.next()) {
+			sVO= new SummaryVO();
+			sVO.setName(rs.getString("name"));
+			sVO.setReview(rs.getString("REV_CONT"));
+			sVO.setRcode(rs.getInt("rcode"));
+			sVO.setStar(rs.getInt("star"));
+		
+		}
+	}finally {
+		db.dbClose(rs, pstmt, con);
+		
+	}
+	
+	return sVO;
+}
 	
 	
 }

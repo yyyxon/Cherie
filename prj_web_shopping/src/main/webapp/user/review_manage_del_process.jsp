@@ -31,7 +31,7 @@ $(function(){
 <% 
 
 UserReviewDAO uDAO= UserReviewDAO.getInstance();
-File saveDir = new File("C:/Users/user/git/prj_online_store/prj_web_shopping/src/main/webapp/upload");
+File saveDir = new File("C:/Users/user/git/prj_online_store/prj_web_shopping/src/main/webapp/upload/review");
 int maxSize=1024*1024*30;
 MultipartRequest mr = new MultipartRequest( request, saveDir.getAbsolutePath() , maxSize , "UTF-8" , new DefaultFileRenamePolicy() );
 String rcode= mr.getParameter("rcode");

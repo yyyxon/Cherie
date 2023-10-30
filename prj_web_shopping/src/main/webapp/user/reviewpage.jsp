@@ -45,7 +45,6 @@
 
 
 
-
 <style type="text/css">
 .review-satisfaction-form__radio {display:none; }
 #myReviewAgree{display:none; }
@@ -86,7 +85,11 @@ $(function(){
 </script>
 
 </head>
+<jsp:useBean id="sVO" class="user.vo.SummaryVO" scope="page"></jsp:useBean> 
+<jsp:setProperty property="*" name="sVO"/>
+<%
 
+%>
 <body>
 
  <%@ include file="layout/header.jsp" %> 
@@ -128,9 +131,8 @@ $(function(){
                             <img src="//image.msscdn.net/images/goods_img/20210713/2027866/2027866_16974232192040_100.jpg" alt="레플리카 바이 더 파이어플레이스 EDT 100ML">
                         </a>
                         <ul class="info">
-                            <li class="brand"><a href="//www.musinsa.com/brands/maisonmargielaperfume">메종 마르지엘라 퍼퓸</a></li>
-                            <li class="name"><a href="/app/goods/2027866">레플리카 바이 더 파이어플레이스 EDT 100ML</a></li>
-                            <li class="option">FREE</li>
+                            <li class="name">레플리카 바이 더 파이어플레이스 EDT 100ML</li>
+                            
                             
                         </ul>
                     </div>
@@ -183,17 +185,15 @@ $(function(){
                             <div class="input-area">
                                 <!-- Text -->
                                 <div class="tab-block is-active" data-tab="text">
-                                    <textarea id="goods_text" style="width:1000px" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요. (20자 이상 작성)" name="goods_text"></textarea>
+                                    <textarea id="goods_text" style="width:1000px" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요. (20자 이상 작성)" name="review"></textarea>
                                     <p class="info" id="text_size">0 자 / 20자 이상</p>
                                 </div>
                             </div>
                         </div>
-                        <!-- //입력 영역 -->
-                        <!-- 사진 첨부 -->
-                        
-                        <!-- //사진 첨부 -->
+                       
+                   
                     </div>
-                    <!-- //후기 작성 -->
+                
 
                  
 
@@ -202,7 +202,7 @@ $(function(){
                     </div>
                 </div>
             </form>
-<!--         </section> -->
+
 
 <footer><%@ include file="postingfooter.jsp" %> </footer> 
 

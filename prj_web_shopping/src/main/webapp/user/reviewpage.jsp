@@ -1,3 +1,4 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="admin.dao.UserReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -79,7 +80,24 @@
 </style>
 <script type="text/javascript">
 $(function(){
-   
+	$('#review').keyup(function (e) {
+		let content = $("#review").val();
+	    
+	    // 글자수 세기
+	    if (content.length == 0 || content == '') {
+	    	$('.textCount').text('0자');
+	    } else {
+	    	$('.textCount').text(content.length + '자');
+	    }
+	    
+	    // 글자수 제한
+	    if (content.length > 200) {
+	    	// 200자 부터는 타이핑 되지 않도록
+	        $(this).val($(this).val().substring(0, 200));
+	        // 200자 넘으면 알림창 뜨도록
+	        alert('글자수는 200자까지 입력 가능합니다.');
+	    };
+	});
 });//ready
 </script>
 
@@ -89,7 +107,13 @@ $(function(){
 <%
 UserReviewDAO uDAO= UserReviewDAO.getInstance();
 
-
+try{
+	String main_img = uDAO.selectproductImg("바디워시 BIGALICO 500ml");
+	
+	pageContext.setAttribute("main_img", main_img);
+}catch (SQLException se) {
+	se.printStackTrace();
+}//end catch
 %>
 <body>
 
@@ -98,7 +122,7 @@ UserReviewDAO uDAO= UserReviewDAO.getInstance();
 
 <!-- <section class="mypage-cont" style="  position:relative; top:10px;left:0px; font-family: musinsa;"> -->
 		
-            <form action="" id="frm" name="frm" method="post" style="position:relative; left:30px">
+            <form action="" id="frm" name="frm" method="post" style="position:relative; left:30px" enctype="multipart/form-data">
                 <input type="hidden" name="tmpcode" value="1697704836038">
                 <input type="hidden" name="imageCount" value="0">
                 <input type="hidden" name="opt_kind_cd" id="optKindCode" value="BEAUTY">
@@ -111,7 +135,6 @@ UserReviewDAO uDAO= UserReviewDAO.getInstance();
     <ul class="n-info-txt">
     	<br/>
         <li>작성하신 후기는 Cherie 및 Cherie 글로벌 이용자에게 공개됩니다. </li> 
-        <li>후기 내용은 20자 이상 작성합니다.</li>
         <li>
             아래에 해당할 경우 일부 후기는 조건에 따라 비노출 처리 됩니다.
             <br>- 문자 및 기호의 단순 나열, 반복된 내용의 후기
@@ -128,10 +151,13 @@ UserReviewDAO uDAO= UserReviewDAO.getInstance();
 
                 <div class="my-review-write" id="reviewWrap" style="max-width: 1850px">
                     <!-- 상품 -->
-                    <div class="n-prd-row">
+                    <div class="n-prd-row"  >
+                  
                         <a href="/app/goods/2027866" class="img-block">
-                            <img src="//image.msscdn.net/images/goods_img/20210713/2027866/2027866_16974232192040_100.jpg" alt="레플리카 바이 더 파이어플레이스 EDT 100ML">
+                            <img src="../upload/goods/${main_img}" />
+                             
                         </a>
+                      
                         <ul class="info">
                        <!--  <li class="name"><a href="/app/goods/2027866">레플리카 바이 더 파이어플레이스 EDT 100ML</a></li> -->
                             <li class="name">레플리카 바이 더 파이어플레이스 EDT 100ML</li>
@@ -187,11 +213,14 @@ UserReviewDAO uDAO= UserReviewDAO.getInstance();
 
                             <div class="input-area">
                                 <!-- Text -->
-                                <div class="tab-block is-active" data-tab="text">
-                                    <textarea id="goods_text" style="width:600px" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요. (20자 이상 작성)" name="review"></textarea>
-                                    <p class="info" id="text_size">0 자 / 20자 이상</p>
+                                <div class="tab-block is-active" data-tab="">
+                                    <textarea id="review" name="review" style="width:1840px; font-size: 15px" cols='1000' maxlength="200" placeholder="다른 회원분에게 도움이 되는 나만의 팁을 소개해 주세요."> </textarea>
+                                    <p class="textCount" id="text_size" style="position:absolute; top: 250px; right:70px; color: #AAAAAA">0 자 </p>
+                                    <p class="textTotal" style="position:absolute; top: 250px; right:20px; color: #AAAAAA">/200자</p>
                                 </div>
                             </div>
+                            
+                            
                         </div>
                        
                    

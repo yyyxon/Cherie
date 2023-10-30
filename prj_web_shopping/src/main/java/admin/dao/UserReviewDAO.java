@@ -192,45 +192,42 @@ public void deleteReivew (int rcode) throws SQLException {
 }//deleteReivew
 
 	
-public SummaryVO selectneReview(int rcode) throws SQLException {
+public String selectproductImg(String gname) throws SQLException {
 	
 	
-	SummaryVO sVO= null;
+	
 	
 	DbConnection db= DbConnection.getInstance();
 	Connection con = null;
 	PreparedStatement pstmt=null;
 	ResultSet rs= null;
-	
+	String mainImg="";
 	
 	
 	
 	try {
+		
 		con=db.getConn("jdbc/dbcp");
 		
-		String selectAllReview = "select distinct m.name, r.REV_CONT,  r.star, r.rcode from member m, review r, category c where m.id=r.id   and r.rcode= ? ";
+		String selectAllReview = " select main_img  from goods where gname=? ";
 
 		
 		
 		pstmt=con.prepareStatement(selectAllReview);
 		
-		pstmt.setInt(1, rcode);
+		pstmt.setString(1, gname);
 		
 		rs=pstmt.executeQuery();
 		if(rs.next()) {
-			sVO= new SummaryVO();
-			sVO.setName(rs.getString("name"));
-			sVO.setReview(rs.getString("REV_CONT"));
-			sVO.setRcode(rs.getInt("rcode"));
-			sVO.setStar(rs.getInt("star"));
-		
+			mainImg=rs.getString("main_img");
 		}
+		
 	}finally {
 		db.dbClose(rs, pstmt, con);
 		
 	}
 	
-	return sVO;
+	return mainImg;
 }
 	
 	

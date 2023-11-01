@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.dao.DbConnection;
-import user.vo.ProductVO;
+import user.vo.GoodsVO;
 
-public class ProductDAO {
+public class GoodsDAO {
 	
-	private static ProductDAO pDAO;
+	private static GoodsDAO pDAO;
 	
-	private ProductDAO() {
+	private GoodsDAO() {
 		
 	}
 	
-	public static ProductDAO getInstantce() {
+	public static GoodsDAO getInstantce() {
 		if(pDAO == null) {
-			pDAO = new ProductDAO();
+			pDAO = new GoodsDAO();
 		}
 		return pDAO;
 	}
@@ -30,8 +30,8 @@ public class ProductDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<ProductVO> selectAllProducts() throws SQLException{
-		List<ProductVO> list = new ArrayList<ProductVO>();
+	public List<GoodsVO> selectAllProducts() throws SQLException{
+		List<GoodsVO> list = new ArrayList<GoodsVO>();
 		
 		DbConnection db = DbConnection.getInstance();
 		Connection con = null;
@@ -52,9 +52,9 @@ public class ProductDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			ProductVO pVO = null;
+			GoodsVO pVO = null;
 			while(rs.next()) {
-				pVO = new ProductVO(rs.getString("gcode"), rs.getString("gname"),
+				pVO = new GoodsVO(rs.getString("gcode"), rs.getString("gname"),
 									rs.getString("cat_code"), rs.getString("cat_name"), 
 									rs.getString("main_img"), rs.getString("img1"),
 									rs.getInt("price"),  rs.getInt("quantity"));
@@ -74,8 +74,8 @@ public class ProductDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<ProductVO> selectCateProducts(String cat_code) throws SQLException{
-		List<ProductVO> list = new ArrayList<ProductVO>();
+	public List<GoodsVO> selectCateProducts(String cat_code) throws SQLException{
+		List<GoodsVO> list = new ArrayList<GoodsVO>();
 		
 		DbConnection db = DbConnection.getInstance();
 		Connection con = null;
@@ -96,9 +96,9 @@ public class ProductDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			ProductVO pVO = null;
+			GoodsVO pVO = null;
 			while(rs.next()) {
-				pVO = new ProductVO(rs.getString("gcode"), rs.getString("gname"),
+				pVO = new GoodsVO(rs.getString("gcode"), rs.getString("gname"),
 									rs.getString("cat_code"), rs.getString("cat_name"),
 									rs.getString("main_img"), rs.getString("img1"),
 									rs.getInt("price"),  rs.getInt("quantity"));
@@ -111,6 +111,13 @@ public class ProductDAO {
 		}
 		
 		return list;
+	}
+	
+	public GoodsVO selectProductDetail(String gcode) {
+		GoodsVO gVO = null;
+		
+		
+		return gVO;
 	}
 
 }

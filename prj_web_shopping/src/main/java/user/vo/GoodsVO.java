@@ -1,14 +1,14 @@
 package user.vo;
 
-public class ProductVO {
+public class GoodsVO {
 	String gcode, gname, main_img, img1, img2, img3, input_date, cat_code, cat_name, tmi, eng_tmi, top, heart, base, ing;
 	int price, quantity, total_buy;
 	
-	public ProductVO() {
+	public GoodsVO() {
 		super();
 	}
 	
-	public ProductVO(String gcode, String gname, String cat_code, String cat_name, String main_img, String img1, int price, int quantity) {
+	public GoodsVO(String gcode, String gname, String cat_code, String cat_name, String main_img, String img1, int price, int quantity) {
 		super();
 		this.gcode = gcode;
 		this.gname = gname;
@@ -20,7 +20,7 @@ public class ProductVO {
 		this.quantity = quantity;
 	}
 
-	public ProductVO(String gcode, String gname, String main_img, String img1, String img2, String img3,
+	public GoodsVO(String gcode, String gname, String main_img, String img1, String img2, String img3,
 			String input_date, String cat_code, String tmi, String eng_tmi, String top, String heart, String base,
 			String ing, int price, int quantity, int total_buy) {
 		super();

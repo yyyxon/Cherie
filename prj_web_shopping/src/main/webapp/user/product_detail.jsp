@@ -87,28 +87,70 @@ $(function() {
 	});	
 });//ready
 
-
 function hover(event, element) {
     $("#bigImg").attr("src", element.src);
 }
 
 function plus(){
-	quantity = $("#quantity").val();
+	var quantity = parseInt($("#quantity").val());
+	var countPrice = parseInt($("#countPrice").val());
+	
 	if(quantity >= ${ product.quantity }) {
 		alert("구매 가능 수량을 초과하였습니다.");
 		$("#quantity").val(${ product.quantity });
 		return;
 	}
+	
+	if(quantity < 1) {
+		alert("최소 주문 수량은 1개 입니다.");
+		$("#quantity").val(1);
+		return;
+	}
+	
+	$("#quantity").val(++quantity);	
+	$("#bottomQuantity").html("("+quantity+"개)");
+	totalPrice();
 }
 
 function minus(){
-	quantity = $("#quantity").val();
+	var quantity = parseInt($("#quantity").val());
+	var countPrice = parseInt($("#countPrice").val());
+	
+	if(quantity > ${ product.quantity }) {
+		alert("구매 가능 수량을 초과하였습니다.");
+		$("#quantity").val(${ product.quantity });
+		return;
+	}
+	
 	if(quantity <= 1) {
 		alert("최소 주문 수량은 1개 입니다.");
 		$("#quantity").val(1);
 		return;
 	}
+
+	$("#quantity").val(--quantity);
+	$("#bottomQuantity").html("("+quantity+"개)");
+	totalPrice();
 }
+
+function totalPrice(){
+	var json = {quantity : $("#quantity").val(), price : $("#countPrice").val()};
+	
+	$.ajax({
+		url : "total_price.jsp",
+		type : "post",
+		data : json,
+		dataType : "text",
+		error : function(xhr){
+			console.log(xhr);
+		},
+		success : function(total){
+			$("#totalDiv").html(total);
+			$("#bottomTotal").html("<strong><em>"+total+"</em></strong>");
+		}
+	});
+}
+
 
 </script>
 
@@ -365,9 +407,10 @@ function minus(){
                                     </td>
                                     <!-- 총 가격 -->
                                     <td class="right">
-										<span class="quantity_price">
-										<fmt:formatNumber value="${ product.price }" pattern="#,###,###"/>원
-										</span> 
+									<input type="hidden" value="${ product.price }" id="countPrice"/>
+                                    <div id="totalDiv" class="quantity_price">
+											<fmt:formatNumber value="${ product.price }" pattern="#,###,###"/>
+									</div>
 										<span class="mileage displaynone">
 											(<img src="" alt="">  <span class="mileage_price"></span>)
 										</span>
@@ -393,10 +436,11 @@ function minus(){
 					<!-- 총 상품 금액 -->
                     <div id="totalPrice" class="totalPrice">
                         <strong class="title">총 상품금액
-                        	<span class="qty total"> (0개)</span>
+                        	<span class="qty total" id="bottomQuantity"> (1개)
+                        	</span>
                         </strong>
-                        <span class="total">
-                        	<strong><em>0</em></strong>
+                        <span class="total" id="bottomTotal">
+                        	<strong><em>${ product.price }</em></strong>
                         </span>
                     </div>
 

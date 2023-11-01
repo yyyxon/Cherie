@@ -84,57 +84,73 @@ $(function() {
         } else {
             $("#wish_img").attr("src", "http://localhost/cherie_ysy_private/common/images/icon/heart.png");
         }
-	});	
+	});
+	
+	$("#quantity").keyup(function(){
+		stockCheck();
+	});
+	
 });//ready
 
 function hover(event, element) {
     $("#bigImg").attr("src", element.src);
 }
 
-function plus(){
+function stockCheck(pm) {
 	var quantity = parseInt($("#quantity").val());
-	var countPrice = parseInt($("#countPrice").val());
 	
-	if(quantity >= ${ product.quantity }) {
-		alert("구매 가능 수량을 초과하였습니다.");
-		$("#quantity").val(${ product.quantity });
-		return;
+	if(pm == "p"){
+		if(quantity >= ${ product.quantity }) {
+			alert("구매 가능 수량을 초과하였습니다.");
+			$("#quantity").val(${ product.quantity });
+			return;
+		}
+		
+		if(quantity < 1) {
+			alert("최소 주문 수량은 1개 입니다.");
+			$("#quantity").val(1);
+			return;
+		}
+		
+		$("#quantity").val(++quantity);
 	}
 	
-	if(quantity < 1) {
-		alert("최소 주문 수량은 1개 입니다.");
-		$("#quantity").val(1);
-		return;
+	if(pm == "m") {
+		if(quantity > ${ product.quantity }) {
+			alert("구매 가능 수량을 초과하였습니다.");
+			$("#quantity").val(${ product.quantity });
+			return;
+		}
+		
+		if(quantity <= 1) {
+			alert("최소 주문 수량은 1개 입니다.");
+			$("#quantity").val(1);
+			return;
+		}
+		
+		$("#quantity").val(--quantity);
 	}
 	
-	$("#quantity").val(++quantity);	
-	$("#bottomQuantity").html("("+quantity+"개)");
-	totalPrice();
-}
-
-function minus(){
-	var quantity = parseInt($("#quantity").val());
-	var countPrice = parseInt($("#countPrice").val());
-	
-	if(quantity > ${ product.quantity }) {
-		alert("구매 가능 수량을 초과하였습니다.");
-		$("#quantity").val(${ product.quantity });
-		return;
+	if(pm == null){
+		if(quantity > ${ product.quantity } ){
+			alert("구매 가능 수량을 초과하였습니다.");
+			$("#quantity").val(${ product.quantity });
+			return;
+		}
+		
+		if(quantity < 1){
+			alert("최소 주문 수량은 1개 입니다.");
+			$("#quantity").val(1);
+			return;
+		}
 	}
 	
-	if(quantity <= 1) {
-		alert("최소 주문 수량은 1개 입니다.");
-		$("#quantity").val(1);
-		return;
-	}
-
-	$("#quantity").val(--quantity);
 	$("#bottomQuantity").html("("+quantity+"개)");
 	totalPrice();
 }
 
 function totalPrice(){
-	var json = {quantity : $("#quantity").val(), price : $("#countPrice").val()};
+	var json = {quantity : $("#quantity").val(), price : ${ product.price }};
 	
 	$.ajax({
 		url : "total_price.jsp",
@@ -145,13 +161,11 @@ function totalPrice(){
 			console.log(xhr);
 		},
 		success : function(total){
-			$("#totalDiv").html(total);
-			$("#bottomTotal").html("<strong><em>"+total+"</em></strong>");
+			$("#totalDiv").html(total+"원");
+			$("#bottomTotal").html("<strong><em>"+total+"원 </em></strong>");
 		}
 	});
 }
-
-
 </script>
 
 </head>
@@ -379,9 +393,9 @@ function totalPrice(){
                         	<!-- 설명 아래 상품명 / 상품수 / 가격 영역 -->
 							<caption>상품 목록</caption>
                             <colgroup>
-								<col style="width:200px;">
+								<col style="width:190px;">
 								<col style="width:auto;">
-								<col style="width:35px;">
+								<col style="width:90px;">
 							</colgroup>
 							<thead>
 								<tr>
@@ -399,17 +413,16 @@ function totalPrice(){
                                         <span class="quantity">
                                             <input id="quantity" name="quantity_opt[]" style="" value="1" type="text"/>                                            
                                             <!-- + 버튼 -->
-                                            <a href="javascript:plus();" class="up QuantityUp">수량증가</a>
+                                            <a href="javascript:stockCheck('p');" class="up QuantityUp">수량증가</a>
                                             
                                             <!-- - 버튼 -->
-                                            <a href="javascript:minus();" class="down QuantityDown">수량감소</a>
+                                            <a href="javascript:stockCheck('m');" class="down QuantityDown">수량감소</a>
                                         </span>
                                     </td>
                                     <!-- 총 가격 -->
                                     <td class="right">
-									<input type="hidden" value="${ product.price }" id="countPrice"/>
                                     <div id="totalDiv" class="quantity_price">
-											<fmt:formatNumber value="${ product.price }" pattern="#,###,###"/>
+											<fmt:formatNumber value="${ product.price }" pattern="#,###,###"/>원
 									</div>
 										<span class="mileage displaynone">
 											(<img src="" alt="">  <span class="mileage_price"></span>)
@@ -440,7 +453,9 @@ function totalPrice(){
                         	</span>
                         </strong>
                         <span class="total" id="bottomTotal">
-                        	<strong><em>${ product.price }</em></strong>
+                        	<strong><em>
+                        		<fmt:formatNumber value="${ product.price }" pattern="#,###,###"/>원
+                        	</em></strong>
                         </span>
                     </div>
 

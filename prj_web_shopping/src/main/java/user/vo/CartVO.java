@@ -1,13 +1,13 @@
 package user.vo;
 
-public class BucketVO {
+public class CartVO {
 
 	private String bucketNum,img ,productName ,productInfo ;
 	private int price ,amount ,productNo;
-	public BucketVO() {
+	public CartVO() {
 		super();
 	}
-	public BucketVO(String bucketNum, String img, String productName, String productInfo, int price, int amount,
+	public CartVO(String bucketNum, String img, String productName, String productInfo, int price, int amount,
 			int productNo) {
 		super();
 		this.bucketNum = bucketNum;

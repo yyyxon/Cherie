@@ -9,26 +9,26 @@ import java.util.List;
 
 import admin.vo.OrderVO;
 import common.dao.DbConnection;
-import user.vo.BucketVO;
+import user.vo.CartVO;
 
-public class BucketDAO {
+public class CartDAO {
 
-	private static BucketDAO bkDAO;
+	private static CartDAO bkDAO;
 	
-	private BucketDAO() {
+	private CartDAO() {
 		
 	}
 	
-	public static BucketDAO getInstance() {
+	public static CartDAO getInstance() {
 		if(bkDAO == null) {
-			bkDAO=new BucketDAO();
+			bkDAO=new CartDAO();
 		}//end if
 		return bkDAO;
 	}//getInstance
 
-	public List<BucketVO> selectAllList(String userId) throws SQLException{
-		BucketVO bkVO=null;
-		List<BucketVO> list= new ArrayList<BucketVO>();
+	public List<CartVO> selectAllList(String userId) throws SQLException{
+		CartVO bkVO=null;
+		List<CartVO> list= new ArrayList<CartVO>();
 		
 		DbConnection db=DbConnection.getInstance();
 		
@@ -54,7 +54,7 @@ public class BucketDAO {
 		//6. 쿼리문 실행 후 값 얻기
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				bkVO=new BucketVO();
+				bkVO=new CartVO();
 				bkVO.setImg(rs.getString("IMG1"));
 				bkVO.setProductName(rs.getString("GNAME"));
 				bkVO.setPrice(rs.getInt("PRICE"));
@@ -68,6 +68,34 @@ public class BucketDAO {
 		return list;
 	}//selectAllList
 	
+public int intsertAddCart(String id, int gcode)throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int rowCnt = 0;
+		
+		DbConnection db = DbConnection.getInstance();
+		try {
+			// 2. 커넥션 얻기
+			con=db.getConn("jdbc/dbcp");
+			// 3. 쿼리문 생성 객체 얻기
+			String intsertWhisList = "insert into WISHLIST (WCODE, ID, GCODE) values(wish_seq.nextval, ? , ? )";
+			
+			pstmt = con.prepareStatement(intsertWhisList);
+			
+			pstmt.setString(1, id);
+			pstmt.setInt(2, gcode);
+			
+			// 5. 쿼리문 실행 결과 얻기
+			rowCnt = pstmt.executeUpdate();
+		} finally {
+			// 6. 연결끊기
+			db.dbClose(null, pstmt, con);
+		} // end finally
+		return rowCnt;
+	}//intsertAddCart
+
+
 	/*
 	 * public int deleteList(String[]) throws SQLException{
 	 * 

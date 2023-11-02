@@ -147,6 +147,14 @@ h3 {
 </style>
 <script type="text/javascript">
 $(function() {
+	$("#searchBtn").click(function(){
+		 var searchKeyword = $("#searchKeyword").val().replace(/ /g, '');
+		    if (searchKeyword == "") {
+		        alert("검색어를 입력해주세요.");
+		        return;
+		    }
+		 $("#searchForm").submit();
+	});
 	
 	
 });//ready
@@ -163,14 +171,13 @@ $(function() {
 
 	try{
 		if(searchKeyword != null){
-			productList = null;
 			productList = gDAO.selectKeywordProducts(searchKeyword);
 			cnt = gDAO.selectKeywordCnt(searchKeyword);
+			pageContext.setAttribute("keyword", searchKeyword);
+			pageContext.setAttribute("productList", productList);
+			pageContext.setAttribute("cnt", cnt);
 		}
 		
-		pageContext.setAttribute("keyword", searchKeyword);
-		pageContext.setAttribute("productList", productList);
-		pageContext.setAttribute("cnt", cnt);
 		
 	}catch(SQLException se){
 		se.printStackTrace();
@@ -203,12 +210,12 @@ $(function() {
 	<div class="xans-element- xans-product xans-product-normalmenu displaynone "></div>
 	
 	<div class="xans-element- xans-product xans-product-searchdata xans-record-">
-	<form class="searchField" id="ec-product-searchdata-searchkeyword_form" action="search.jsp" method="get">
+	<form class="searchField" id="searchForm" action="search.jsp" method="get">
     <fieldset>
 		<legend>상품검색</legend>
             <div class="searchInput" style="width:650px; padding: 0 36px 0 0;"> 
             <input type="text" class="keyword" name="searchKeyword" id="ec-product-searchdata-keyword" style="font-family: Pretendard; font-size: 25px" value=${ keyword  }> 
-            <input type="image" id="ec-product-searchdata-submit_button" src="//img.echosting.cafe24.com/skin/skin/product/ico_search.svg" alt="검색" class="btnSearch">
+            <input type="image" id="searchBtn" src="//img.echosting.cafe24.com/skin/skin/product/ico_search.svg" alt="검색" class="btnSearch">
                 &nbsp;
                 <ul class="autoDrop" id="" style="display: none;"></ul>
 			</div>
@@ -285,17 +292,9 @@ $(function() {
          	</div>
     </div>
 </li>
-<!-- product 1 끝 -->
 </c:forEach>
 </ul>
 </div>
-<!-- 더보기 버튼 -->
-<!-- <div class="xans-element- xans-product xans-product-listmore more ">
-	<a href="#none" onclick="try { $M.displayMore(0, 0, 48, 30, 0, false, 'S0000000', false, ''); } catch(e) { return false; }" class="btnMore">
-                더보기<span id="more_current_page">1</span>/<span id="more_total_page">2</span>
-                <i aria-hidden="true" class="icon icoArrowBottom"></i>
-            </a>
-</div> -->
 </div>
 </div>
 </div><hr class="layout"></div>

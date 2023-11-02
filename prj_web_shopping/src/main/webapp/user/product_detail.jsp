@@ -14,10 +14,9 @@ if(request.getParameter("gcode") == null){
 String gcode = request.getParameter("gcode");
 
 GoodsDAO gDAO = GoodsDAO.getInstantce();
-GoodsVO gVO = null;
 
 try{
-	gVO = gDAO.selectProductDetail(gcode);
+	GoodsVO gVO = gDAO.selectProductDetail(gcode);
 	
 	pageContext.setAttribute("product", gVO);
 	

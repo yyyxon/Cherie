@@ -11,6 +11,7 @@
     pageEncoding="UTF-8"%>
 <%@ page info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -219,8 +220,8 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 				<td><c:out value="${ recall.orderNum }"/></td>
 				<td><c:out value="${ recall.productName }"/></td>
 				<td><c:out value="${ recall.quantity }"/></td>
-				<td><c:out value="${ recall.price }"/></td>
-				<td><c:out value="<%= deliveryPrice %>"/></td>
+				<td><fmt:formatNumber value="${ recall.price }" pattern='#,###,###' /></td>
+				<td><fmt:formatNumber value="<%= deliveryPrice %>" pattern='#,###,###'/></td>
 				<td>
 	              <select name="statuslist" id="statuslist">
 	                <option value="C0"${ recall.orderStatus eq 'C0'? " selected='selected'" : "" }  >교환신청 </option>
@@ -230,7 +231,8 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 	            </select>  
 				</td>
 				<td><c:out value="${ recall.userName }"/></td>
-			 	<td><c:out value="${ recall.price + deliveryPrice }"/></td> 
+			 	<c:set var="totalAmount" value="${recall.price * recall.quantity  + deliveryPrice}" />
+			 	<td><fmt:formatNumber value="${totalAmount}" pattern='#,###,###'/></td> 
 				<td><c:out value="${ recall.recallDate }"/></td>
 				</tr>
 				</c:forEach>

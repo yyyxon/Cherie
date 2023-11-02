@@ -10,6 +10,7 @@
     pageEncoding="UTF-8"%>
 <%@ page info=""%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,9 +128,7 @@ brVO.setTableName("UORDER");
 int totalCount=bDAO.totalCount(brVO);
 
 int pageScale=10; // 한 화면에 보여줄 게시물의 수
-int totalPage=0; // 총 페이지 수
-
-totalPage=(int)Math.ceil(totalCount/(double)pageScale);
+int totalPage=(int)Math.ceil(totalCount/(double)pageScale);
 
 String tempPage=request.getParameter("currentPage");
 int currentPage=1;
@@ -147,23 +146,18 @@ brVO.setStartNum(startNum);
 brVO.setEndNum(endNum); 
 
 int deliveryPrice=2500;
-OrderVO oVO=new OrderVO();
-
-int totalOrderPrice=0;
-
-int price = oVO.getPrice();
-int amount=oVO.getAmount();
-int itemTotalPrice = price*amount;
-
 
 
 try{
 	OrderProcessDAO opDAO=OrderProcessDAO.getInstance();
-List<OrderVO> list=opDAO.selectAllOrder(brVO);
+List<OrderVO> list=null;
+
+if( brVO != null){
+	list=opDAO.selectAllOrder(brVO);
+}
 
 pageContext.setAttribute("orderList", list);
 pageContext.setAttribute("deliveryPrice", deliveryPrice);
-pageContext.setAttribute("itemTotalPrice", itemTotalPrice);
 }catch(SQLException se){
 	se.printStackTrace();
 }//end catch
@@ -229,8 +223,8 @@ pageContext.setAttribute("itemTotalPrice", itemTotalPrice);
 				<td><c:out value="${ order.orderNo }"/></td>
 				<td><c:out value="${ order.productName }"/></td>
 				<td><c:out value="${ order.amount }"/></td>
-				<td><c:out value="${ order.price }"/></td>
-				<td><c:out value="<%= deliveryPrice %>"/></td>
+				<td><fmt:formatNumber value="${ order.price }" pattern='#,###,###'/></td>
+				<td><fmt:formatNumber value="<%= deliveryPrice %>" pattern='#,###,###'/></td>
 				<td>
 				 <select name="statuslist" id="statuslist">
                 <option value="PF"${ order.orderStatus eq 'PF'? " selected='selected'" : "" }  >결제완료 </option>
@@ -240,8 +234,8 @@ pageContext.setAttribute("itemTotalPrice", itemTotalPrice);
             </select>  
 				</td>
 				<td><c:out value="${ order.userName }"/></td>
-				<c:set var="totalAmount" value="${order.price * order.amount}" />
-			 	<td><c:out value="${totalAmount}"/></td> 
+				<c:set var="totalAmount" value="${order.price * order.amount  + deliveryPrice}" />
+			 	<td><fmt:formatNumber value="${totalAmount}"  pattern='#,###,###'/></td> 
 				</tr>
 			</c:forEach>
 			</table>

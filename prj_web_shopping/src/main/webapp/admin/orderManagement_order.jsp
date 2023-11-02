@@ -147,6 +147,14 @@ brVO.setStartNum(startNum);
 brVO.setEndNum(endNum); 
 
 int deliveryPrice=2500;
+OrderVO oVO=new OrderVO();
+
+int totalOrderPrice=0;
+
+int price = oVO.getPrice();
+int amount=oVO.getAmount();
+int itemTotalPrice = price*amount;
+
 
 
 try{
@@ -155,6 +163,7 @@ List<OrderVO> list=opDAO.selectAllOrder(brVO);
 
 pageContext.setAttribute("orderList", list);
 pageContext.setAttribute("deliveryPrice", deliveryPrice);
+pageContext.setAttribute("itemTotalPrice", itemTotalPrice);
 }catch(SQLException se){
 	se.printStackTrace();
 }//end catch
@@ -231,7 +240,8 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
             </select>  
 				</td>
 				<td><c:out value="${ order.userName }"/></td>
-			 	<td><c:out value="${ order.price + deliveryPrice }"/></td> 
+				<c:set var="totalAmount" value="${order.price * order.amount}" />
+			 	<td><c:out value="${totalAmount}"/></td> 
 				</tr>
 			</c:forEach>
 			</table>

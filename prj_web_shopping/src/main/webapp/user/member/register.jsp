@@ -50,7 +50,7 @@ $(function(){
 	//$("#idDupFlag").val(0);
 	$("#btnDup").click(function(){
 		var id=$("#id").val();
-		window.open("id_check.jsp?id="+id,"id_check","width=512,height=313,top="
+		window.open("id_check.jsp?id="+id,"id_check","width=512,height=320,top="
 	            +( window.screenY+150)+",left="+( window.screenX+900));	
 	}); 
 	
@@ -60,13 +60,14 @@ $(function(){
 	
 	 $("#id").on('input', function() {
 	        var id = $(this).val();
-	        var regex = /^[a-zA-Z0-9]*$/; // 영문자와 숫자만 허용
+	        var regex = /^[a-z0-9]*$/; // 영문(소문자)과 숫자만 허용
 	        if (!regex.test(id)) {
-	            alert("영문자와 숫자만 입력 가능합니다.");
+	            alert("영문(소문자)과 숫자만 입력 가능합니다.");
 	            $(this).val(""); // 입력한 값 비움
 	            return;
 	        }
 	    });
+	 
 	
 	$("#btn").click(function(){
         // 필수 입력 필드가 비어있는지 확인

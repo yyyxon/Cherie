@@ -188,8 +188,18 @@ public class ClientInfoDAO {
 			ciVO.setZipcode(rs.getString("zipcode"));
 			ciVO.setAddr(rs.getString("sido"));
 			ciVO.setDetailAddr(rs.getString("addr"));
-			ciVO.setJoinDate(rs.getString("sign_date"));
 			ciVO.setMembership(rs.getString("membership"));
+			
+			// 기존의 가입일을 Date 형식으로 가져옴
+		    Date sign_date = rs.getDate("sign_date");
+		    
+		    // SimpleDateFormat을 사용하여 원하는 형식('yyyy-MM-dd')으로 포맷팅
+		    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		    String formattedDate = sdf.format(sign_date);
+		    
+		    // 포맷팅된 날짜를 ClientInfoVO에 설정
+		    ciVO.setJoinDate(formattedDate);
+			
 		}//end if
 		
 		}finally {

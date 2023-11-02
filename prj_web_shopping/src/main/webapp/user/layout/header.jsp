@@ -267,7 +267,7 @@ body.search_active .headSearchBtn_magnifier {
 						<% 
 						}else{ 
 						%>
-					 		<a href="http://localhost/prj_web_shopping/user/member/login.jsp">Logout</a>
+					 		<a href="http://localhost/prj_web_shopping/user/member/logout.jsp">Logout</a>
 				 		<% } %>
 					</li>
 						

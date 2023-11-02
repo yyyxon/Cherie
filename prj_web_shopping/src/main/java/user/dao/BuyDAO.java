@@ -12,6 +12,7 @@ import user.vo.AddrVO;
 import user.vo.BuyInfoVO;
 import user.vo.BuyPaymentVO;
 import user.vo.BuyingCartVO;
+import user.vo.FillOrderInfoVO;
 
 public class BuyDAO {
 	
@@ -123,7 +124,9 @@ public class BuyDAO {
 		return ordno;
 	}
 	
-	public void insertPriceInfo(BuyPaymentVO bpVO) throws SQLException {
+	public int insertPriceInfo(BuyPaymentVO bpVO) throws SQLException {
+		int result = 0;
+		
 		DbConnection db = DbConnection.getInstance();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -144,10 +147,12 @@ public class BuyDAO {
 			pstmt.setString(2, bpVO.getCardNum());
 			pstmt.setString(3, bpVO.getOrdno());
 			
+			result = pstmt.executeUpdate();
+			
 		} finally {
 			db.dbClose(null, pstmt, con);
 		}
-		
+		return result;
 	}
 	
 	public List<BuyingCartVO> selectBuyingGoods(String id) throws SQLException {
@@ -157,11 +162,55 @@ public class BuyDAO {
 		return list;
 	}
 	
-	public AddrVO selectAddr(String id) throws SQLException {
-		AddrVO aVO = null;
+	public void updateAddr(AddrVO aVO) throws SQLException {
+		DbConnection db = DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		
+		try {
+			con = db.getConn("jdbc/dbcp");
+			String updateAddr = "UPDATE MEMBER SET ZIPCODE=?, SIDO=?, ADDR=? WHERE ID=?";
+			
+			pstmt = con.prepareStatement(updateAddr);
+			pstmt.setString(1, aVO.getZipcode());
+			pstmt.setString(2, aVO.getSido());
+			pstmt.setString(3, aVO.getAddr());
+			pstmt.setString(4, aVO.getId());
+			
+			pstmt.executeUpdate();
+			
+		} finally {
+			db.dbClose(null, pstmt, con);
+		}
 		
-		return aVO;
+	}
+	
+	public FillOrderInfoVO selectInfo(String id) throws SQLException {
+		FillOrderInfoVO foiVO = null;
+		
+		DbConnection db = DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = db.getConn("jdbc/dbcp");
+			String selectInfo = "SELECT NAME, ZIPCODE, SIDO, ADDR, EMAIL FROM MEMBER WHERE ID=?'";
+			
+			pstmt = con.prepareStatement(selectInfo);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				foiVO = new FillOrderInfoVO(rs.getString("NAME"), rs.getString("ZIPCODE"), rs.getString("SIDO"), rs.getString("ADDR"), rs.getString("EMAIL"));
+			}
+			
+		} finally {
+			db.dbClose(rs, pstmt, con);
+		}
+		
+		return foiVO;
 	}
 	
 	public String makePK(String table, String colm) throws SQLException {

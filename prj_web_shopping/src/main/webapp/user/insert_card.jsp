@@ -1,3 +1,4 @@
+<%@page import="user.vo.AddrVO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="user.dao.BuyDAO"%>
 <%@page import="user.vo.BuyPaymentVO"%>
@@ -130,15 +131,17 @@ height: 60px;
 <jsp:setProperty property="*" name="JspBiVO"/>
 
 <%
-if("true".equals(request.getAttribute("chkHid"))) {
-	
-}
 BuyInfoVO biVO = (BuyInfoVO)pageContext.getAttribute("JspBiVO");
+BuyDAO bDAO = BuyDAO.getInstance();
+
+if("true".equals(request.getParameter("chkHid"))) {
+	AddrVO aVO = new AddrVO(biVO.getId(), biVO.getZipcode(), biVO.getSido(), biVO.getAddr());
+	bDAO.updateAddr(aVO);
+}
 
 System.out.println(biVO);
 
 try{
-	BuyDAO bDAO = BuyDAO.getInstance();
 	String ordno = bDAO.insertDelivery(biVO);
 	
 	pageContext.setAttribute("ordno", ordno);

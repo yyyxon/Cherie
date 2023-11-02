@@ -124,8 +124,8 @@ session.setAttribute("paymentFlag", paymentFlag);
 				return;
 			}
 			
-			let inputList = [$("input[name='name']").val(), $("input[name='zipcode']").val(), $("input[name='sido']").val(),
-				$("input[name='addr1']").val(), $("input[name='phone']").val(), $("input[name='email']").val()];
+			let inputList = [$("input[name='receiver']").val(), $("input[name='zipcode']").val(), $("input[name='sido']").val(),
+				$("input[name='addr']").val(), $("input[name='phone']").val(), $("input[name='email']").val()];
 			
 			let msg = $("#selMsg option:selected").val() == 0 ? 0 : $("#selMsg option:selected").text();
 			let check = $("#chk").is(":checked");
@@ -176,7 +176,7 @@ session.setAttribute("paymentFlag", paymentFlag);
 		</td>
 		<td>
 			<div class="input-group mb-3" id="dlvrInput">
-		     	<input type="text" name="name" class="form-control" aria-label="Username" aria-describedby="inputGroup-sizing-lg">
+		     	<input type="text" name="receiver" class="form-control" aria-label="Username" aria-describedby="inputGroup-sizing-lg">
 		    </div>
 	    </td>
 	</tr>
@@ -201,7 +201,7 @@ session.setAttribute("paymentFlag", paymentFlag);
 	<tr>
 		<td colspan="2">
 			<div class="input-group mb-3">
-		     	<input type="text" name="addr1" class="form-control" placeholder="상세주소" aria-label="Username" aria-describedby="basic-addon1">
+		     	<input type="text" name="addr" class="form-control" placeholder="상세주소" aria-label="Username" aria-describedby="basic-addon1">
 		    </div>
 	    </td>
 	</tr>

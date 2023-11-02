@@ -117,7 +117,6 @@ $(function(){
 	});//ready
 	
 	function addCart(gcode) {
-		alert ( "장바구니에 추가 : "+gcode);
         $.ajax({
             url: "wishAddCart_process.jsp",
             type: "get",
@@ -128,14 +127,13 @@ $(function(){
                 console.log(xhr.status);
             },
             success: function(data) {
-                    alert("장바구니에 상품이 추가되었습니다." + data);
+                    alert("장바구니에 상품이 추가되었습니다.");
                     location.reload();
             }//success
         });//ajax
 	}//addCart
 	
 	function deleteWish(gcode) {
-        alert ( "관심상품에 상품 삭제 : "+gcode);
     
         $.ajax({
             url: "wishDelete_process.jsp",
@@ -147,7 +145,7 @@ $(function(){
                 console.log(xhr.status);
             },
             success: function(data) {
-                    alert("상품이 삭제되었습니다." + data);
+                    alert("상품이 삭제되었습니다.");
                     location.reload();
             }//success
         });//ajax

@@ -146,7 +146,6 @@ public class WishListDAO {
 			
 			cnt = pstmt.executeUpdate();
 			
-			System.out.println(deleteWishList);
 			
 		}finally {
 			db.dbClose(null, pstmt, con);

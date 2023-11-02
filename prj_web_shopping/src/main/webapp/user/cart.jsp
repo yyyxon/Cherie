@@ -172,11 +172,13 @@ $(function() {
 		    alert("상품이 삭제되었습니다.");
 		  });//click
 		  
+	});//ready
+	
 			function deleteWish(gcode) {
 		        alert ( "장바구니에 상품 삭제 : "+gcode);
 		    
 		        $.ajax({
-		            url: "wishDelete_process.jsp",
+		            url: "cartDelete_process.jsp",
 		            type: "get",
 		            data: "gcode="+gcode,
 		            dataType: "text",
@@ -190,8 +192,6 @@ $(function() {
 		            }//success
 		        });//ajax
 			}//deleteWish
-		  
-	});//ready
 </script>
 
 </head>  
@@ -281,9 +281,9 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 						<td style=" vertical-align: middle;"><c:out value="<%= deliveryPrice %>"/></td>
 					 	<td style=" vertical-align: middle;"><c:out value="${ cart.price + deliveryPrice }"/></td> 
 						<td>
-							<input type="button" value="주문하기"  class="orderBtn"name="orderBtn" onclick="addOrder('${cart.gcode}')" style="width:90px; height:30px ;background-color: white;border : 1px solid #E5E4E4;"/><br/>
-					 		<input type="button" value="장바구니담기" class="addCartBtn" name="addCartBtn" onclick="addCart('${cart.gcode}')" style="width:90px; height:30px ;background-color: white;border : 1px solid  #E5E4E4;"/><br/>
-					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" onclick="deleteWish('${cart.gcode}')" style="width:90px; height:30px ;background-color: white; border : 1px solid  #E5E4E4;"/>
+					 		<input type="hidden" value="x삭제" name="dd" style="width:90px; height:40px ;"/><br/><br/>
+					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" onclick="deleteWish('${cart.gcode}')" style="width:90px; height:35px ;background-color: white; border : 1px solid  #E5E4E4;"/><br/>
+					 		<input type="hidden" value="x삭제" name="dt" style="width:90px; height:30px ;"/>
 					 	</td>
 					 </tr>
 					</c:forEach>

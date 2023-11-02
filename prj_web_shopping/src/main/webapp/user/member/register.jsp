@@ -33,6 +33,16 @@ table td input, table td select, table td button {
 	font-weight: bold;
 	font-size: 15px
 }
+#s_result {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    top: 182;
+    left: 320;
+    margin-top: 2px; /* 상단 여백을 조절합니다. 필요에 따라 조절하세요. */
+    margin-left: 5px; /* 좌측 여백을 조절합니다. 필요에 따라 조절하세요. */
+}
 
 </style>
 <script type="text/javascript">
@@ -144,7 +154,7 @@ function compare_result() {
 		<tr>
 			<td id="title" style="font-size:15px; padding:5px 20px;">비밀번호 확인</td>
 			<td><input type="password" id="pass2" name="pass2" maxlength="15" style="height:35px">
-			<span id="s_result" style="font-size: 9px;"></span></td>
+			<span id="s_result" style="font-size: 9px"></span></td>
 		</tr>
 
 		<tr>

@@ -30,7 +30,6 @@ public class BoardUtil {
 		//3.끝 페이지 번호 
 		int endPage = (((startPage-1)+pageNumber)/pageNumber)*pageNumber;
 		
-		System.out.println(startPage+" / "+endPage);
 		//out.print("끝 번호 : " + endPage);
 
 		//4.구해진 끝 페이지 번호가 총 페이지보다 작다면 총 페이지수가 끝 페이지 번호가 된다.

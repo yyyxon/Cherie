@@ -140,7 +140,7 @@ $(function(){
     
         $.ajax({
             url: "wishDelete_process.jsp",
-            type: "POST",
+            type: "get",
             data: "gcode="+gcode,
             dataType: "text",
             error: function(xhr) {
@@ -249,8 +249,8 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 					 	<td style=" vertical-align: middle;"><c:out value="${ wish.price + deliveryPrice }"/></td> 
 						<td>
 							<input type="button" value="주문하기"  class="orderBtn" name="orderBtn"onclick="addOrder('${wish.gcode}')" style="width:90px; height:30px ;background-color: white;border : 1px solid  #E5E4E4;"/><br/>
-					 		<input type="button" value="장바구니담기"  class="addCartBtn" name="addCartBtn" id="addCartBtn${wish.gcode}" onclick="addCart('${wish.gcode}')" style="width:90px; height:30px ;background-color: white;border : 1px solid  #E5E4E4;"/><br/>
-					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" id="deleteBtn${wish.gcode}" onclick="deleteWish('${wish.gcode}')"style="width:90px; height:30px ;background-color: white; border : 1px solid  #E5E4E4;"/>
+					 		<input type="button" value="장바구니담기"  class="addCartBtn" name="addCartBtn"  onclick="addCart('${wish.gcode}')" style="width:90px; height:30px ;background-color: white;border : 1px solid  #E5E4E4;"/><br/>
+					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" onclick="deleteWish('${wish.gcode}')"style="width:90px; height:30px ;background-color: white; border : 1px solid  #E5E4E4;"/>
 					 	</td>
 					 </tr>
 					</c:forEach>

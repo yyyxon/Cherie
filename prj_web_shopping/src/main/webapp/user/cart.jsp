@@ -171,7 +171,27 @@ $(function() {
 	  $(".deleteBtn").click(function() {
 		    alert("상품이 삭제되었습니다.");
 		  });//click
-	});
+		  
+			function deleteWish(gcode) {
+		        alert ( "장바구니에 상품 삭제 : "+gcode);
+		    
+		        $.ajax({
+		            url: "wishDelete_process.jsp",
+		            type: "get",
+		            data: "gcode="+gcode,
+		            dataType: "text",
+		            error: function(xhr) {
+		                alert("죄송합니다. 서버에 문제가 발생하였습니다. 잠시 후에 다시 시도해주세요.");
+		                console.log(xhr.status);
+		            },
+		            success: function(data) {
+		                    alert("상품이 삭제되었습니다." + data);
+		                    location.reload();
+		            }//success
+		        });//ajax
+			}//deleteWish
+		  
+	});//ready
 </script>
 
 </head>  
@@ -261,9 +281,9 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 						<td style=" vertical-align: middle;"><c:out value="<%= deliveryPrice %>"/></td>
 					 	<td style=" vertical-align: middle;"><c:out value="${ cart.price + deliveryPrice }"/></td> 
 						<td>
-							<input type="button" value="주문하기" id="orderBtn${ cart.gcode }" class="orderBtn"name="orderBtn" style="width:90px; height:30px ;background-color: white;border : 1px solid #E5E4E4;"/><br/>
-					 		<input type="button" value="장바구니담기" id="addCartBtn${ cart.gcode }"class="addCartBtn" name="addCartBtn" style="width:90px; height:30px ;background-color: white;border : 1px solid  #E5E4E4;"/><br/>
-					 		<input type="button" value="x삭제" id="deleteBtn${ cart.gcode }"class="deleteBtn" name="deleteBtn" style="width:90px; height:30px ;background-color: white; border : 1px solid  #E5E4E4;"/>
+							<input type="button" value="주문하기"  class="orderBtn"name="orderBtn" onclick="addOrder('${cart.gcode}')" style="width:90px; height:30px ;background-color: white;border : 1px solid #E5E4E4;"/><br/>
+					 		<input type="button" value="장바구니담기" class="addCartBtn" name="addCartBtn" onclick="addCart('${cart.gcode}')" style="width:90px; height:30px ;background-color: white;border : 1px solid  #E5E4E4;"/><br/>
+					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" onclick="deleteWish('${cart.gcode}')" style="width:90px; height:30px ;background-color: white; border : 1px solid  #E5E4E4;"/>
 					 	</td>
 					 </tr>
 					</c:forEach>

@@ -73,9 +73,9 @@ $(function() {
 		 var selectedOrders = [];
 		    // 클래스명이 'check'인 체크박스를 모두 선택
 		    $("input.check:checked").each(function(){
-		        var orderNo = $(this).val();
+		        var ordno = $(this).val();
 		        var newStatus = $(this).closest("tr").find("select[name=statuslist]").val();
-		        selectedOrders.push({ orderNo: orderNo, newStatus: newStatus });
+		        selectedOrders.push({ ordno: ordno, newStatus: newStatus });
 		    });//end each
 		    
 		    if (selectedOrders.length > 0) {
@@ -153,7 +153,7 @@ if(tempPage != null){
 	currentPage = Integer.parseInt(tempPage);
 }//end if
 
-int deliveryPrice=2500;
+int dlvyPrice=2500;
 
 //5.시작 번호
 int startNum = currentPage*pageScale-pageScale+1;
@@ -169,7 +169,7 @@ brVO.setEndNum(endNum);
 try{
 	List<OrderVO> orderList = opDAO.selectAllOrder(brVO);
 	pageContext.setAttribute("orderList", orderList);
-	pageContext.setAttribute("deliveryPrice", deliveryPrice);
+	pageContext.setAttribute("dlvyPrice", dlvyPrice);
 	
 }catch(SQLException se){
 	se.printStackTrace();
@@ -223,37 +223,42 @@ try{
 					<th style="width:100px">주문자명</th>
 					<th style="width:150px">총주문액</th>
 				</tr>
+				
+				
 				<c:if test="${ empty orderList }">
 				<tr>
 				<td colspan="11" style="text-align: center;">회원정보가 존재하지 않습니다</td>
 				</tr>
 				</c:if>
+				
+				
 				<c:forEach var="order" items="${ orderList }" varStatus="i">
 				<tr>
-				<td><input type="checkbox" class="check" name="check"  value="${ order.orderNo }"></td> 
+				<td><input type="checkbox" class="check" name="check"  value="${ order.ordno }"></td> 
 				 <td><c:out value="<%=startNum++ %>"/></td> 
-				<td><c:out value="${ order.date }"/></td>
-				<td><c:out value="${ order.orderNo }"/></td>
-				<td><c:out value="${ order.productName }"/></td>
+				<td><c:out value="${ order.ord_date }"/></td>
+				<td><c:out value="${ order.ordno }"/></td>
+				<td><c:out value="${ order.gname }"/></td>
 				<td><c:out value="${ order.amount }"/></td>
 				<td><fmt:formatNumber value="${ order.price }" pattern='#,###,###'/></td>
-				<td><fmt:formatNumber value="<%= deliveryPrice %>" pattern='#,###,###'/></td>
+				<td><fmt:formatNumber value="<%= dlvyPrice %>" pattern='#,###,###'/></td>
 				<td>
 				 <select name="statuslist" id="statuslist">
-                <option value="PF"${ order.orderStatus eq 'PF'? " selected='selected'" : "" }  >결제완료 </option>
-                <option value="D0"${ order.orderStatus eq 'D0'? " selected='selected'" : "" }  >배송중</option>
-                <option value="DR"${ order.orderStatus eq 'DR'? " selected='selected'" : "" }  >배송준비</option>
-                <option value="DF"${ order.orderStatus eq 'DF'? " selected='selected'" : "" }  >배송완료 </option>
+                <option value="PF"${ order.dlvy_pro eq 'PF'? " selected='selected'" : "" }  >결제완료 </option>
+                <option value="D0"${ order.dlvy_pro eq 'D0'? " selected='selected'" : "" }  >배송중</option>
+                <option value="DR"${ order.dlvy_pro eq 'DR'? " selected='selected'" : "" }  >배송준비</option>
+                <option value="DF"${ order.dlvy_pro eq 'DF'? " selected='selected'" : "" }  >배송완료 </option>
             </select>  
 				</td>
-				<td><c:out value="${ order.userName }"/></td>
-				<c:set var="totalAmount" value="${order.price * order.amount  + deliveryPrice}" />
+				<td><c:out value="${ order.name }"/></td>
+				<c:set var="totalAmount" value="${order.price * order.amount  + dlvyPrice}" />
 			 	<td><fmt:formatNumber value="${totalAmount}"  pattern='#,###,###'/></td> 
 				</tr>
 			</c:forEach>
 			</table>
 			</div>
 		</div>
+		
 		
 		<c:if test="${ not empty orderList }">
 		<!-- 페이지네이션 -->
@@ -269,6 +274,7 @@ try{
 		</c:if>
 		
 		<input type="button" class="btn" id="btnChange" value="변경"/>
+		
 		<%
 			if(request.getParameter("keyword") != null) {
 			out.print("<a href='orderManagement_order.jsp'><input type='button' id='btnList' value='목록' style='left:1060px; top:683px'/></a>");

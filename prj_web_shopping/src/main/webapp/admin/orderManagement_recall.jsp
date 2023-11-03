@@ -70,9 +70,9 @@ $(function() {
 		 var selectedOrders = [];
 		    // 클래스명이 'check'인 체크박스를 모두 선택
 		    $("input.check:checked").each(function(){
-		        var orderNo = $(this).val();
+		        var ordno = $(this).val();
 		        var newStatus = $(this).closest("tr").find("select[name=statuslist]").val();
-		        selectedOrders.push({ orderNo: orderNo, newStatus: newStatus });
+		        selectedOrders.push({ ordno: ordno, newStatus: newStatus });
 		    });//end each
 		    
 		    if (selectedOrders.length > 0) {
@@ -210,7 +210,7 @@ try{
 				<th style="width:70px"></th>
 				<th style="width:50px">No</th>
 					<th style="width:200px">주문일시</th>
-					<th id="ordNo" name="ordNo" style="width:80px">주문번호</th>
+					<th id="ordNo" style="width:80px">주문번호</th>
 					<th style="width:200px">상품명</th>
 					<th style="width:50px">수량</th>
 					<th style="width:100px">가격정보</th>
@@ -228,26 +228,26 @@ try{
 				
 				<c:forEach var="recall" items="${ recallList }" varStatus="i">
 				<tr>
-				 <td><input type="checkbox" class="check" name="check"  value="${ recall.orderNum }"></td> 
+				 <td><input type="checkbox" class="check" name="check"  value="${ recall.ordno }"></td> 
 				 <td><c:out value="<%=startNum++ %>"/></td> 
-				<td><c:out value="${ recall.date }"/></td>
-				<td><c:out value="${ recall.orderNum }"/></td>
-				<td><c:out value="${ recall.productName }"/></td>
-				<td><c:out value="${ recall.quantity }"/></td>
+				<td><c:out value="${ recall.ord_date }"/></td>
+				<td><c:out value="${ recall.ordno }"/></td>
+				<td><c:out value="${ recall.gname }"/></td>
+				<td><c:out value="${ recall.amount }"/></td>
 				<td><fmt:formatNumber value="${ recall.price }" pattern='#,###,###' /></td>
 				<td><fmt:formatNumber value="<%= deliveryPrice %>" pattern='#,###,###'/></td>
 				<td>
 	              <select name="statuslist" id="statuslist">
-	                <option value="C0"${ recall.orderStatus eq 'C0'? " selected='selected'" : "" }  >교환신청 </option>
-	                <option value="CF"${ recall.orderStatus eq 'CF'? " selected='selected'" : "" }  >교환완료</option>
-	                <option value="R0"${ recall.orderStatus eq 'R0'? " selected='selected'" : "" } >반품신청 </option>
-	                <option value="RF"${ recall.orderStatus eq 'RF'? " selected='selected'" : "" } >반품완료</option>
+	                <option value="C0"${ recall.dlvy_pro eq 'C0'? " selected='selected'" : "" }  >교환신청 </option>
+	                <option value="CF"${ recall.dlvy_pro eq 'CF'? " selected='selected'" : "" }  >교환완료</option>
+	                <option value="R0"${ recall.dlvy_pro eq 'R0'? " selected='selected'" : "" } >반품신청 </option>
+	                <option value="RF"${ recall.dlvy_pro eq 'RF'? " selected='selected'" : "" } >반품완료</option>
 	            </select>  
 				</td>
-				<td><c:out value="${ recall.userName }"/></td>
-			 	<c:set var="totalAmount" value="${recall.price * recall.quantity  + deliveryPrice}" />
+				<td><c:out value="${ recall.name }"/></td>
+			 	<c:set var="totalAmount" value="${recall.price * recall.amount  + deliveryPrice}" />
 			 	<td><fmt:formatNumber value="${totalAmount}" pattern='#,###,###'/></td> 
-				<td><c:out value="${ recall.recallDate }"/></td>
+				<td><c:out value="${ recall.recall_date }"/></td>
 				</tr>
 				</c:forEach>
 			</table>
@@ -260,7 +260,7 @@ try{
 			<div class="pagination">
  			<%
  			BoardUtil util=BoardUtil.getInstance();
-			BoardUtilVO buVO=new BoardUtilVO("orderManagement_edit.jsp",keyword,field,currentPage,totalPage);
+			BoardUtilVO buVO=new BoardUtilVO("orderManagement_recall.jsp",keyword,field,currentPage,totalPage);
 			out.println(util.pageNation(buVO));
  			%>
 			</div>
@@ -270,7 +270,7 @@ try{
 		<input type="button" class="btn" id="btnChange" value="변경"/>
 		<%
 			if(request.getParameter("keyword") != null) {
-			out.print("<a href='orderManagement_edit.jsp'><input type='button' id='btnList' value='목록' style='left:1060px; top:683px'/></a>");
+			out.print("<a href='orderManagement_recall.jsp'><input type='button' id='btnList' value='목록' style='left:1060px; top:683px'/></a>");
 			}
 		%>
 	</div>

@@ -446,17 +446,6 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
     height: 1px;
 }
 
-#container {
-    position: relative;
-    margin-top: 70px;
-}
-
-#container:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 #btn_right {
     position: fixed;
     right: 0px;

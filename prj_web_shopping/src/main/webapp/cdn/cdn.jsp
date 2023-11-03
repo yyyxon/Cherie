@@ -21,4 +21,4 @@
  
 <!-- 애프터블로우 CSS -->
 <link rel="stylesheet" type="text/css" href="//img.echosting.cafe24.com/editors/froala/css/froala_style_ec.min.css?vs=2310111247" charset="utf-8"/>
-<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/afterblow1.css"/>
+<link rel="stylesheet" type="text/css" href="http://localhost/prj_web_shopping/cdn/afterblow.css"/>

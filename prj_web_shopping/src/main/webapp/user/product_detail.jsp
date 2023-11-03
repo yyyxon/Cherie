@@ -338,7 +338,7 @@ function addWishList(gcode) {
 }//addCart
 
 function moveToBuy(gcode) {
-	   var amount = ${"#quantity"}.val();
+	   var amount = $("#quantity").val();
 	   location.href = "buy.jsp?gcode="+gcode+"&amount="+amount;
 	}
 </script>

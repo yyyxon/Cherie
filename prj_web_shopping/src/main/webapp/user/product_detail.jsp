@@ -791,7 +791,7 @@ function totalPrice(){
 					</table>
 				</div>
 			</div>
-         
+         //
             <!-- 페이지 네이션 -->
             <div id="pageNation" >
    <c:if test="${ not empty reviewList }">

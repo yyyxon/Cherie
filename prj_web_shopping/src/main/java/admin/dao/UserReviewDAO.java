@@ -499,7 +499,7 @@ try {
 	System.out.println("insert"+review+rcode+id+star+gcode);
 }
 
-//-----------------------totalcount--------------------
+//-----------------------totalcount--------------------//
 public int reviewTotalCount(BoardRangeVO brVO,String id) throws SQLException{
 	int totalCnt = 0;
 	String keyword = brVO.getKeyword();

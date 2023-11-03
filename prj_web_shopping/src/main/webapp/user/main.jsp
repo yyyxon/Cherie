@@ -23,7 +23,7 @@
 <body>
 	<div id="wrap">
 	<%@ include file="layout/header.jsp"%>
-		<div id="container" style="font-family:Pretendard Medium">
+		<div id="container" style="font-family:Pretendard Medium; margin-top:10px">
 			<main id="contents" role="main">
 			
 				<!-- 슬라이더 -->

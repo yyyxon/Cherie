@@ -99,6 +99,7 @@ brVO.setTableName("REVIEW");
 brVO.setField(field);
 brVO.setKeyword(keyword);
 int totalCount=uDAO.reviewTotalCount(brVO,id);
+//
 
 int pageScale=10; // 한 화면에 보여줄 게시물의 수
 int totalPage=0; // 총 페이지 수

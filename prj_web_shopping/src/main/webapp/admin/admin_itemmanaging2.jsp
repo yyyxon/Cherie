@@ -204,7 +204,7 @@ function productDetail(gcode){
 					<c:forEach var="product" items="${ productList }" varStatus="i">
 					<tr onclick="productDetail(${ product.goodsCode })">
 						<td>${ startNum + i.index }</td>
-						<td><img src="http://localhost/prj_web_shopping/upload/goods/${ product.mainImg }" style="width:30px"/></td>
+						<td><img src="http://localhost/prj_web_shopping/upload/goods/${ product.mainImg }" style="width:35px"/></td>
 						<td>${ product.goodsCode }</td>
 						<td>${ product.goodsName }</td>
 						<td>${ product.categoryName }</td>

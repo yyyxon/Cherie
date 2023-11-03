@@ -101,7 +101,7 @@ a {
 a:hover {
    color: #333;
 }
-.ec-base-qty {
+/* .ec-base-qty {
     position: relative;
     display: inline-block;
     width: 50px;
@@ -152,7 +152,7 @@ a:hover {
     position: static;
     left: auto;
     top: auto;
-}
+} */
 
 </style>
 
@@ -167,12 +167,12 @@ $(function() {
 		  
 	});//ready
 	
-	function deleteCart(gcode) {
+	function deleteCart(bcode) {
 		    
 	 	$.ajax({
 		    url: "cartDelete_process.jsp",
 		    type: "get",
-		    data: "gcode="+gcode,
+		    data: "bcode="+bcode,
 		    dataType: "text",
 		    error: function(xhr) {
 	        alert("죄송합니다. 서버에 문제가 발생하였습니다. 잠시 후에 다시 시도해주세요.");
@@ -185,7 +185,7 @@ $(function() {
        });//ajax
 	}//deleteWish
 			
-	function stockCheck(pm) {
+/* 	function stockCheck(pm) {
 		var quantity = parseInt($("#quantity").val());
 		
 		if(pm == "p"){
@@ -236,7 +236,7 @@ $(function() {
 		
 		$("#bottomQuantity").html("("+quantity+"개)");
 		totalPrice();
-	}//stockCheck
+	}//stockCheck */
 </script>
 
 </head>  
@@ -310,26 +310,33 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 				
 					<c:forEach var="cart" items="${ cartList }" varStatus="i">
 					  <tr style="border-bottom: 1px solid #E5E4E4;" >
-						<td style=" vertical-align: middle;"><input type="checkbox" class="check" name="check"  value="${ wish.wcode }" style="border: 1px solid #929492 ; width: 15px; "></td> 
+						<td style=" vertical-align: middle;"><input type="checkbox" class="check" name="check"  value="${ cart.bcode }" style="border: 1px solid #929492 ; width: 15px; "></td> 
 						<td  style=" vertical-align: middle;"><img src="../upload/goods/${ cart.img }"  style="width: 100px"/></td>
 						<td style=" vertical-align: middle;"><c:out value="${ cart.gname }"/></td>
 						<td style=" vertical-align: middle;"><c:out value="${ cart.price }"/></td>
-						<td>
-                           <!-- 수량 -->
+						<!-- <td>
+                           수량
                           <span class="quantity">
                              <input id="quantity" name="quantity_opt[]" style="" value="1" type="text"/>                                            
-                               <!-- + 버튼 -->
+                               + 버튼
                                <a href="javascript:stockCheck('p');" class="up QuantityUp">수량증가</a>
                                             
-                               <!-- - 버튼 -->
+                               - 버튼
                                <a href="javascript:stockCheck('m');" class="down QuantityDown">수량감소</a>
                            </span>
-                        </td>
+                        </td> -->
+						<td style=" vertical-align: middle;">
+							<select>
+							<% %>
+								<option>1</option><option>2</option><option>3</option><option>4</option>
+								<option>5</option><option>6</option><option>7</option><option>8</option>
+							</select>
+						</td>
 						<td style=" vertical-align: middle;"><c:out value="<%= deliveryPrice %>"/></td>
 					 	<td style=" vertical-align: middle;"><c:out value="${ cart.price + deliveryPrice }"/></td> 
 						<td>
 					 		<input type="hidden" value="x삭제" name="dd" style="width:90px; height:40px ;"/><br/><br/>
-					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" onclick="deleteCart('${cart.gcode}')" style="width:90px; height:35px ;background-color: white; border : 1px solid  #E5E4E4;"/><br/>
+					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" onclick="deleteCart('${cart.bcode}')" style="width:90px; height:35px ;background-color: white; border : 1px solid  #E5E4E4;"/><br/>
 					 		<input type="hidden" value="x삭제" name="dt" style="width:90px; height:30px ;"/>
 					 	</td>
 					 </tr>

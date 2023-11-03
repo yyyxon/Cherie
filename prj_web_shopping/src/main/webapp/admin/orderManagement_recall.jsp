@@ -70,9 +70,9 @@ $(function() {
 		 var selectedOrders = [];
 		    // 클래스명이 'check'인 체크박스를 모두 선택
 		    $("input.check:checked").each(function(){
-		        var ordno = $(this).val();
+		        var ord_dno = $(this).val();
 		        var newStatus = $(this).closest("tr").find("select[name=statuslist]").val();
-		        selectedOrders.push({ ordno: ordno, newStatus: newStatus });
+		        selectedOrders.push({ ord_dno: ord_dno, newStatus: newStatus });
 		    });//end each
 		    
 		    if (selectedOrders.length > 0) {
@@ -80,7 +80,6 @@ $(function() {
 	                url: "order_process.jsp",
 	                type: "POST",
 	                data: JSON.stringify(selectedOrders),
-	                contentType: "application/json; charset=UTF-8",
 	                dataType: "text",
 	                error: function(xhr) {
 	                    alert("죄송합니다. 서버에 문제가 발생하였습니다. 잠시 후에 다시 시도해주세요.");
@@ -149,7 +148,7 @@ if(tempPage != null){
 	currentPage = Integer.parseInt(tempPage);
 }//end if
 
-int deliveryPrice=2500;
+int dlvyPrice=2500;
 
 //5.시작 번호
 int startNum = currentPage*pageScale-pageScale+1;
@@ -165,7 +164,7 @@ brVO.setEndNum(endNum);
 try{
 	List<RecallVO> recallList = opDAO.selectRecallAllOrder(brVO);
 	pageContext.setAttribute("recallList", recallList);
-	pageContext.setAttribute("deliveryPrice", deliveryPrice);
+	pageContext.setAttribute("dlvyPrice", dlvyPrice);
 	
 }catch(SQLException se){
 	se.printStackTrace();
@@ -228,14 +227,14 @@ try{
 				
 				<c:forEach var="recall" items="${ recallList }" varStatus="i">
 				<tr>
-				 <td><input type="checkbox" class="check" name="check"  value="${ recall.ordno }"></td> 
+				 <td><input type="checkbox" class="check" name="check"  value="${ recall.ord_dno }"></td> 
 				 <td><c:out value="<%=startNum++ %>"/></td> 
 				<td><c:out value="${ recall.ord_date }"/></td>
 				<td><c:out value="${ recall.ordno }"/></td>
 				<td><c:out value="${ recall.gname }"/></td>
 				<td><c:out value="${ recall.amount }"/></td>
 				<td><fmt:formatNumber value="${ recall.price }" pattern='#,###,###' /></td>
-				<td><fmt:formatNumber value="<%= deliveryPrice %>" pattern='#,###,###'/></td>
+				<td><fmt:formatNumber value="<%= dlvyPrice %>" pattern='#,###,###'/></td>
 				<td>
 	              <select name="statuslist" id="statuslist">
 	                <option value="C0"${ recall.dlvy_pro eq 'C0'? " selected='selected'" : "" }  >교환신청 </option>
@@ -245,7 +244,7 @@ try{
 	            </select>  
 				</td>
 				<td><c:out value="${ recall.name }"/></td>
-			 	<c:set var="totalAmount" value="${recall.price * recall.amount  + deliveryPrice}" />
+			 	<c:set var="totalAmount" value="${recall.price * recall.amount  + dlvyPrice}" />
 			 	<td><fmt:formatNumber value="${totalAmount}" pattern='#,###,###'/></td> 
 				<td><c:out value="${ recall.recall_date }"/></td>
 				</tr>

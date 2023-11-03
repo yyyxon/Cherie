@@ -338,7 +338,12 @@ function addWishList(gcode) {
         }//success
     });//ajax
 }//addCart
-</script>
+
+function moveToBuy(gcode) {
+	   var amount = ${"#quantity"}.val();
+	   location.href = "buy.jsp?gcode="+gcode+"&amount="+amount;
+	}
+	</script>
 
 </head>
 <body>
@@ -639,7 +644,7 @@ function addWishList(gcode) {
                 <div class="xans-element- xans-layout xans-layout-statelogoff ">
                 	<div id="" class="xans-element- xans-product xans-product-action productAction ">
                 		<div class="ec-base-button gColumn ">
-                        	<a href="buy.jsp" class="btn gFlex2 actionBuy " onclick="">
+                        	<a href="buy.jsp" class="btn gFlex2 actionBuy " onclick="moveToBuy('${product.gcode}')">
                         		<span id="actionBuy" style="font-size:16px">구매하기</span>
                         	</a>
                         	<input type="button" value="장바구니" class="btn gFlex2 actionCart " onclick="addCart('${product.gcode}')" style="font-family:Pretendard Medium"  id="actionCart">

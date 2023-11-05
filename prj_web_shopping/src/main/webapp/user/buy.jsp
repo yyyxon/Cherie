@@ -135,7 +135,7 @@ if("pd".equals(where)) { //상품 상세 페이지에서 왔을 떄
 }
 
 if("y".equals(request.getParameter("full"))) {
-	List<BuyingCartVO> list = new ArrayList<BuyingCartVO>();
+	List<BuyingGoodsVO> list = new ArrayList<BuyingGoodsVO>();
 	
 	if("cart".equals(where)) {
 		list = bDAO.selectCartGoods(id);
@@ -169,7 +169,7 @@ if("y".equals(request.getParameter("full"))) {
 			}
 			
 			let inputList = [$("input[name='receiver']").val(), $("input[name='zipcode']").val(), $("input[name='sido']").val(),
-				$("input[name='addr']").val(), $("input[name='phone']").val(), $("input[name='email']").val()];
+				$("input[name='addr']").val(), $("input[name='phone']").val(), $("#email").val()];
 			
 			let msg = $("#selMsg option:selected").val() == 0 ? 0 : $("#selMsg option:selected").text();
 			let check = $("#chk").is(":checked");
@@ -200,6 +200,18 @@ if("y".equals(request.getParameter("full"))) {
 		    $("#frm").submit();
 		});
 	});
+	
+function valided() {
+	var valid_txt = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//(알파벳,숫자)@(알파벳,숫자).(알파벳,숫자)
+	var email = $("#email").val();
+	
+	if(!valid_txt.test(email){ 
+		alert("이메일 주소가 올바르지 않습니다."); 
+		$("#email").focus();
+		 
+		return;
+	 }
+}
 </script>
 </head>
 <body>
@@ -265,7 +277,7 @@ if("y".equals(request.getParameter("full"))) {
 		</td>
 		<td>
 			<div class="input-group mb-3">
-		      <input type="text" name="email" class="form-control" placeholder="example@domain.com" aria-label="Username">
+		      <input id="email" type="text" name="email" class="form-control" placeholder="example@domain.com" aria-label="Username">
 	    	</div>
 	    </td>
 	</tr>

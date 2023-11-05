@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="user.vo.BuyingCartVO"%>
+<%@page import="java.util.List"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="user.dao.BuyDAO"%>
 <%@page import="user.vo.BuyingGoodsVO"%>
@@ -112,24 +115,39 @@ String paymentFlag = DataEncrypt.messageDigest("MD5", id.concat(String.valueOf(r
 
 session.setAttribute("paymentFlag", paymentFlag);
 
-int flag = "d".equals(request.getParameter("flag")) ? 1 : 2;
-System.out.println("buy.jsp flag : "+flag);
-String gcode = request.getParameter("gcode");
+String where = request.getParameter("where");
+System.out.println("buy.jsp where : "+where);
 
+BuyDAO bDAO = BuyDAO.getInstance();
 int totalAmountPrice = 0;
-if(flag == 1) {
-	BuyingGoodsVO bgVO = BuyDAO.getInstance().selectBuyingGoods(gcode);
+
+if("pd".equals(where)) { //상품 상세 페이지에서 왔을 떄
+	String gcode = request.getParameter("gcode");
+	BuyingGoodsVO bgVO = bDAO.selectDetailGoods(gcode);
 	bgVO.setAmount(Integer.parseInt(request.getParameter("amount")));
 	
 	System.out.println(bgVO);
+	
 	totalAmountPrice = bgVO.getPrice() * bgVO.getAmount(); 
 	
-	pageContext.setAttribute("bgVO", bgVO);
+	pageContext.setAttribute("list", bgVO);
 	pageContext.setAttribute("totalAmountPrice", totalAmountPrice);
 }
 
-if(flag == 2) {
+if("y".equals(request.getParameter("full"))) {
+	List<BuyingCartVO> list = new ArrayList<BuyingCartVO>();
 	
+	if("cart".equals(where)) {
+		list = bDAO.selectCartGoods(id);
+	} else {
+		list = bDAO.selectWishGoods(id);
+	}
+	
+	pageContext.setAttribute("list", list);
+} else {
+	String[] goodsArr = request.getParameterValues("check");
+	List<BuyingGoodsVO> list = bDAO.selectGoods(goodsArr);
+	pageContext.setAttribute("list", list);
 }
 
 %>
@@ -269,14 +287,16 @@ if(flag == 2) {
 	<div class="secTitle"> 
 	주문상품
 	</div>
+	<!-- for start list로 한 개이든 여러 개이든 돌려서 채운다 -->
 	<div id="dg">
 	<img src="http://localhost/prj_web_shopping/upload/goods/${ bgVO.img }" class="rounded float-start" alt="상품명" width="70px" height="70">
 	<p>${ bgVO.gname }</p>
 	<p>수량 <fmt:formatNumber value="${ bgVO.amount }" pattern="#,###"/>개</p>
 	<p><fmt:formatNumber value="${ bgVO.price * bgVO.amount }" pattern="#,###,###"/>원</p>
 	<input type="hidden" name="gcode" value="${param.gcode }">
-    <input type="hidden" name="amount" value="1">
+    <input type="hidden" name="amount" value="${ bgVO.amount }">
 	</div>
+	<!-- for end -->
 </div>
 	<div style="background: #EBEDF0;width: 500px; height: 50px;margin: 0px auto;padding-top: 10px;">
 	<span style="margin: 10px;margin-top:0px; float: left;">배송비</span>
@@ -307,7 +327,7 @@ if(flag == 2) {
       <input id="card" name="card" type="button" class="btn btn-outline-primary" value="신용카드">
     </div>
     <div style="height: 50px;padding-left: 0px;padding-right: 0px;margin-top: 50px;position: relative;">
-    	<a href="#void" id="buyBtn" style="position: absolute;bottom: 0px;">
+    	<a id="buyBtn" style="position: absolute;bottom: 0px;">
     	<fmt:formatNumber value="${ totalAmountPrice + 2500 }" pattern="#,###,###"/>원 결제하기
     	</a>
     </div>

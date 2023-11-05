@@ -345,7 +345,7 @@ function addWishList(gcode) {
 
 function moveToBuy(gcode) {
 	   var amount = $("#quantity").val();
-	   location.href = "buy.jsp?gcode="+gcode+"&amount="+amount;
+	   location.href = "buy.jsp?where=pd&gcode="+gcode+"&amount="+amount;
 	}
 </script>
 
@@ -648,7 +648,7 @@ function moveToBuy(gcode) {
                 <div class="xans-element- xans-layout xans-layout-statelogoff ">
                 	<div id="" class="xans-element- xans-product xans-product-action productAction ">
                 		<div class="ec-base-button gColumn ">
-                        	<a class="btn gFlex2 actionBuy " onclick="moveToBut('${product.gcode}')">
+                        	<a class="btn gFlex2 actionBuy " onclick="moveToBuy('${product.gcode}')">
                         		<span id="actionBuy" style="font-size:16px">구매하기</span>
                         	</a>
                         	<input type="button" value="장바구니" class="btn gFlex2 actionCart " onclick="addCart('${product.gcode}')" style="font-family:Pretendard Medium"  id="actionCart">

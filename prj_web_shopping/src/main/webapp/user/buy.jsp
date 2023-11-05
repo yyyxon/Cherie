@@ -168,8 +168,12 @@ if("y".equals(request.getParameter("full"))) {
 				return;
 			}
 			
-			let inputList = [$("input[name='receiver']").val(), $("input[name='zipcode']").val(), $("input[name='sido']").val(),
-				$("input[name='addr']").val(), $("input[name='phone']").val(), $("#email").val()];
+			if(valided()) {
+				return;
+			}
+			
+			let inputList = [$("#receiver").val(), $("#zipcode").val(), $("#sido").val(),
+				$("#addr").val(), $("#phone").val(), $("#email").val()];
 			
 			let msg = $("#selMsg option:selected").val() == 0 ? 0 : $("#selMsg option:selected").text();
 			let check = $("#chk").is(":checked");
@@ -202,14 +206,23 @@ if("y".equals(request.getParameter("full"))) {
 	});
 	
 function valided() {
-	var valid_txt = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//(알파벳,숫자)@(알파벳,숫자).(알파벳,숫자)
-	var email = $("#email").val();
+	var validTxt = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;	//(알파벳,숫자)@(알파벳,숫자).(알파벳,숫자)
+	var validCell = /^010-[0-9]{4}-[0-9]{4}$/;
 	
-	if(!valid_txt.test(email){ 
+	var email = $("#email").val();
+	if(!validTxt.test(email){ 
 		alert("이메일 주소가 올바르지 않습니다."); 
 		$("#email").focus();
 		 
-		return;
+		return true;
+	 }
+
+	var cell = $("#phone").val();
+	if(!validTxt.test(email){ 
+		alert("전화번호가 올바르지 않습니다."); 
+		$("#phone").focus();
+		 
+		return true;
 	 }
 }
 </script>
@@ -232,7 +245,7 @@ function valided() {
 		</td>
 		<td>
 			<div class="input-group mb-3" id="dlvrInput">
-		     	<input type="text" name="receiver" class="form-control" aria-label="Username" aria-describedby="inputGroup-sizing-lg">
+		     	<input type="text" id="receiver" name="receiver" class="form-control" aria-label="Username" aria-describedby="inputGroup-sizing-lg">
 		    </div>
 	    </td>
 	</tr>
@@ -242,7 +255,7 @@ function valided() {
 		</td>
 		<td>
 			<div class="input-group mb-3">
-		     	<input value="12345" type="text" name="zipcode" class="form-control" placeholder="우편번호" aria-label="Disabled input example" readonly aria-describedby="button-addon2">
+		     	<input value="12345" type="text" id="zipcode" name="zipcode" class="form-control" placeholder="우편번호" aria-label="Disabled input example" readonly aria-describedby="button-addon2">
 	      		<input class="btn btn-outline-secondary" type="button" id="button-addon2 btnAddr" value="주소검색"/>
 		    </div>
 	    </td>
@@ -250,14 +263,14 @@ function valided() {
 	<tr>
 		<td colspan="2">
 			<div class="input-group mb-3">
-		     	<input type="text" name="sido" class="form-control" placeholder="기본주소" aria-label="Username" aria-describedby="basic-addon1">
+		     	<input type="text" id="sido" name="sido" class="form-control" placeholder="기본주소" aria-label="Username" aria-describedby="basic-addon1">
 		    </div>
 	    </td>
 	</tr>
 	<tr>
 		<td colspan="2">
 			<div class="input-group mb-3">
-		     	<input type="text" name="addr" class="form-control" placeholder="상세주소" aria-label="Username" aria-describedby="basic-addon1">
+		     	<input type="text" id="addr" name="addr" class="form-control" placeholder="상세주소" aria-label="Username" aria-describedby="basic-addon1">
 		    </div>
 	    </td>
 	</tr>
@@ -267,7 +280,7 @@ function valided() {
 		</td>
 		<td>
 			<div class="input-group mb-3">
-		     	<input type="text" name="phone" class="form-control" placeholder="010-0000-0000" aria-label="Username" aria-describedby="basic-addon1">
+		     	<input type="text" id="phone" name="phone" class="form-control" placeholder="010-0000-0000" aria-label="Username" aria-describedby="basic-addon1">
 		    </div>
 	    </td>
 	</tr>

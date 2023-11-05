@@ -33,7 +33,6 @@ public class BoardDAO {
 		String keyword = brVO.getKeyword();
 		
 		DbConnection db = DbConnection.getInstance();
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -41,17 +40,61 @@ public class BoardDAO {
 		try {
 			con = db.getConn("jdbc/dbcp");
 
-			String selectCount = "SELECT COUNT(*) CNT FROM  "+ brVO.getTableName();
+			StringBuilder selectCount = new StringBuilder();
+			selectCount.append("SELECT COUNT(*) CNT FROM  "+ brVO.getTableName());
 			
-			pstmt = con.prepareStatement(selectCount);
+			if(!"".equals(keyword) && !"null".equals(keyword) && keyword != null) {
+				String field = "not_title";
+				if("content".equals(brVO.getField())) field = "not_text";
+				selectCount.append(" where ").append(field).append(" like '%'||?||'%' ");
+			}
 			
-			/*
-			 * StringBuilder selectCount = new StringBuilder();
-			 * selectCount.append("SELECT COUNT(*) CNT FROM ?");
-			 * 
-			 * pstmt = con.prepareStatement(selectCount.toString());
-			 * pstmt.setString(1, tableName);
-			 */
+			pstmt = con.prepareStatement(selectCount.toString());
+			
+			if(!"".equals("keyword") && !"null".equals("keyword") && keyword != null) {
+				pstmt.setString(1, keyword);
+			}
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				totalCnt = rs.getInt("CNT");
+			}
+			
+			System.out.println(selectCount.toString());
+			
+		} finally {
+			db.dbClose(rs, pstmt, con);
+		}
+		
+		return totalCnt;
+	}
+	
+	public int totalCountNotice(BoardRangeVO brVO) throws SQLException {
+		int totalCnt = 0;
+		String keyword = brVO.getKeyword();
+		
+		DbConnection db = DbConnection.getInstance();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = db.getConn("jdbc/dbcp");
+			
+			StringBuilder selectCount = new StringBuilder();
+			selectCount.append("SELECT COUNT(*) CNT FROM NOTICE where del_flag != 'Y' ");
+			
+			if(!"".equals(keyword) && !"null".equals(keyword) && keyword != null) {
+				String field = "not_title";
+				if("content".equals(brVO.getField())) field = "not_text";
+				selectCount.append(" and ").append(field).append(" like '%'||?||'%' ");
+			}
+			
+			pstmt = con.prepareStatement(selectCount.toString());
+			
+			if(!"".equals(keyword) && !"null".equals(keyword) && keyword != null) {
+				pstmt.setString(1, keyword);
+			}
 			
 			rs = pstmt.executeQuery();
 			if(rs.next()) {

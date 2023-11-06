@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page info="Chérie CDN"%>
 <title>Chérie</title>
-<link rel="icon" href="http://localhost/cherie_ysy_private/common/images/favicon.png"/>
+<link rel="icon" href="http://localhost/prj_web_shopping/common/images/favicon.png"/>
 <!-- Bootstrap CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <!-- jQeury CDN -->

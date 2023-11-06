@@ -35,13 +35,13 @@
       				</div>
       			<div class="carousel-inner">
         		<div class="carousel-item active">
-          			<img src="http://192.168.10.136/cherie_ysy_private/common/images/main_slider_3.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"/>
+          			<img src="http://localhost/prj_web_shopping/common/images/main_slider_3.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"/>
         		</div>
         		<div class="carousel-item">
-          			<img src="http://192.168.10.136/cherie_ysy_private/common/images/main_slider_4.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"/>
+          			<img src="http://localhost/prj_web_shopping/common/images/main_slider_4.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"/>
         		</div>
         		<div class="carousel-item">
-          			<img src="http://192.168.10.136/cherie_ysy_private/common/images/main_slider_1.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"/>
+          			<img src="http://localhost/prj_web_shopping/common/images/main_slider_1.jpg" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"/>
         		</div>
       			</div>
 				</div>

@@ -319,8 +319,7 @@ function addCart(gcode) {
             console.log(xhr.status);
         },
         success: function(data) {
-                alert("상품이 추가되었습니다.");
-                if (confirm("장바구니 페이지로 이동하시겠습니까?")) {
+                if (confirm("장바구니에 상품이 추가되었습니다.\n\n장바구니 페이지로 이동하시겠습니까?")) {
                     // 사용자가 확인을 누른 경우
                     window.location.href = "cart.jsp"; 
                 } else {
@@ -341,8 +340,7 @@ function addWishList(gcode) {
             console.log(xhr.status);
         },
         success: function(data) {
-                alert("상품이 추가되었습니다.");
-                if (confirm("관심상품 페이지로 이동하시겠습니까?")) {
+                if (confirm("관심상품에 상품이 추가되었습니다.\n\n관심상품 페이지로 이동하시겠습니까?")) {
                     // 사용자가 확인을 누른 경우
                     window.location.href = "wishList.jsp"; 
                 } else {

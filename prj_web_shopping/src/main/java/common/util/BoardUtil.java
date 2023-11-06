@@ -193,9 +193,9 @@ public class BoardUtil {
 		if(currentPage > pageNumber) { //시작페이지보다 1 적은 페이지로 이동
 			movePage = startPage-1;
 		
-			pageNation.append("<a href = '").append(buVO.getUrl()).append("?currentPage=").append(movePage).append("&category=")
+			pageNation.append("<a href = '").append(buVO.getUrl()).append("?currentPage=").append(movePage).append("&gcode=")
 			.append(buVO.getCategory()).append("&keyword=").append(buVO.getKeyword()).append("&field=")
-			.append(buVO.getField()).append("'>&laquo;</a>");
+			.append(buVO.getField()).append("#prdReview'>&laquo;</a>");
 		}else{
 			pageNation.append("<span>&laquo;</span>");
 		}
@@ -210,9 +210,9 @@ public class BoardUtil {
 			}else{
 			//나머지 인덱스는 링크 있는 인덱스 제공
 			pageNation.append("<a href='")
-			.append(buVO.getUrl()).append("?currentPage=").append(movePage).append("&category=")
+			.append(buVO.getUrl()).append("?currentPage=").append(movePage).append("&gcode=")
 			.append(buVO.getCategory()).append("&keyword=").append(buVO.getKeyword())
-			.append("&field=").append(buVO.getField()).append("'>").append(movePage).append("</a>");
+			.append("&field=").append(buVO.getField()).append("#prdReview'>").append(movePage).append("</a>");
 		
 			}//end else
 			
@@ -228,7 +228,7 @@ public class BoardUtil {
 			.append("?currentPage=").append(movePage).append("&gcode=")
 			.append(buVO.getCategory()).append("&keyword=")
 			.append(buVO.getKeyword()).append("&field=").append(buVO.getField())
-			.append("'>&raquo;</a>");   
+			.append("#prdReview'>&raquo;</a>");   
 			
 		}else{
 			//없으면 링크 비활성화

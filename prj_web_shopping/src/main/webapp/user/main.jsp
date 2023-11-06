@@ -110,7 +110,7 @@
 							<div class="text_align">
 								<!-- 작은 로고 -->
 								<div class="proLmg">
-										<img src="http://192.168.10.136/prj_web_shopping/common/images/main_sub_logo.jpg" alt="">
+										<img src="http://localhost/prj_web_shopping/common/images/main/sub_logo_6.png" alt="">
 								</div>
 									<ul class="proText">
 										<li>
@@ -142,13 +142,13 @@
 					<ul>
 						<li class="proBox">
 							<a href="#void">
-								<img src="http://192.168.10.136/prj_web_shopping/common/images/main_img2.jpg" alt=""></a>
+								<img src="http://localhost/prj_web_shopping/common/images/main/noon4.png" alt=""></a>
 						</li>
 						<li>
 							<div class="text_table">
 								<div class="text_align">
 									<div class="proLmg">
-											<img src="http://192.168.10.136/prj_web_shopping/common/images/main_sub_logo.jpg" alt="">
+											<img src="http://localhost/prj_web_shopping/common/images/main/sub_logo_n.png" alt="">
 									</div>
 									<ul class="proText">
 										<li>
@@ -181,13 +181,13 @@
 					<ul class="proRight">
 						<li class="proBox">
 							<a href="#void">
-								<img src="http://192.168.10.136/prj_web_shopping/common/images/main_img3.jpg" alt=""></a>
+								<img src="http://localhost/prj_web_shopping/common/images/main/3pm4.png" alt=""></a>
 						</li>
 						<li>
 							<div class="text_table">
 								<div class="text_align">
 									<div class="proLmg">
-											<img src="http://192.168.10.136/prj_web_shopping/common/images/main_sub_logo.jpg" alt="">
+											<img src="http://localhost/prj_web_shopping/common/images/main/sub_logo_3.png" alt="">
 									</div>
 									<ul class="proText">
 										<li><p class="large_txt">
@@ -218,13 +218,13 @@
 					<ul>
 						<li class="proBox">
 							<a href="#void">
-								<img src="http://192.168.10.136/prj_web_shopping/common/images/main_img4.jpg" alt=""></a>
+								<img src="http://localhost/prj_web_shopping/common/images/main/9pm4.png" alt=""></a>
 						</li>
 						<li>
 							<div class="text_table">
 								<div class="text_align">
 									<div class="proLmg">
-											<img src="http://192.168.10.136/prj_web_shopping/common/images/main_sub_logo.jpg" alt="">
+											<img src="http://localhost/prj_web_shopping/common/images/main/sub_logo_9.png" alt="">
 									</div>
 									<ul class="proText">
 										<li>
@@ -255,14 +255,14 @@
 					<ul class="proRight" style="margin: 20px 0px 30px">
 						<li class="proBox">
 							<a href="#void">
-								<img src="http://192.168.10.136/prj_web_shopping/common/images/main_img5.jpg" alt=""></a>
+								<img src="http://localhost/prj_web_shopping/common/images/main/mid4.png" alt=""></a>
 						</li>
 						<li>
 							<div class="text_table">
 								<div class="text_align">
 									<div class="proLmg">
 										<a href="#void">
-											<img src="http://192.168.10.136/prj_web_shopping/common/images/main_sub_logo.jpg" alt="">
+											<img src="http://localhost/prj_web_shopping/common/images/main/sub_logo_m.png" alt="">
 										</a>
 									</div>
 									<ul class="proText">

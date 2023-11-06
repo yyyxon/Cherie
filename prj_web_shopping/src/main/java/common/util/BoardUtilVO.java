@@ -22,6 +22,13 @@ public class BoardUtilVO {
 		this.totalPage = totalPage;
 		this.category = category;
 	}
+	
+	public BoardUtilVO(String url,int currentPage, int totalPage) {
+		super();
+		this.url = url;
+		this.currentPage = currentPage;
+		this.totalPage = totalPage;
+	}
 
 	public BoardUtilVO() {
 		super();

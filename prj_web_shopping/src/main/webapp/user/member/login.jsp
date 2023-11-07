@@ -2,6 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ page info="로그인"%>
 <jsp:include page="../../cdn/cdn.jsp" />
+<%
+	String id = (String)session.getAttribute("sesId");
+	if(id != null){
+		response.sendRedirect("http://localhost/prj_web_shopping/user/main.jsp");
+		return;
+	}
+
+%>
 <!DOCTYPE html>
 <html>
 <head>

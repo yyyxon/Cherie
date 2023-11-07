@@ -131,7 +131,9 @@ if("pd".equals(where)) { //상품 상세 페이지에서 왔을 떄
 	
 	totalAmountPrice = bgVO.getPrice() * bgVO.getAmount(); 
 	
-	pageContext.setAttribute("list", bgVO);
+	List<BuyingGoodsVO> list = new ArrayList();
+	list.add(bgVO);
+	pageContext.setAttribute("list", list);
 	
 } else{
 	List<BuyingGoodsVO> list = null;
@@ -161,13 +163,13 @@ if("pd".equals(where)) { //상품 상세 페이지에서 왔을 떄
 		}
 		
 		System.out.println("BuyingGoodsVO list : "+list);
+		pageContext.setAttribute("list", list);
 	}
 	
 	for(int i = 0; i < list.size(); i++) {
 		totalAmountPrice += list.get(i).getPrice() * list.get(i).getAmount();
 	}
 	
-	pageContext.setAttribute("list", list);
 	pageContext.setAttribute("totalAmountPrice", totalAmountPrice);
 }
 

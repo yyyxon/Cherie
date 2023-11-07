@@ -199,7 +199,7 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 				</tr>
 				<c:if test="${ empty wishList }">
 					<tr>
-					<td colspan="7" style="text-align: center; padding:100px">관심상품 내역기 없습니다.</td>
+					<td colspan="7" style="text-align: center; padding:100px">관심상품 내역이 없습니다.</td>
 					</tr>
 				</c:if>
 					<c:forEach var="wish" items="${ wishList }" varStatus="i">

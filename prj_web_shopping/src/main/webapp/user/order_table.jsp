@@ -10,7 +10,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../cdn/cdn.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <c:if test="${ empty sesId }">
+	<c:redirect url="login.jsp"/>
+</c:if> 
 <%
 String id = "frank";
 %>
@@ -243,7 +245,7 @@ brVO.setEndNum(endNum);
 			}
 			output += "<tr><td>"+data[i].orderDate+"<br>["+data[i].orderNum+"]"+review+"</td>";
 			output += "<td><img src='http://192.168.10.143/prj_web_shopping/upload/goods/"+data[i].img+"' width='100'></td>";
-			output += "<td class='subject left txtBreak'><a href='order_detail.jsp?ordno="+data[i].orderNum+"'>"+data[i].productName+"</a></td>";
+			output += "<td class='subject left txtBreak'><a href='order_detail.jsp?ordno="+data[i].orderNum+"&price="+data[i].price+"'>"+data[i].productName+"</a></td>";
 			output += "<td>"+data[i].amount+"</td>";
 			output += "<td>"+data[i].totalPrice+"원</td>";
 			

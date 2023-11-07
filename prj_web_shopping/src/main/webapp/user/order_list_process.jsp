@@ -10,10 +10,6 @@
 <%@ page info="사용자 주문 내역 JSON으로 만듬"%>
 <%
 String flag = request.getParameter("flag");
-/* if(!"o".equals(flag) || !"r".equals(flag)) {
-	response.sendRedirect("order_table.jsp");
-	return;
-} */
 
 JSONObject jsonObj = new JSONObject();
 jsonObj.put("dataFlag", false);

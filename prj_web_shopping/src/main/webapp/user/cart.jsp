@@ -14,6 +14,7 @@
     pageEncoding="UTF-8"%>
     <%@ page info="사용자 / 장바구니 / 메인 페이지 - 인영" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../cdn/cdn.jsp"/>
 <!DOCTYPE html>
 <html>
@@ -53,7 +54,7 @@ background-color:  #FFFFFF;
 height: 56px; width: 500px;
 padding: 16px 16px 16px 16px;
 }
-.pagenationDiv{
+/* .pagenationDiv{
    top: 575px;
    text-align: center;
     margin-top: 10px; 
@@ -103,7 +104,7 @@ a {
 
 a:hover {
    color: #333;
-}
+} */
 .table {
     background-color: white;
 }
@@ -158,46 +159,46 @@ $(function() {
 				alert("구매 가능 수량을 초과하였습니다.");
 			//	$("#quantity").val(${ product.quantity });
 				return;
-			}
+			}//end if
 			
 			if(quantity < 1) {
 				alert("최소 주문 수량은 1개 입니다.");
 				$("#quantity").val(1);
 				return;
-			}
+			}//end if
 			
 			$("#quantity").val(++quantity);
-		}
+		}//end if
 		
 		if(pm == "m") {
 			if(quantity > 50) {
 				alert("구매 가능 수량을 초과하였습니다.");
 				//$("#quantity").val(${ cart.amount });
 				return;
-			}
+			}//end if
 			
 			if(quantity <= 1) {
 				alert("최소 주문 수량은 1개 입니다.");
 				$("#quantity").val(1);
 				return;
-			}
+			}//end if
 			
 			$("#quantity").val(--quantity);
-		}
+		}//end if
 		
 		if(pm == null){
 			if(quantity > 10 ){
 				alert("구매 가능 수량을 초과하였습니다.");
 				/* $("#quantity").val(${ cart.amount }); */
 				return;
-			}
+			}//end if
 			
 			if(quantity < 1){
 				alert("최소 주문 수량은 1개 입니다.");
 				$("#quantity").val(1);
 				return;
-			}
-		}
+			}//end if
+		}//end if
 		
 	}//stockCheck   
 	
@@ -208,12 +209,12 @@ $(function() {
 	    if (newQuantity >= 50) {
 	        alert("구매 가능 수량을 초과하였습니다.");
 	        return;
-	    }
+	    }//end if
 
 	    if (newQuantity < 1) {
 	        alert("최소 주문 수량은 1개 입니다.");
 	        return;
-	    }
+	    }//end if
 
 	    // 수량 증가
 	    newQuantity++;
@@ -222,7 +223,7 @@ $(function() {
 	    // 총 가격 업데이트
 	    var totalField = $("#total" + bcode);
 	    totalField.html(price * newQuantity);
-	}
+	}//plus
 
 	function minus(bcode, price) {
 	    var quantityField = $("#quantity" + bcode);
@@ -231,12 +232,12 @@ $(function() {
 	    if (newQuantity >= 50) {
 	        alert("구매 가능 수량을 초과하였습니다.");
 	        return;
-	    }
+	    }//end if
 
 	    if (newQuantity <= 1) {
 	        alert("최소 주문 수량은 1개 입니다.");
 	        return;
-	    }
+	    }//end if
 
 	    // 수량 감소
 	    newQuantity--;
@@ -245,7 +246,7 @@ $(function() {
 	    // 총 가격 업데이트
 	    var totalField = $("#total" + bcode);
 	    totalField.html(price * newQuantity);
-	}
+	}//minus
 </script>
 
 </head>  

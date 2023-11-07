@@ -196,7 +196,46 @@ public void updateReivew ( String review,int star,int rcode,String img) throws S
 
 }//updateReivew
 
+public void updateReivew3 ( String review,int star,int rcode) throws SQLException {
+	
+	
+	
+	
+	DbConnection db= DbConnection.getInstance();
+	Connection con = null;
+	PreparedStatement pstmt=null;
+	
+	
+	
+	
+	try {
+		con=db.getConn("jdbc/dbcp");
+		
+		String updateReivew = " update  review set REV_CONT = ? , STAR = ?  where  rcode=? ";
+		/*, IMG = ?*/
 
+		
+		
+		pstmt=con.prepareStatement(updateReivew);
+		
+		pstmt.setString(1, review);
+		pstmt.setInt(2,star);
+		/*pstmt.setString(3, sVO.getReview());*/
+		
+		pstmt.setInt(3, rcode);
+		
+		int cnt=pstmt.executeUpdate();
+		System.out.println(cnt+"건 변경");
+		System.out.println(updateReivew+ " / "+review+" / " + star+" / "+ rcode );
+		
+		
+	}finally {
+		db.dbClose(null, pstmt, con);
+		
+	}
+	
+
+}//updateReivew3
 
 public void updateCancle (int rcode) throws SQLException {
 	

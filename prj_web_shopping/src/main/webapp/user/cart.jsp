@@ -54,57 +54,6 @@ background-color:  #FFFFFF;
 height: 56px; width: 500px;
 padding: 16px 16px 16px 16px;
 }
-/* .pagenationDiv{
-   top: 575px;
-   text-align: center;
-    margin-top: 10px; 
-}
-
-.pagination {
-  display: inline-block;
-}
-pagination a{
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  background-color: white;
-}
-
-.pagination span{
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  background-color: white;
-}
-
-.pagination a.active {
-  background-color: black;
-  color: white;
-  border: 1px solid #333;
-}
-
-.pagination span.active {
-  background-color: black;
-  color: white;
-  border: 1px solid #333;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-a {
-   text-decoration: none;
-   color: #333;
-}
-
-a:hover {
-   color: #333;
-} */
 .table {
     background-color: white;
 }
@@ -202,6 +151,10 @@ $(function() {
 		
 	}//stockCheck   
 	
+	function formatNumber(number) {
+	    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	}//formatNumber
+	
 	function plus(bcode, price) {
 	    var quantityField = $("#quantity" + bcode);
 	    var newQuantity = parseInt(quantityField.val());
@@ -222,7 +175,8 @@ $(function() {
 
 	    // 총 가격 업데이트
 	    var totalField = $("#total" + bcode);
-	    totalField.html(price * newQuantity);
+	    var total = price * newQuantity;
+	    totalField.html(formatNumber(total));
 	}//plus
 
 	function minus(bcode, price) {
@@ -245,7 +199,8 @@ $(function() {
 
 	    // 총 가격 업데이트
 	    var totalField = $("#total" + bcode);
-	    totalField.html(price * newQuantity);
+	    var total = price * newQuantity;
+	    totalField.html(formatNumber(total));
 	}//minus
 </script>
 
@@ -299,7 +254,7 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 	<div id="contents">
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
 
-		<div class="PageTop">
+		<div class="PageTop" style="margin-top: 100px">
 			<ul>
 				<li class="xans-element- xans-layout xans-layout-statelogon left ">
 					<span class="xans-member-var-name"></span>
@@ -351,7 +306,7 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 						<td style=" vertical-align: middle;"><input type="checkbox" class="check" name="check"  value="${ cart.bcode }" style="border: 1px solid #929492 ; width: 15px; pa "></td> 
 						<td  style=" vertical-align: middle;"><img src="../upload/goods/${ cart.img }"  style="width: 100px"/></td>
 						<td style=" vertical-align: middle;"><a href="product_detail.jsp?gcode=${ cart.gcode }"><c:out value="${ cart.gname }"/></a></td>
-						<td style=" vertical-align: middle;"><c:out value="${ cart.price }"/></td>
+						<td style=" vertical-align: middle;"><fmt:formatNumber value="${ cart.price }" pattern="#,###,###"/></td>
 						 <td style="width:20px">
                           <!--  수량 -->
                            <span id="amountSet"  class="quantity">
@@ -362,12 +317,14 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 							<a href="#void" onclick="minus('${ cart.bcode }', ${ cart.price })" class="down QuantityDown">수량감소</a>
 							</span>
                         </td> 
-					 	<td style=" vertical-align: middle;">
-							<span id="total${ cart.bcode }">${ cart.price * cart.amount }</span>
+                        <!-- 총 가격 -->
+					 	<td style=" vertical-align: middle;" id="total${ cart.bcode }">
+					 	<fmt:formatNumber value="${cart.price * cart.amount}" pattern='#,###,###'/>
 					 	</td> 
 						<td> 
+							<!-- 삭제 버튼 -->
 					 		<input type="button" value="x삭제" class="deleteBtn" name="deleteBtn" onclick="deleteCart('${cart.bcode}')" style="width:90px; height:35px ;background-color: white; border : 1px solid  #E5E4E4;"/><br/>
-					 		<input type="hidden" value="x삭제" name="dt" style="width:90px; height:30px ;"/>
+					 		<input type="hidden"  style="width:90px; height:30px ;"/>
 					 	</td>
 					 </tr>
 					</c:forEach>
@@ -385,18 +342,6 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 		     		<a class="btnSubmit" id="btnSubmit">선택상품주문</a> 
 				</div>
 		
-        <%--   <c:if test="${ not empty cartList }">
-		<!-- 페이지네이션 -->
-		<div class="pagenationDiv">
-			<div class="pagination">
- 			<%
- 			BoardUtil util=BoardUtil.getInstance();
-			BoardUtilVO buVO=new BoardUtilVO("cart.jsp","","",currentPage,totalPage);
-			out.println(util.pageNation(buVO));
- 			%>
-			</div>
-		</div>
-		</c:if> --%>
 </div>
 </div>
 <%@ include file="layout/footer.jsp"%>

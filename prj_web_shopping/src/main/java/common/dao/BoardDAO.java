@@ -60,8 +60,6 @@ public class BoardDAO {
 				totalCnt = rs.getInt("CNT");
 			}
 			
-			System.out.println(selectCount.toString());
-			
 		} finally {
 			db.dbClose(rs, pstmt, con);
 		}

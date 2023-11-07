@@ -43,21 +43,17 @@ public class ClientOrderDAO {
 			.append("	FROM ( SELECT ROW_NUMBER() OVER(ORDER BY ORD_DATE DESC) RNUM, UO.ID, UO.ORD_DATE, UO.ORDNO, G.MAIN_IMG, G.GNAME,	")
 			.append("	OD.AMOUNT, OD.DLVY_PRO, G.PRICE	")
 			.append("	FROM UORDER UO, GOODS G, ORDER_DETAIL OD	")
-			.append("	WHERE UO.ID = 'frank' AND OD.ORDNO=UO.ORDNO AND G.GCODE=OD.GCODE AND (OD.DLVY_PRO LIKE 'D_' OR OD.DLVY_PRO LIKE 'P_'))	");
+			.append("	WHERE UO.ID = '").append(copVO.getId()).append("' AND OD.ORDNO=UO.ORDNO AND G.GCODE=OD.GCODE AND (OD.DLVY_PRO LIKE 'D_' OR OD.DLVY_PRO LIKE 'P_'))	");
 			
 			boolean flag = false;
 			if(copVO.getStartNum() != 0) {
-				selectOrder.append("	WHERE RNUM BETWEEN ? AND ?	");
+				selectOrder.append("	WHERE RNUM BETWEEN ").append(copVO.getStartNum()).append(" AND ").append(copVO.getEndNum());
 				flag = true;
 			}
+			System.out.println(copVO.getStartNum() + "---" + copVO.getEndNum());
 			
 			pstmt = con.prepareStatement(selectOrder.toString());
-			pstmt.setString(1, copVO.getId());
-			
-			if(flag) {
-				pstmt.setInt(2, copVO.getStartNum());
-				pstmt.setInt(3, copVO.getEndNum());
-			}
+
 			
 			rs = pstmt.executeQuery();
 			

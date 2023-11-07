@@ -186,9 +186,9 @@ $(function() {
 </svg><!-- <i class="fa fa fa-tasks"></i> -->
         <span>&ensp;상품 관리</span><i class="arrow fa fa-angle-right pull-right"></i></a>
         <ul>
-          <li><a href="forms-components.html">&ensp;&ensp;조회</a>
+          <li><a href="admin_itemmanaging2.jsp?no=2">&ensp;&ensp;조회</a>
           </li>
-          <li><a href="forms-validation.html">&ensp;&ensp;등록</a>
+          <li><a href="item_add.jsp?no=2">&ensp;&ensp;등록</a>
           </li>
         </ul>
       </li>

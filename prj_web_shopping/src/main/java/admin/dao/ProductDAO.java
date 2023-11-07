@@ -139,7 +139,7 @@ public class ProductDAO {
 		
 		return list;
 	}//selectAllProduct
-	
+	//
 public ProductManageVO selectOneProduct(String gcode) throws SQLException {
 		
 		

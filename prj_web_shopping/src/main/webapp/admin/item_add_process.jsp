@@ -103,7 +103,7 @@ pVO.setBase(mr.getParameter("base"));
 pVO.setIng(mr.getParameter("ing"));
 pVO.setDetailImg(mr.getParameter("detailImg"));
 
-
+//
 
 try{
 	pDAO.insertinfo(pVO);

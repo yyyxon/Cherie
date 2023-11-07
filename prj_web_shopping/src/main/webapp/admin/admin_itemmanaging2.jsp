@@ -205,19 +205,19 @@ function productDetail(gcode){
 					<tr onclick="productDetail(${ product.goodsCode })">
 						<td>${ startNum + i.index }</td>
 						<td><img src="http://localhost/prj_web_shopping/upload/goods/${ product.mainImg }" style="width:35px"/></td>
-					 <td><a href="item_managing_detail?gname=${product.goodsCode }" 
+					 <td><a href="item_managing_detail.jsp?gcode=${product.goodsCode }" 
    onclick="window.open(this.href, '', 'width=530 , height=710, top=120, left=650'); return false;"><c:out value="${ product.goodsCode }" /></a></td> 
-						<td><a href="item_managing_detail?gname=${product.goodsCode }" 
+						<td><a href="item_managing_detail.jsp?gcode=${product.goodsCode }" 
    onclick="window.open(this.href, '', 'width=530 , height=710, top=120, left=650'); return false;"><c:out value="${ product.goodsName }" /></a></td>
-						<td><a href="item_managing_detail?gname=${product.goodsCode }" 
+						<td><a href="item_managing_detail.jsp?gcode=${product.goodsCode }" 
    onclick="window.open(this.href, '', 'width=530 , height=710, top=120, left=650'); return false;"><c:out value="${ product.categoryName }" /></a></td>
-						<td><a href="item_managing_detail?gname=${product.goodsCode }" 
+						<td><a href="item_managing_detail.jsp?gcode=${product.goodsCode }" 
    onclick="window.open(this.href, '', 'width=530 , height=710, top=120, left=650'); return false;"><c:out value="${ product.inputDate }" /></a></td>
-						<td><a href="item_managing_detail?gname=${product.goodsCode }" 
+						<td><a href="item_managing_detail.jsp?gcode=${product.goodsCode }" 
    onclick="window.open(this.href, '', 'width=530 , height=710, top=120, left=650'); return false;"><c:out value="${ product.price }" /></a></td>
-						<td><a href="item_managing_detail?gname=${product.goodsCode }" 
+						<td><a href="item_managing_detail.jsp?gcode=${product.goodsCode }" 
    onclick="window.open(this.href, '', 'width=530 , height=710, top=120, left=650'); return false;"><c:out value="${ product.quantity }" /></a></td>
-   						<td><a href="item_managing_detail?gname=${product.goodsCode }" 
+   						<td><a href="item_managing_detail.jsp?gcode=${product.goodsCode }" 
    onclick="window.open(this.href, '', 'width=530 , height=710, top=120, left=650'); return false;"><c:out value="${ product.cancle }" /></a></td>
    
    

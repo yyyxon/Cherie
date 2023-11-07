@@ -37,7 +37,7 @@ pDAO.updateInfo(gcode, pVO);
 pageContext.setAttribute("product", pVO);
 }catch(SQLException se ) {
 	se.printStackTrace();
-} %>
+}// %>
 <body>
 상품 상세정보 수정이 완료되었습니다.
 </body>

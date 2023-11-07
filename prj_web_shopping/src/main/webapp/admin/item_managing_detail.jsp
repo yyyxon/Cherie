@@ -184,7 +184,7 @@ $(function(){
 	pageContext.setAttribute("product", pVO);
 	}catch(SQLException se ) {
 		se.printStackTrace();
-	}
+	}//
 %>
 
 

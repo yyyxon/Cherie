@@ -3,6 +3,14 @@
 	 <%@ page info="회원가입 처리" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../../cdn/cdn.jsp" />
+<%
+
+if(request.getParameter("id") == null){
+	response.sendRedirect("http://localhost/prj_web_shopping/user/main.jsp");
+	return;
+}
+
+%>
 <!DOCTYPE html>
 <html>
 <head>

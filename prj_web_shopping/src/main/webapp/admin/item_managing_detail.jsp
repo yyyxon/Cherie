@@ -72,7 +72,7 @@ textarea{
 <script type="text/javascript">
 $(function(){
 	
-	
+	//
 	
 	$("#btnUpdate").click(function(){
 		$("#frm").submit();

@@ -139,7 +139,7 @@ function productDetail(gcode){
 		
 	}catch(SQLException se){
 		se.printStackTrace();
-	}
+	}//
 %>
 
 <%@ include file="sidebar.jsp" %>

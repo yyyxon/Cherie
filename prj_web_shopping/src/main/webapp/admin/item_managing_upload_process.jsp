@@ -36,7 +36,7 @@ if (img3Name!=null) {
 if (detailImgName!=null) {
 	pDAO.updateDetail(gcode, detailImgName);
 }
-
+//
 JSONObject json = new JSONObject();
 json.put("mainImgName", mainImgName);
 json.put("img1Name", img1Name);

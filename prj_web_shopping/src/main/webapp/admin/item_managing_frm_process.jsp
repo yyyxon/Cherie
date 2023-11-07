@@ -20,7 +20,7 @@
 </style>
 <script type="text/javascript">
 $(function(){
-   
+   //
 });//ready
 
 </script>

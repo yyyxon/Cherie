@@ -73,7 +73,7 @@ public class ProductDAO {
 		}
 		return totalCount;
 	}
-	
+//	
 	public List<ProductManageVO> selectAllProduct(BoardRangeVO brVO)throws SQLException {
 		List<ProductManageVO> list = new ArrayList<ProductManageVO>();
 		String keyword = brVO.getKeyword();
@@ -501,7 +501,7 @@ public void updateCancle (String gcode) throws SQLException {
 	}
 
 
-}//updateCancle
+}//updateCancle//
 
 public void insertinfo(ProductManageVO pVO)throws SQLException {
 	
@@ -545,7 +545,7 @@ try {
 		
 	}
 	
-}//insertImg
+}//insertImg//
 
 
 }

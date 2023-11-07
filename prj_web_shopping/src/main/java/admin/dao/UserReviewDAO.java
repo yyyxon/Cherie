@@ -194,7 +194,7 @@ public void updateReivew ( String review,int star,int rcode,String img) throws S
 	}
 	
 
-}//updateReivew
+}//updateReivew//
 
 public void updateReivew3 ( String review,int star,int rcode) throws SQLException {
 	

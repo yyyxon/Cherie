@@ -158,6 +158,7 @@ pageContext.setAttribute("startNum", startNum);
 
 //6.끝 번호
 int endNum = startNum+pageScale-1;
+pageContext.setAttribute("endNum", endNum);
 
 //Dynamic Query에 의해서 구해진 시작번호와 끝번호를 VO에 넣는다.
 brVO.setStartNum(startNum);
@@ -166,12 +167,13 @@ brVO.setEndNum(endNum);
 %>
 <script type="text/javascript">
 	$(function() {
-		$("#pills-home").click(function() {
+		var pageQuery = "&startNum="+${startNum}+"&endNum="+${endNum};
+		$("#readOrder").click(function() {
 			$.ajax({
 				url:"order_list_process.jsp",
 				type:"get",
-				data:"flag=o",
-				dataType:"json",
+				data:"flag=o"+pageQuery,
+				dataType:"text",
 				error: function(xhr) {
 					alert(xhr.status);
 				},
@@ -182,12 +184,12 @@ brVO.setEndNum(endNum);
 			
 		});
 		
-		$("#pills-profile").click(function() {
+		$("#readRecall").click(function() {
 			$.ajax({
 				url:"order_list_process.jsp",
 				type:"get",
-				data:"flag=r",
-				dataType:"json",
+				data:"flag=r"+pageQuery,
+				dataType:"text",
 				error: function(xhr) {
 					alert(xhr.status);
 				},
@@ -236,11 +238,11 @@ brVO.setEndNum(endNum);
 
  <ul class="nav nav-tabs" id="pills-tab" role="tablist"> 
       <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" aria-current="page" href="#" role="tab" aria-controls="pills-home" aria-selected="true">
+        <a class="nav-link active" id="readOrder" data-bs-toggle="pill" data-bs-target="#pills-home" aria-current="page" role="tab" aria-controls="pills-home" aria-selected="true">
         	주문내역조회</a>
       </li>
       <li class="nav-item" role="presentation">
-        <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" href="#" aria-controls="pills-profile" aria-selected="false">
+        <a class="nav-link" id="readRecall" data-bs-toggle="pill" data-bs-target="#pills-profile" aria-controls="pills-profile" aria-selected="false">
         	교환/반품조회</a>
       </li>
     </ul>
@@ -254,9 +256,9 @@ brVO.setEndNum(endNum);
 
 <div class="tab-content" id="pills-tabContent" style="padding-left: 10px;padding-bottom: 10px;">
 <!-- 주문내역조회 클릭 시 나오는 부분 -->
-  <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"><strong>주문 상품 정보</strong></div>
+  <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="readOrder" tabindex="0"><strong>주문 상품 정보</strong></div>
 <!-- 교환/반품조회 클릭 시 나오는 부분 -->
-  <div class="tab-pane " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0"><strong>교환/반품 상품 정보</strong></div>
+  <div class="tab-pane " id="pills-profile" role="tabpanel" aria-labelledby="readRecall" tabindex="0"><strong>교환/반품 상품 정보</strong></div>
 </div>
 <div class="ec-base-table typeList gBorder pad">
 	<table  border="1" summary="" style="text-align:center; font-size:13px">

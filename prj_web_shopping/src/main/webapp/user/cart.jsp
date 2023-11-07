@@ -125,6 +125,7 @@ $(function() {
 	});//click
 	  
 	$("#btnSubmit").click(function() {
+		$("#full").val("n");
 		$("#buyFrm").submit();
 	});////click
 		  
@@ -324,7 +325,7 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 		</div>
 		<div class="table-container" >
 			 <div id="totalProducts">
-			 <form id="buyFrm" name="buyFrm" method="get" action="buy.jsp?where=cart&full=n">
+			 <form id="buyFrm" name="buyFrm" method="get" action="buy.jsp">
 			<table class="table" id="table" style="border: 1px solid #E5E4E4; background-color: #FFFFFF; text-align: center;">
 				<tr style="border: 1px solid #E5E4E4; border-bottom: 1px solid #919191;">
 					<td  style="width:30px; color: #929492">
@@ -370,6 +371,8 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 					 </tr>
 					</c:forEach>
 				</table>
+				<input type="hidden" name="where" value="cart">
+				<input type="hidden" id="full" name="full" value="">
 				</form>
 					</div>
 				
@@ -377,8 +380,8 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 		<div class="move">
 		
 				<div class="xans-element- xans-order xans-order-totalorder ec-base-button 100per">
-					<a href="" class="btnBlack" id="btnBlack">전체상품주문</a>
-		     		<a href="" class="btnSubmit" id="btnSubmit">선택상품주문</a> 
+					<a class="btnBlack" id="btnBlack">전체상품주문</a>
+		     		<a class="btnSubmit" id="btnSubmit">선택상품주문</a> 
 				</div>
 		
         <%--   <c:if test="${ not empty cartList }">

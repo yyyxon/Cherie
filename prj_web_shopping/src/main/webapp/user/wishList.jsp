@@ -110,8 +110,9 @@ $(function(){
 		});////click
 		  
 		$("#btnSubmit").click(function() {
-			$("#tableFrm").submit();
-		});//click
+			$("#full").val("n");
+			$("#buyFrm").submit();
+		});////click
 			  
 	});//ready
 	
@@ -256,6 +257,8 @@ pageContext.setAttribute("deliveryPrice", deliveryPrice);
 					 </tr>
 					</c:forEach>
 				</table>
+				<input type="hidden" name="where" value="wish">
+				<input type="hidden" id="full" name="full" value="">
 				</form>
 		</div>
 		<div class="move">

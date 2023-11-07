@@ -594,4 +594,29 @@ public int productReviewTotalCount(BoardRangeVO brVO,String gcode) throws SQLExc
 	System.out.println(totalCnt);
 	return totalCnt;
 }//reviewTotalCount	
+
+
+public int updateView(int rcode) throws SQLException {
+	int cnt = 0;
+	DbConnection db = DbConnection.getInstance();
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	
+	try {
+		con = db.getConn("jdbc/dbcp");
+		
+		pstmt = con.prepareStatement(" update review set r_view = r_view + 1 where rcode = ? ");
+		
+		pstmt.setInt(1, rcode);
+		
+		cnt = pstmt.executeUpdate();
+		
+	}finally {
+		db.dbClose(null, pstmt, con);
+	}
+	
+	return cnt;
+}
+
+
 }

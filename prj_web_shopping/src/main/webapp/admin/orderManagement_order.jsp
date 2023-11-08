@@ -11,6 +11,9 @@
 <%@ page info="관리자 / 주문관리 / 주문 리스트 - 인영"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:if test="${ empty adminId }">
+	<c:redirect url="http://localhost/prj_web_shopping/admin/login.jsp"/>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>

@@ -367,9 +367,9 @@ function addWishList(gcode) {
         },
         success: function(data) {
         	if(data === 'true'){
-        		alert("관심상품 리스트에서 상품이 삭제되었습니다.");
+        		/* alert("관심상품 리스트에서 상품이 삭제되었습니다."); */
         	}else{
-        		alert("관심상품 리스트에서 상품이 추가되었습니다.");
+        		alert("관심상품으로 등록되었습니다.");
                 if (confirm("관심상품 페이지로 이동하시겠습니까?")) {
                     // 사용자가 확인을 누른 경우
                     window.location.href = "wishList.jsp"; 
@@ -379,7 +379,6 @@ function addWishList(gcode) {
         }//success
     });//ajax
 }//addCart
-
 
 
 function moveToBuy(gcode) {

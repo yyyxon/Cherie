@@ -12,6 +12,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 프로젝트용 CDN -->
 <%@ include file="../cdn/cdn.jsp"%>
+<c:if test="${ empty sesId }">
+	<c:redirect url="member/login.jsp"/>
+</c:if> 
 <!DOCTYPE html>
 <html>
 <head>

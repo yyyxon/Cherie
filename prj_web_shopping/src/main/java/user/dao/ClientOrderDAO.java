@@ -60,6 +60,7 @@ public class ClientOrderDAO {
 				pstmt.setInt(3, copVO.getEndNum());
 			}
 			
+			
 			rs = pstmt.executeQuery();
 			
 			ClientOrderVO coVO = null;
@@ -152,16 +153,37 @@ public class ClientOrderDAO {
 		
 		try {
 			con = db.getConn("jdbc/dbcp");
-			StringBuilder selectOne = new StringBuilder();
+			StringBuilder selectOne = new StringBuilder(); //U.DLVY_PRO -> OD.DLVY_PRO
 			selectOne
-			.append("		")
-			.append("		")
-			.append("		");
+			.append("	SELECT LPAD(u.ORDNO,8,0) ORDNO, TO_CHAR(u.ord_date, 'YYYY-MM-DD HH24:MI') ord_date, ")
+			.append("	DA.RECEIVER, OD.DLVY_PRO, G.GNAME, G.MAIN_IMG, DA.ZIPCODE, DA.SIDO, DA.ADDR, DA.PHONE, G.PRICE, OD.AMOUNT	")
+			.append("	FROM UORDER U, DELIVERY D, DELIVERY_ADDR DA, GOODS G, ORDER_DETAIL OD	")
+			.append("	WHERE U.ORDNO='").append(ordno).append("'")
+			.append("	AND  OD.ORDNO=U.ORDNO AND OD.GCODE=G.GCODE AND D.ORDNO=U.ORDNO AND D.DLVYNO=DA.DLVYNO	");
+			
+			pstmt = con.prepareStatement(selectOne.toString());
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				diVO = new DetailInfoVO();
+				diVO.setAddr(rs.getString("ADDR"));
+				diVO.setImg(rs.getString("MAIN_IMG"));
+				diVO.setName(rs.getString("RECEIVER"));
+				diVO.setOnProcess(rs.getString("DLVY_PRO"));
+				diVO.setOrderDate(rs.getString("ORD_DATE"));
+				diVO.setOrderNum(rs.getString("ORDNO"));
+				diVO.setPhone(rs.getString("PHONE"));
+				diVO.setProductName(rs.getString("GNAME"));
+				diVO.setSido(rs.getString("SIDO"));
+				diVO.setZipcode(rs.getString("ZIPCODE"));
+				diVO.setAmount(rs.getInt("AMOUNT"));
+				diVO.setPrice(rs.getInt("PRICE"));
+			}
 			
 		} finally {
 			db.dbClose(rs, pstmt, con);
 		}
-		
+		System.out.println(diVO);
 		return diVO;
 	}
 	

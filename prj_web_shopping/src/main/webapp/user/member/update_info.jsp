@@ -42,10 +42,7 @@ href="https://afterblow-scent.com/ind-script/optimizer.php?filename=nc1LCoAwDITh
 th {
 	font-size: 16px;
 }
-#contents{
-	font-family : 'Pretendard Medium';
-    margin-top: 100px;
-}
+
 </style>
 <script type="text/javascript">
 $(function() {

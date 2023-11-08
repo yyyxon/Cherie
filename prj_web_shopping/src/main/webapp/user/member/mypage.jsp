@@ -18,9 +18,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700&amp;display=swap" rel="stylesheet" />
 <style type="text/css">
-#contents{
-	font-family : 'Pretendard Medium';
-}
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -51,7 +48,7 @@
 					String name=uVO.getName();
 					pageContext.setAttribute("name", name);
 					%>
-					<big><c:out value="${ name }"/></big><big>님</big>
+					<big><b><c:out value="${ name }"/></b></big><big>님</big>
 					</c:otherwise>
 					</c:choose>
 				</li>
@@ -83,15 +80,15 @@
 
 					<li><a href="../order_table.jsp"">
 							<p class="title">배송준비중</p> <strong><span
-								id="xans_myshop_orderstate_shppied_standby_count">4</span></strong>
+								id="xans_myshop_orderstate_shppied_standby_count">0</span></strong>
 					</a></li>
 					<li><a href="../order_table.jsp"">
 							<p class="title">배송중</p> <strong><span
-								id="xans_myshop_orderstate_shppied_begin_count">1</span></strong>
+								id="xans_myshop_orderstate_shppied_begin_count">0</span></strong>
 					</a></li>
 					<li><a href="../order_table.jsp"">
 							<p class="title">배송완료</p> <strong><span
-								id="xans_myshop_orderstate_shppied_complate_count">5</span></strong>
+								id="xans_myshop_orderstate_shppied_complate_count">0</span></strong>
 					</a></li>
 					<li class="right"><a
 						href="../order_table.jsp"">

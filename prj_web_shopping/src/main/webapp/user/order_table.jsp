@@ -178,9 +178,22 @@ brVO.setEndNum(endNum);
 %>
 <script type="text/javascript">
 	$(function() {
-		$("#readOrder").click();
 		
 		var pageQuery = "&startNum="+${startNum}+"&endNum="+${endNum};
+		
+		$.ajax({
+			url:"order_list_process.jsp",
+			type:"get",
+			data:"flag=o"+pageQuery,
+			dataType:"json",
+			error: function(xhr) {
+				alert(xhr.status);
+			},
+			success: function(jsonObj) {
+				display(jsonObj);
+			}
+		});
+		
 		$("#readOrder").click(function() {
 			$.ajax({
 				url:"order_list_process.jsp",
@@ -263,7 +276,6 @@ brVO.setEndNum(endNum);
 	}
 	
 	function cancel(ord_dno, price) {
-		alert(ord_dno);
 		$.ajax({
 			url:"order_cancel_process.jsp",
 			type:"get",
@@ -284,7 +296,6 @@ brVO.setEndNum(endNum);
 	}
 	
 	function recall(ord_dno, price) {
-		alert(ord_dno);
 		$.ajax({
 			url:"order_recall_process.jsp",
 			type:"get",
@@ -305,7 +316,6 @@ brVO.setEndNum(endNum);
 	}
 	
 	function change(ord_dno) {
-		alert(ord_dno);
 		$.ajax({
 			url:"order_change_process.jsp",
 			type:"get",

@@ -178,6 +178,8 @@ brVO.setEndNum(endNum);
 %>
 <script type="text/javascript">
 	$(function() {
+		$("#readRecall").click();
+		
 		var pageQuery = "&startNum="+${startNum}+"&endNum="+${endNum};
 		$("#readOrder").click(function() {
 			$.ajax({
@@ -342,7 +344,7 @@ brVO.setEndNum(endNum);
 					<%
 
 					%>
-					<big><b><c:out value="${sesId }"/></b></big><big>님</big>
+					<big><b><c:out value="${userData.name }"/></b></big><big>님</big>
 <%-- 					</c:otherwise>
 					</c:choose> --%>
 				</li>

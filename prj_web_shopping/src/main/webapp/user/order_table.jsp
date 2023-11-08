@@ -11,7 +11,7 @@
 <%@ include file="../cdn/cdn.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <c:if test="${ empty sesId }">
-	<c:redirect url="login.jsp"/>
+	<c:redirect url="member/login.jsp"/>
 </c:if> 
 <%
 String id = "frank";

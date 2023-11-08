@@ -456,6 +456,7 @@ public void updateInfo (String gcode,ProductManageVO pVO) throws SQLException {
 		
 		int cnt=pstmt.executeUpdate();
 		System.out.println("info"+cnt+"건 변경되었습니다.");
+		System.out.println(pVO.getTop()+"/"+pVO.getHeart()+"/"+pVO.getBase()+"/"+ pVO.getIng());
 	
 	}finally {
 		db.dbClose(null, pstmt, con);

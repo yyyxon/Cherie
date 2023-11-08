@@ -36,7 +36,6 @@ String gcode="BC0001";//받는 쥐코드;
 String id=(String)session.getAttribute("sesId");
 int star = sVO.getStar();
 int rcode = sVO.getRcode();
-System.out.println("+++++"+request.getParameter("reviewImg")+"-------");
 try{
 	if(rcode!=0){
 		uDAO.updateReivew2(review, star, rcode);

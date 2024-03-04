@@ -1,7 +1,9 @@
-<img src="https://github.com/yyyxon/Cherie/assets/130555434/0e095ec2-5e38-4dfe-abdb-72bc4260484b"><br><br>
-### 프로젝트 상세 보러가기
+<img src="https://github.com/yyyxon/Cherie/assets/130555434/0e095ec2-5e38-4dfe-abdb-72bc4260484b">
+
+### ❤ 프로젝트 상세 보러가기
 <a href="https://www.notion.so/yyyxon/Ch-rie-f5862e1266954218ab4e1f73ddb9d37e">![notion](https://img.shields.io/badge/Chérie-000000?style=for-the-badge&logo=notion&logoColor=white)
-</a>
+</a><br>
+(클릭시 노션으로 이동)
 <br>
 ### ✍️ 주제 및 개요
 

@@ -1,10 +1,12 @@
 <img src="https://github.com/yyyxon/Cherie/assets/130555434/0e095ec2-5e38-4dfe-abdb-72bc4260484b">
 
+<!--
 ### ❤ 프로젝트 상세 보러가기
 <a href="https://www.notion.so/yyyxon/Ch-rie-f5862e1266954218ab4e1f73ddb9d37e">![notion](https://img.shields.io/badge/Chérie-000000?style=for-the-badge&logo=notion&logoColor=white)
 </a><br>
-(클릭시 노션으로 이동)
+(클릭시 노션으로 이동)-->
 <br>
+
 ### ✍️ 주제 및 개요
 
 사용자에게 상품 정보를 제공하고 편리하게 구매할 수 있는 향수 쇼핑몰 사이트<br>
